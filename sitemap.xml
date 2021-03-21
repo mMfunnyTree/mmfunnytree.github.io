@@ -690,20 +690,6 @@
   </url>
   
   <url>
-    <loc>http://mmfunnytree.github.io/tags/iOS/</loc>
-    <lastmod>2021-03-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mmfunnytree.github.io/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-03-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://mmfunnytree.github.io/tags/Uva/</loc>
     <lastmod>2021-03-21</lastmod>
     <changefreq>daily</changefreq>
@@ -761,6 +747,13 @@
   
   <url>
     <loc>http://mmfunnytree.github.io/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/</loc>
+    <lastmod>2021-03-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mmfunnytree.github.io/tags/iOS-OC-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -861,6 +854,20 @@
   
   <url>
     <loc>http://mmfunnytree.github.io/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E6%A8%A1%E6%9D%BF/</loc>
+    <lastmod>2021-03-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mmfunnytree.github.io/categories/iOS/OC/</loc>
+    <lastmod>2021-03-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mmfunnytree.github.io/categories/iOS/OC/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2021-03-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
