@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>安卓入门学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="UI基础JDK + android studio初次配置环境和安装软件及其麻烦，配合百度搜索经验食用更佳。  JDK和环境变量的配置； 去官网下载最新版本的android studio； 下载SDK等；  关于这一块不是特别了解，百度搜经验一大把。注意$gradle$是个巨坑。  SDK Software Development Kit, 软件开发工具包 NDK Native Developmen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓入门学习笔记">
+<meta property="og:url" content="http://example.com/2019/07/15/androidStudy/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UI基础JDK + android studio初次配置环境和安装软件及其麻烦，配合百度搜索经验食用更佳。  JDK和环境变量的配置； 去官网下载最新版本的android studio； 下载SDK等；  关于这一块不是特别了解，百度搜经验一大把。注意$gradle$是个巨坑。  SDK Software Development Kit, 软件开发工具包 NDK Native Developmen">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-15T11:27:48.000Z">
+<meta property="article:modified_time" content="2019-08-05T17:07:18.984Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,471 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-androidStudy" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      安卓入门学习笔记
+    </h1>
+  
+
+        
+        <a href="/2019/07/15/androidStudy/" class="archive-article-date">
+  	<time datetime="2019-07-15T11:27:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UI基础"><a href="#UI基础" class="headerlink" title="UI基础"></a>UI基础</h1><h2 id="JDK-android-studio"><a href="#JDK-android-studio" class="headerlink" title="JDK + android studio"></a>JDK + android studio</h2><p>初次配置环境和安装软件及其麻烦，配合百度搜索经验食用更佳。</p>
+<ul>
+<li>JDK和环境变量的配置；</li>
+<li>去官网下载最新版本的android studio；</li>
+<li>下载SDK等；</li>
+</ul>
+<p>关于这一块不是特别了解，百度搜经验一大把。注意$gradle$是个巨坑。</p>
+<ul>
+<li>SDK Software Development Kit, 软件开发工具包</li>
+<li>NDK Native Development Kit, 安卓原生开发工具包</li>
+</ul>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><h3 id="工程目录结构"><a href="#工程目录结构" class="headerlink" title="工程目录结构"></a>工程目录结构</h3><ul>
+<li>src JAVA源代码目录，放置JAVA的源代码</li>
+<li>R.java 定义与res文件下资源相对应的id</li>
+<li>drawable 图像资源</li>
+<li>values 值资源（字符串资源、风格资源等）</li>
+<li>layout 布局资源</li>
+<li>AndroidManifest.xml 核心配置文件，界面、服务等组件配置，每生成一个activity都要在这里注册</li>
+</ul>
+<h3 id="hello-world详解"><a href="#hello-world详解" class="headerlink" title="hello world详解"></a>hello world详解</h3><ul>
+<li>创建工程，生成MainActivity类，继承自Activity类</li>
+<li>onCreate方法：设置内容视图，在当前页面被创建时展现布局</li>
+<li>setContentView：展示布局（就是把xml布局文件部署到当前页面）<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.appcompat.widget.LinearLayoutCompat xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">    tools:context&#x3D;&quot;.MainActivity&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:text&#x3D;&quot;Hello World!&quot;</span><br><span class="line">        app:layout_constraintBottom_toBottomOf&#x3D;&quot;parent&quot;</span><br><span class="line">        app:layout_constraintLeft_toLeftOf&#x3D;&quot;parent&quot;</span><br><span class="line">        app:layout_constraintRight_toRightOf&#x3D;&quot;parent&quot;</span><br><span class="line">        app:layout_constraintTop_toTopOf&#x3D;&quot;parent&quot; &#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">&lt;&#x2F;androidx.appcompat.widget.LinearLayoutCompat&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Activity（可视化交互界面）"><a href="#Activity（可视化交互界面）" class="headerlink" title="Activity（可视化交互界面）"></a>Activity（可视化交互界面）</h2><ul>
+<li>layout中定义的布局都会在Activity中进行显示</li>
+<li>操作系统→Manifest→Activity→setContentView调用xml布局</li>
+<li>通过Activity.java动态修改layout控件</li>
+<li>findViewById: 通过R.java中定义的id找到view</li>
+</ul>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><h3 id="通过获取View来控制对象"><a href="#通过获取View来控制对象" class="headerlink" title="通过获取View来控制对象"></a>通过获取View来控制对象</h3><ul>
+<li>给View添加一个id</li>
+<li>view = findViewById(R.id.ID);</li>
+<li>调用.set方法来修改对象的属性： view.setText(“nihaoya”);<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView android:id&#x3D;&quot;@+id&#x2F;qwq&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private TextView tv;</span><br><span class="line">tv &#x3D; findViewById(R.id.qwq);</span><br><span class="line">tv.setText(&quot;nihaoma&quot;+cnt);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="使用监听器进行交互"><a href="#使用监听器进行交互" class="headerlink" title="使用监听器进行交互"></a>使用监听器进行交互</h3><ul>
+<li>实现监听器接口<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private int cnt&#x3D;0;</span><br><span class="line">    private Button bt;</span><br><span class="line">    private TextView tv;</span><br><span class="line">    private buttonlisten qwq;</span><br><span class="line">    class buttonlisten implements View.OnClickListener &#123;&#x2F;&#x2F;实现监听器接口</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View view) &#123;&#x2F;&#x2F;每次监听到点击，都会做出反应</span><br><span class="line">            ++cnt;</span><br><span class="line">            Toast.makeText(MainActivity.this,&quot;nihaoma&quot;+cnt,Toast.LENGTH_LONG).show();</span><br><span class="line">            tv.setText(&quot;nihaoma&quot;+cnt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv &#x3D; findViewById(R.id.qwq);</span><br><span class="line">        qwq &#x3D; new buttonlisten();&#x2F;&#x2F;新建监听对象</span><br><span class="line">        bt &#x3D; findViewById(R.id.button2);</span><br><span class="line">        bt.setOnClickListener(qwq);&#x2F;&#x2F;对button进行监听</span><br><span class="line"></span><br><span class="line">        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() &#123;&#x2F;&#x2F;另一种写法</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                Toast.makeText(MainActivity.this,&quot;i&#39;m toached!&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+还可以定义对象，可以对不同空间进行不同操作：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private View.OnClickListener enterclick &#x3D; new View.OnClickListener()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v)&#123;</span><br><span class="line">        switch (v.getId())&#123;</span><br><span class="line">            case R.id.enter:&#x2F;&#x2F;如果当前点击了enter button，把页面切换到to</span><br><span class="line">                Intent to &#x3D; new Intent(Login.this,MainActivity.class);</span><br><span class="line">                startActivity(to);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="layout布局"><a href="#layout布局" class="headerlink" title="layout布局"></a>layout布局</h2><ul>
+<li><p>Linear Layout和Relative Layout，线性布局和相对布局</p>
+</li>
+<li><p>xml布局文件、Java代码</p>
+</li>
+<li><p>oriandroid:orientation=”vertical” 垂直分布 horizontal 水平分布</p>
+</li>
+<li><p>gravity 当前内容与控件对齐方式</p>
+</li>
+<li><p>layout_gravity 与父控件的对齐方式</p>
+</li>
+<li><p>match_parent 填充父控件</p>
+</li>
+<li><p>wrap_content 适应内容</p>
+</li>
+<li><p>padding 内容与控件边界的距离</p>
+</li>
+<li><p>margin 控件相对于控件的距离</p>
+</li>
+<li><p>weight ：注意设置宽度/高度为0dp</p>
+</li>
+<li><p>px：像素</p>
+</li>
+<li><p>dp：设备独立像素，给控件设置宽高</p>
+</li>
+<li><p>sp：字体会跟随系统设置变化，给内容设置大小</p>
+</li>
+</ul>
+<h2 id="TextView属性"><a href="#TextView属性" class="headerlink" title="TextView属性"></a>TextView属性</h2><ul>
+<li>id “@id/ID”，引用已有ID， “@+id/ID”，创建新ID</li>
+<li>background “#00ffff” “@color/COLOR”引用已有COLOR</li>
+<li>background “@drawable/picture” （JPG小，但不可显示透明色，PNG大）</li>
+<li>string 引用string</li>
+<li>textSize:”15sp” textColor:”@color/COLOR”</li>
+<li>autoLink:” web / email / phone / map “ 链接</li>
+<li>drawableLeft 给控件周围添加图片</li>
+<li>singleLine 单行显示内容</li>
+<li>ellipsize 剩余内容如何显示（省略号，跑马灯等）</li>
+<li>textStyle 字体风格，正常、粗体、斜体</li>
+<li>typeface 字体类型，（美工相关）</li>
+</ul>
+<h2 id="监听器的实现（前面初步提到）"><a href="#监听器的实现（前面初步提到）" class="headerlink" title="监听器的实现（前面初步提到）"></a>监听器的实现（前面初步提到）</h2><h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><ul>
+<li>为button设置id</li>
+<li>在Activity中setContentView装载button所在xml布局</li>
+<li>在Activity中通过findViewById获取button对象</li>
+<li>创建button监听事件接口，重写onClick方法，生成监听对象</li>
+<li>button对象添加监听器，setOnClickListener(监听对象)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private Button bt;</span><br><span class="line">    private buttonlisten qwq;</span><br><span class="line">    class buttonlisten implements View.OnClickListener &#123;&#x2F;&#x2F;实现监听器接口</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View view) &#123;&#x2F;&#x2F;每次监听到点击，都会做出反应</span><br><span class="line">        &#x2F;&#x2F;Toast.makeText(当前界面对象,显示内容,显示时长)，记得show()</span><br><span class="line">            Toast.makeText(MainActivity.this,&quot;nihaoma&quot;+cnt,Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);&#x2F;&#x2F;装载xml布局</span><br><span class="line">        qwq &#x3D; new buttonlisten();&#x2F;&#x2F;新建监听对象</span><br><span class="line">        bt &#x3D; findViewById(R.id.button2);&#x2F;&#x2F;获取button对象</span><br><span class="line">        bt.setOnClickListener(qwq);&#x2F;&#x2F;对button进行监听</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>相较于成员内部类而言，直接在对button进行setOnClickListener对象的时候new一个匿名对象，然后重写Onclick即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);&#x2F;&#x2F;装载xml布局</span><br><span class="line">    bt &#x3D; findViewById(R.id.button2);&#x2F;&#x2F;获取button对象</span><br><span class="line">    bt.setOnClickListener( new View.OnClickListener() &#123;&#x2F;&#x2F;匿名内部类</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View view) &#123;</span><br><span class="line">            Toast.makeText(MainActivity.this,&quot;i&#39;m toached!&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Activity接口"><a href="#Activity接口" class="headerlink" title="Activity接口"></a>Activity接口</h3><p>适用于较简单页面，通过让Activity实现OnClickListener接口，重写OnClick方法便可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity implements OnClickListener&#123;</span><br><span class="line">    private Button bt;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);&#x2F;&#x2F;装载xml布局</span><br><span class="line">        bt &#x3D; findViewById(R.id.button2);&#x2F;&#x2F;获取button对象</span><br><span class="line">        bt.setOnClickListener(this);&#x2F;&#x2F;对button进行监听</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v)&#123;</span><br><span class="line">        Toast.makeText(MainActivity.this,&quot;i&#39;m toached!&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="xml"><a href="#xml" class="headerlink" title="xml"></a>xml</h3><p>直接修改xml布局文件，给button添加onclick属性，属性名要在Activity中创建public方法。<br>灵活性比较差，但实现简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">android:onClick&#x3D;&quot;qwq&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">public void qwq(View v)&#123;</span><br><span class="line">    Toast.makeText(MainActivity.this,&quot;i&#39;m toached!&quot;,Toast.LENGTH_LONG).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="给多个button添加监听器"><a href="#给多个button添加监听器" class="headerlink" title="给多个button添加监听器"></a>给多个button添加监听器</h3><p>可使用匿名内部类分别添加，也可以使用成员内部类进行getId操作，通过switch对不同Id做出不同反应。</p>
+<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><ul>
+<li>inputType 设置输入文本类型 textPassword(密码)</li>
+<li>text 默认内容</li>
+<li>hint 提示内容</li>
+<li>maxLength 最长长度</li>
+</ul>
+<h2 id="ImageView-ImageButton（带背景图的可视控件）"><a href="#ImageView-ImageButton（带背景图的可视控件）" class="headerlink" title="ImageView ImageButton（带背景图的可视控件）"></a>ImageView ImageButton（带背景图的可视控件）</h2><ul>
+<li>src 导入前景图片</li>
+<li>scaleType 填充类型 center / centercrop / centerinside等</li>
+</ul>
+<h2 id="CheckBox-多选按钮"><a href="#CheckBox-多选按钮" class="headerlink" title="CheckBox 多选按钮"></a>CheckBox 多选按钮</h2><h3 id="CheckBox监听器内部类"><a href="#CheckBox监听器内部类" class="headerlink" title="CheckBox监听器内部类"></a>CheckBox监听器内部类</h3><p>实现成员内部类，重写OnCheckedChanged方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;LinearLayout</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;horizontal&quot;</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;CheckBox</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;q1&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:text&#x3D;&quot;q1&quot;</span><br><span class="line">        android:checked&#x3D;&quot;true&quot;</span><br><span class="line">        android:layout_weight&#x3D;&quot;1&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">            </span><br><span class="line">    private void initCheckBox()&#123;</span><br><span class="line">        q1&#x3D;findViewById(R.id.q1);q2&#x3D;findViewById(R.id.q2);q3&#x3D;findViewById(R.id.q3);</span><br><span class="line">        q1.setOnCheckedChangeListener(qwq);</span><br><span class="line">        q2.setOnCheckedChangeListener(qwq);</span><br><span class="line">        q3.setOnCheckedChangeListener(qwq);</span><br><span class="line">    &#125;</span><br><span class="line">    class checkBoxListener implements CompoundButton.OnCheckedChangeListener &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onCheckedChanged(CompoundButton compoundButton, boolean b) &#123;</span><br><span class="line">            CheckBox now &#x3D; (CheckBox) compoundButton;</span><br><span class="line">            switch (now.getId())&#123;</span><br><span class="line">                case R.id.q1: Toast.makeText(MainActivity.this,&quot;q1&quot;,Toast.LENGTH_LONG&#x2F;10).show();break;</span><br><span class="line">                case R.id.q2: Toast.makeText(MainActivity.this,&quot;q2&quot;,Toast.LENGTH_LONG&#x2F;10).show();break;</span><br><span class="line">                case R.id.q3: Toast.makeText(MainActivity.this,&quot;q3&quot;,Toast.LENGTH_LONG&#x2F;10).show();break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="RadioButton-圆形单选框-RadioGroup-容纳多个单选框的容器"><a href="#RadioButton-圆形单选框-RadioGroup-容纳多个单选框的容器" class="headerlink" title="RadioButton (圆形单选框) RadioGroup (容纳多个单选框的容器)"></a>RadioButton (圆形单选框) RadioGroup (容纳多个单选框的容器)</h2><p>在group中的button只有一个能被选中，可以把Group看作一种xml布局。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;RadioGroup</span><br><span class="line">        android:orientation&#x3D;&quot;horizontal&quot;</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;group1&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;RadioButton</span><br><span class="line">            android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;rb1&quot;</span><br><span class="line">            android:text&#x3D;&quot;我是男生&quot;</span><br><span class="line">            android:checked&#x3D;&quot;true&quot;</span><br><span class="line">            &#x2F;&gt;</span><br><span class="line">        &lt;RadioButton</span><br><span class="line">            android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;rb2&quot;</span><br><span class="line">            android:text&#x3D;&quot;我是妹子&quot;</span><br><span class="line">            &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;RadioGroup&gt;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;实现RadioGroup的成员内部类，监听不同RadioButton的选中情况</span><br><span class="line">    class ridioGrouplistener implements RadioGroup.OnCheckedChangeListener&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onCheckedChanged(RadioGroup radioGroup, int i) &#123;</span><br><span class="line">            switch (i)&#123;</span><br><span class="line">                case R.id.rb1:break;</span><br><span class="line">                case R.id.rb2:break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ToggleButton-开关按钮"><a href="#ToggleButton-开关按钮" class="headerlink" title="ToggleButton (开关按钮)"></a>ToggleButton (开关按钮)</h2><p>textOn,textOff表示开启和关闭的文字显示<br>添加一个onClickListener监听。</p>
+<p>还可以配合ImageView使用，点击的时候可以切换图片。</p>
+<h2 id="SeekBar-（可拖拽进度条）"><a href="#SeekBar-（可拖拽进度条）" class="headerlink" title="SeekBar （可拖拽进度条）"></a>SeekBar （可拖拽进度条）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;实现匿名内部类对seekbar进行监听</span><br><span class="line">seekb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onProgressChanged(SeekBar seekBar, int i, boolean b) &#123;</span><br><span class="line">        &#x2F;&#x2F;当状态变化时</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onStartTrackingTouch(SeekBar seekBar) &#123;</span><br><span class="line">        &#x2F;&#x2F;当开始拖拽时</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void onStopTrackingTouch(SeekBar seekBar) &#123;</span><br><span class="line">        &#x2F;&#x2F;结束拖拽时</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ProgressBar</span><br><span class="line">    android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot; </span><br><span class="line">    style&#x3D;&quot;?android:attr&#x2F;progressBarStyleLarge&quot;</span><br><span class="line">    android:max&#x3D;&quot;100&quot;&#x2F;&#x2F;最大</span><br><span class="line">    android:progress&#x3D;&quot;30&quot;&#x2F;&#x2F;当前</span><br><span class="line">    android:secondaryProgress&#x3D;&quot;60&quot;&#x2F;&#x2F;次要（比如缓存视频）</span><br><span class="line">    &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="RatingBar-星星条"><a href="#RatingBar-星星条" class="headerlink" title="RatingBar (星星条)"></a>RatingBar (星星条)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;RatingBar</span><br><span class="line">    android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot; </span><br><span class="line">    android:isIndicator&#x3D;&quot;true&quot;</span><br><span class="line">    android:numStars&#x3D;&quot;5&quot; </span><br><span class="line">    android:stepSize&#x3D;&quot;0.5&quot;&#x2F;&gt;</span><br><span class="line">    </span><br><span class="line">    rtb &#x3D; findViewById(R.id.ratingbar);</span><br><span class="line">    rtb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onRatingChanged(RatingBar ratingBar, float v, boolean b) &#123;</span><br><span class="line">            &#x2F;&#x2F;当前监听对象，当前值，是否由用户操作</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;) ;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h2 id="DatePicker-amp-TimePicker"><a href="#DatePicker-amp-TimePicker" class="headerlink" title="DatePicker &amp; TimePicker"></a>DatePicker &amp; TimePicker</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">private void getCurrentTime()&#123;&#x2F;&#x2F;获取当前时间</span><br><span class="line">    Calendar now &#x3D; Calendar.getInstance();</span><br><span class="line">    year &#x3D; now.get(Calendar.YEAR);</span><br><span class="line">&#125;</span><br><span class="line">private TimePicker tp;</span><br><span class="line">tp &#x3D; findViewById(R.id.qwq);</span><br><span class="line">tp.setIs24HourView(true);</span><br><span class="line">tp.setHour(hour);</span><br><span class="line">tp.setMinute(minute);</span><br><span class="line">tp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onTimeChanged(TimePicker timePicker, int i, int i1) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">dp &#x3D; findViewById(R.id.dp);</span><br><span class="line">dp.init(year, month, day, new DatePicker.OnDateChangedListener() &#123;</span><br><span class="line">    @Override&#x2F;&#x2F;当日期选择器发生改变时触发</span><br><span class="line">    public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Activity管理"><a href="#Activity管理" class="headerlink" title="Activity管理"></a>Activity管理</h2><p>设置初始界面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;intent-filter&gt;</span><br><span class="line">    &lt;action android:name&#x3D;&quot;android.intent.action.MAIN&quot; &#x2F;&gt;</span><br><span class="line">    &lt;category android:name&#x3D;&quot;android.intent.category.LAUNCHER&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;intent-filter&gt;</span><br></pre></td></tr></table></figure>
+<p>使用Button监听，跳转页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private View.OnClickListener enterclick &#x3D; new View.OnClickListener()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v)&#123;</span><br><span class="line">        switch (v.getId())&#123;</span><br><span class="line">            case R.id.enter:</span><br><span class="line">                Intent to &#x3D; new Intent(Login.this,MainActivity.class);</span><br><span class="line">                &#x2F;&#x2F;创建Intent对象，从第一个参数的页面跳转到第二个参数的页面</span><br><span class="line">                startActivity(to);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>BackStack</p>
+<ul>
+<li>只显示回退栈最上面的Activity，启动Activity其实就是压栈的过程，回退时Activity出栈并且销毁。</li>
+</ul>
+<h1 id="UI常用组件"><a href="#UI常用组件" class="headerlink" title="UI常用组件"></a>UI常用组件</h1><h2 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h2><ul>
+<li><p>Gradle是Android主流编译工具。版本问题，导入板块时经常出现</p>
+</li>
+<li><p>乱码问题： settings -&gt; file encodings -&gt; ide encoding , project encoding…</p>
+</li>
+<li><p>快捷键设置： setting -&gt; keymap -&gt; …</p>
+</li>
+</ul>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><ul>
+<li>撤销 ctrl + z</li>
+<li>格式化代码 ctrl + alt + l</li>
+<li>反撤销 ctrl + shift + z</li>
+<li>提示代码 ctrl + alt + 空格</li>
+<li>代码修正 alt + enter</li>
+<li>文档说明 ctrl + q</li>
+<li>查找 ctrl + f</li>
+<li>关键字全局查找 ctrl + shift + f</li>
+</ul>
+<h2 id="Activity生命周期（重点）"><a href="#Activity生命周期（重点）" class="headerlink" title="Activity生命周期（重点）"></a>Activity生命周期（重点）</h2><ul>
+<li>onCreate()</li>
+<li>onStart()</li>
+<li>onResume()</li>
+<li>onPause()</li>
+<li>onStop()</li>
+<li>onDestroy()</li>
+<li>onRestart()</li>
+</ul>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ul>
+<li>启动activity -&gt; onCreate() -&gt; onStart() -&gt; onResume() -&gt; activity运行中</li>
+<li>遇到另一个activity -&gt; onPause() </li>
+<li>切换回当前activity -&gt; onResume()</li>
+<li>当前activity完全不可见 -&gt; onStop()</li>
+<li>activity结束或者被系统销毁 -&gt; onDestroy()</li>
+<li>在activity进入onStop()，也就是完全不可见后，用户重新打开该activity -&gt; onRestart() -&gt; onStart()</li>
+<li>activity一直在onStop()，别的组件需要内存时，需要释放当前activity，于是销毁activity</li>
+<li>activity被销毁后，想要重新打开该activity -&gt; onCreate()</li>
+</ul>
+<h3 id="使用log查看信息"><a href="#使用log查看信息" class="headerlink" title="使用log查看信息"></a>使用log查看信息</h3><ul>
+<li>logt private static final String TAG = “Login”;</li>
+<li>logi Log.i(TAG, “onCreate: “);</li>
+</ul>
+<h3 id="生命周期补充"><a href="#生命周期补充" class="headerlink" title="生命周期补充"></a>生命周期补充</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onSaveInstanceState(@NonNull Bundle outState) &#123;</span><br><span class="line">    super.onSaveInstanceState(outState);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onBackPressed() &#123;</span><br><span class="line">    super.onBackPressed();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="各种布局介绍"><a href="#各种布局介绍" class="headerlink" title="各种布局介绍"></a>各种布局介绍</h2><h3 id="相对布局"><a href="#相对布局" class="headerlink" title="相对布局"></a>相对布局</h3><p>与父控件相对位置属性 &amp; 与兄弟控件相对位置属性</p>
+<h4 id="方向位置"><a href="#方向位置" class="headerlink" title="方向位置"></a>方向位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">android:layout_toLeftOf&#x3D;&quot;&quot;</span><br><span class="line">android:layout_toRightOf&#x3D;&quot;&quot;</span><br><span class="line">android:layout_below&#x3D;&quot;&quot;</span><br><span class="line">android:layout_above&#x3D;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android:layout_alignBottom&#x3D;&quot;&quot;</span><br><span class="line">android:layout_alignRight&#x3D;&quot;&quot;</span><br><span class="line">android:layout_alignBaseline&#x3D;&quot;&quot;&#x2F;&#x2F;基准线对齐</span><br><span class="line">android:layout_alignParentLeft&#x3D;&quot;&quot;&#x2F;&#x2F;父控件边缘对齐</span><br><span class="line">android:layout_centerHorizontal&#x3D;&quot;&quot;&#x2F;&#x2F;居中对齐</span><br><span class="line">android:layout_alignStart&#x3D;&quot;&quot;&#x2F;&#x2F;头尾对齐</span><br></pre></td></tr></table></figure>
+
+<h3 id="帧布局（可叠加）"><a href="#帧布局（可叠加）" class="headerlink" title="帧布局（可叠加）"></a>帧布局（可叠加）</h3><h3 id="表格布局"><a href="#表格布局" class="headerlink" title="表格布局"></a>表格布局</h3><ul>
+<li>如果不给控件添加宽度，默认match_parent</li>
+<li>如果想让控件在同一行，在控件外层添加TableRow</li>
+<li>stretchColumns 加宽某列</li>
+<li>shrinkColumns 可收缩列</li>
+<li>collapseClolumns 可隐藏列</li>
+</ul>
+<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><ul>
+<li>rowCount columnCount</li>
+<li>控件按照顺序排列，排满换行。</li>
+<li>layout_columnSpan 跨列 + layout_gravity</li>
+</ul>
+<h3 id="约束布局"><a href="#约束布局" class="headerlink" title="约束布局"></a>约束布局</h3><ul>
+<li>通过可视化的方法进行编写，通过相应操作自动生成xml</li>
+<li>略</li>
+</ul>
+<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><h3 id="选项菜单（OptionMenu）"><a href="#选项菜单（OptionMenu）" class="headerlink" title="选项菜单（OptionMenu）"></a>选项菜单（OptionMenu）</h3><ul>
+<li>所有者是Activity</li>
+<li>在res右键-&gt;new-&gt;andorid resource directry-&gt;创建menu</li>
+<li>最多嵌套两层</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;menu xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;&gt;</span><br><span class="line">    &lt;item android:title&#x3D;&quot;settings&quot;</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;itemSetting&quot;</span><br><span class="line">        app:showAsAction&#x3D;&quot;always|withText&quot;</span><br><span class="line">        android:icon&#x3D;&quot;@drawable&#x2F;ic_launcher_foreground&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">    &lt;item android:title&#x3D;&quot;save&quot; &#x2F;&gt;</span><br><span class="line">    &lt;item android:title&#x3D;&quot;more&quot;&gt;</span><br><span class="line">        &lt;menu &gt;</span><br><span class="line">            &lt;item android:title&#x3D;&quot;faq&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;menu&gt;</span><br><span class="line">    &lt;&#x2F;item&gt;</span><br><span class="line">&lt;&#x2F;menu&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.option,menu);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">public boolean onOptionsItemSelected(@NonNull MenuItem item) &#123;</span><br><span class="line">    switch (item.getItemId())&#123;</span><br><span class="line">        case R.id.itemSetting:</span><br><span class="line">            Toast.makeText(this,&quot;settings&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return super.onOptionsItemSelected(item);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="上下文菜单（ContextMenu）"><a href="#上下文菜单（ContextMenu）" class="headerlink" title="上下文菜单（ContextMenu）"></a>上下文菜单（ContextMenu）</h3><ul>
+<li>所有者是View</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1.注册 registerForContextMenu(findViewById(R.id.bt1));</span><br><span class="line">&#x2F;&#x2F;2.创建 覆盖onCreateContextMenu</span><br><span class="line">&#x2F;&#x2F;3.菜单项操作 onContextItemSelected</span><br><span class="line">registerForContextMenu(findViewById(R.id.bt1));&#x2F;&#x2F;注册</span><br><span class="line">@Override</span><br><span class="line">public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) &#123;</span><br><span class="line">    getMenuInflater().inflate(R.menu.context,menu);</span><br><span class="line">    super.onCreateContextMenu(menu, v, menuInfo);</span><br><span class="line">&#125;&#x2F;&#x2F;创建</span><br><span class="line">@Override</span><br><span class="line">public boolean onContextItemSelected(@NonNull MenuItem item) &#123;</span><br><span class="line">    switch (item.getItemId())&#123;</span><br><span class="line">        case R.id.bt1:break;</span><br><span class="line">        default:break;</span><br><span class="line">    &#125;</span><br><span class="line">    return super.onContextItemSelected(item);</span><br><span class="line">&#125;&#x2F;&#x2F;菜单项操作</span><br></pre></td></tr></table></figure>
+
+<p>上下文操作模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;4设置上下文操作模式</span><br><span class="line">&#x2F;&#x2F;4.1 实现Action CallBack 接口</span><br><span class="line">&#x2F;&#x2F;4.2 在view的长按事件中启动上下文操作模式</span><br><span class="line">findViewById(R.id.bt1).setOnLongClickListener(new View.OnLongClickListener()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean onLongClick(View view) &#123;</span><br><span class="line">        startActionMode(cb);return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">    ActionMode.Callback cb &#x3D; new ActionMode.Callback() &#123;</span><br><span class="line">        @Override&#x2F;&#x2F;启动上下文模式时  调用</span><br><span class="line">        public boolean onCreateActionMode(ActionMode actionMode, Menu menu) &#123;</span><br><span class="line">            Log.i(TAG, &quot;onCreateActionMode: &quot;);</span><br><span class="line">            getMenuInflater().inflate(R.menu.context,menu);&#x2F;&#x2F;展示菜单内容</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override&#x2F;&#x2F;创建方法后调用</span><br><span class="line">        public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) &#123;</span><br><span class="line">            Log.i(TAG, &quot;onPrepareActionMode: &quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override&#x2F;&#x2F;被点击时调用</span><br><span class="line">        public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) &#123;</span><br><span class="line">            Log.i(TAG, &quot;onActionItemClicked: &quot;);</span><br><span class="line">            switch (menuItem.getItemId())&#123;</span><br><span class="line">                case R.id.bt1:break;</span><br><span class="line">                default:break;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override&#x2F;&#x2F;结束时被调用</span><br><span class="line">        public void onDestroyActionMode(ActionMode actionMode) &#123;</span><br><span class="line">            Log.i(TAG, &quot;onDestroyActionMode: &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="弹出菜单（PopupMenu）"><a href="#弹出菜单（PopupMenu）" class="headerlink" title="弹出菜单（PopupMenu）"></a>弹出菜单（PopupMenu）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">final Button bt &#x3D; findViewById(R.id.bt1);</span><br><span class="line">bt.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View view) &#123;</span><br><span class="line">        &#x2F;&#x2F;1.实例popupMenu对象</span><br><span class="line">        PopupMenu menu &#x3D; new PopupMenu(MainActivity.this,bt);</span><br><span class="line">        &#x2F;&#x2F;2.加载菜单资源，将menu资源加载到menu对象</span><br><span class="line">        menu.getMenuInflater().inflate(R.menu.context,menu.getMenu());</span><br><span class="line">        &#x2F;&#x2F;3.监听器</span><br><span class="line">        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean onMenuItemClick(MenuItem menuItem) &#123;</span><br><span class="line">                switch (menuItem.getItemId())&#123;</span><br><span class="line">                    case R.id.bt1:break;</span><br><span class="line">                    default:break;</span><br><span class="line">                &#125;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        &#x2F;&#x2F;4.show()</span><br><span class="line">        menu.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对话框"><a href="#对话框" class="headerlink" title="对话框"></a>对话框</h2><h3 id="普通对话框"><a href="#普通对话框" class="headerlink" title="普通对话框"></a>普通对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在Button的监听事件中调用showNormalDialog方法，打开对话框</span><br><span class="line">    private void showNormalDialog() &#123;</span><br><span class="line">        &#x2F;&#x2F;AlertDialog 的构造方法被potected 无法访问，需要使用构建器</span><br><span class="line">        AlertDialog.Builder dialog &#x3D; new AlertDialog.Builder(this);</span><br><span class="line">        dialog.setTitle(&quot;Are you sure?&quot;);</span><br><span class="line">        dialog.setMessage(&quot;确认退出吗？&quot;);</span><br><span class="line">        dialog.setPositiveButton(&quot;确认&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">                MainActivity.this.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        dialog.setNegativeButton(&quot;取消&quot;,null);</span><br><span class="line">        dialog.show();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void showNormalDialog() &#123;</span><br><span class="line">        &#x2F;&#x2F;利用Builder完成dialog的实例化</span><br><span class="line">        AlertDialog dialog &#x3D; new AlertDialog.Builder(this).create();</span><br><span class="line">        dialog.setTitle(&quot;Are you sure?&quot;);</span><br><span class="line">        dialog.setMessage(&quot;确认退出吗？&quot;);</span><br><span class="line">       dialog.setButton(DialogInterface.BUTTON_POSITIVE, &quot;确认&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">               MainActivity.this.finish();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       dialog.setButton(DialogInterface.BUTTON_NEGATIVE, &quot;取消&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">           @Override</span><br><span class="line">           public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">               </span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">        dialog.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="列表对话框"><a href="#列表对话框" class="headerlink" title="列表对话框"></a>列表对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void showListDialog() &#123;</span><br><span class="line">    AlertDialog.Builder dialog &#x3D; new AlertDialog.Builder(this);</span><br><span class="line">    dialog.setTitle(&quot;提示&quot;);</span><br><span class="line">    final String[] str &#x3D; &#123;&quot;heh&quot;,&quot;xix&quot;&#125;;</span><br><span class="line">    dialog.setItems(str,new DialogInterface.OnClickListener()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">            Toast.makeText(MainActivity.this,str[i],Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    dialog.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="单选对话框"><a href="#单选对话框" class="headerlink" title="单选对话框"></a>单选对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Builder.setSingleChoiceItems(选项String数组,默认选项,被选中的事件监听)</span><br><span class="line">.setPositiveButton(&quot;确定&quot;,被选中的事件监听)</span><br><span class="line">.show();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="多选对话框"><a href="#多选对话框" class="headerlink" title="多选对话框"></a>多选对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private void showMultiDialog() &#123;</span><br><span class="line">    AlertDialog.Builder dialog &#x3D; new AlertDialog.Builder(this);</span><br><span class="line">    dialog.setTitle(&quot;提示&quot;);</span><br><span class="line">    final String[] str &#x3D; &#123;&quot;heh&quot;,&quot;xix&quot;&#125;;</span><br><span class="line">    final boolean checked[]&#x3D;new boolean[str.length];</span><br><span class="line">    dialog.setMultiChoiceItems(str,checked ,new DialogInterface.OnMultiChoiceClickListener()&#123;</span><br><span class="line">        @Override                                &#x2F;&#x2F;选项，默认选中状态，选中事件监听</span><br><span class="line">        public void onClick(DialogInterface dialogInterface, int i, boolean b) &#123;</span><br><span class="line">            checked[i]&#x3D;b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).setPositiveButton(&quot;确定&quot;, new DialogInterface.OnClickListener()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">            String msg &#x3D; &quot;选择了:&quot;;</span><br><span class="line">            for(int j&#x3D;0;j&lt;str.length;++j)msg+&#x3D;str[j]+&quot; &quot;;</span><br><span class="line">            Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="等待对话框"><a href="#等待对话框" class="headerlink" title="等待对话框"></a>等待对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private void showWaitingDialog() &#123;</span><br><span class="line">    ProgressDialog dialog &#x3D; new ProgressDialog(this);</span><br><span class="line">    dialog.setTitle(&quot;我是一个等待对话框&quot;);</span><br><span class="line">    dialog.setMessage(&quot;wait&quot;);</span><br><span class="line">    dialog.setCancelable(false);&#x2F;&#x2F;不可取消</span><br><span class="line">    dialog.show();</span><br><span class="line">    dialog.dismiss();&#x2F;&#x2F;设置对话框消失</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="进度条对话框"><a href="#进度条对话框" class="headerlink" title="进度条对话框"></a>进度条对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">private void showProgressDialog() &#123;</span><br><span class="line">    final ProgressDialog dialog &#x3D; new ProgressDialog(this);</span><br><span class="line">    dialog.setTitle(&quot;我是一个进度条对话框&quot;);</span><br><span class="line">    dialog.setMessage(&quot;down loading&quot;);</span><br><span class="line">    dialog.setIndeterminate(true);&#x2F;&#x2F;设置模糊进度</span><br><span class="line">    dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);&#x2F;&#x2F;设置样式</span><br><span class="line"></span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        public void run()&#123;</span><br><span class="line">            super.run();</span><br><span class="line">            for(int i&#x3D;0;i&lt;100;++i)&#123;</span><br><span class="line">                dialog.setProgress(i);</span><br><span class="line">                try&#123;</span><br><span class="line">                    Thread.sleep(50);</span><br><span class="line">                &#125;catch (InterruptedException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">    dialog.show();</span><br><span class="line">    dialog.dismiss();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输入对话框"><a href="#输入对话框" class="headerlink" title="输入对话框"></a>输入对话框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void showInputDialog() &#123;</span><br><span class="line">    final EditText ed &#x3D; new EditText(this);</span><br><span class="line">    AlertDialog.Builder dialog &#x3D; new AlertDialog.Builder(this)</span><br><span class="line">            .setView(ed)</span><br><span class="line">            .setPositiveButton(&quot;确定&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">                @Override</span><br><span class="line">                public void onClick(DialogInterface dialogInterface, int i) &#123;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    dialog.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义对话框"><a href="#自定义对话框" class="headerlink" title="自定义对话框"></a>自定义对话框</h3><ul>
+<li>自定义类，继承于Dialog类，在OnCreate里setContentView调用xml文件，设定布局。</li>
+<li>设定自定义对话框的风格，不显示标题栏、背景，设置style样式。</li>
+<li>在父类构造方法调用style样式。</li>
+<li>在自定义类实现事件监听器。dismiss system.exit(0) 。</li>
+</ul>
+<h3 id="ArrayAdapter"><a href="#ArrayAdapter" class="headerlink" title="ArrayAdapter"></a>ArrayAdapter</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void showArrayDialog() &#123;</span><br><span class="line">        AlertDialog.Builder dialog &#x3D; new AlertDialog.Builder(this);</span><br><span class="line">        dialog.setTitle(&quot;提示&quot;);</span><br><span class="line">        final String[] str &#x3D; &#123;&quot;heh&quot;,&quot;xix&quot;&#125;;</span><br><span class="line">        ArrayAdapter ar &#x3D; new ArrayAdapter(this,</span><br><span class="line">        R.layout.support_simple_spinner_dropdown_item,str);</span><br><span class="line">        &#x2F;&#x2F;环境 , 布局资源索引（每个数据展示的样式） ， 数据源（集合或数组）</span><br><span class="line">        &#x2F;&#x2F;ArrayAdapter ar &#x3D; newArrayAdapter(this,</span><br><span class="line">        R.layout.support_simple_spinner_dropdown_item,R.id.xx,str);</span><br><span class="line">        &#x2F;&#x2F;环境 , 布局资源索引（每个数据展示的样式） ， 数据源（集合或数组）</span><br><span class="line">        </span><br><span class="line">        dialog.setAdapter(ar,null);&#x2F;&#x2F;适配器(规定数据显示样式的规则)对象 和 监听器</span><br><span class="line">        dialog.show();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="fragment的使用"><a href="#fragment的使用" class="headerlink" title="fragment的使用"></a>fragment的使用</h2><p>fragment可重用，每个都有自己的生命周期，依赖于activity而存在</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li>onAttach() 绑定activity</li>
+<li>onCreate() 初始化</li>
+<li>onCreateView() 初始化布局</li>
+<li>onActivityCreated() </li>
+<li>onStart() fragment变得可见</li>
+<li>onResume() 能够开始与用户交互</li>
+<li>onPause() 暂停状态，可见，不能与用户交互</li>
+<li>onSaveInstanceState() 保存当前状态，以便恢复之前键入的文本</li>
+<li>onStop() 停止，不可见</li>
+<li>onDestroyView() 销毁视图</li>
+<li>onDestroy() 销毁fragment，比如按了返回键或者fragment被回收时调用</li>
+<li>onDetach()解除与activity的绑定</li>
+<li>setUserVisibleHint() 设置用户可见或不可见</li>
+</ul>
+<h3 id="静态加载"><a href="#静态加载" class="headerlink" title="静态加载"></a>静态加载</h3><ul>
+<li>创建类Fra继承于Fragment，重写onCreate()方法，调用一个fra.xml布局</li>
+<li>在主页面Main载入static.xml布局，其中里面包含了fragment标签，name指向Fra</li>
+<li>运行后Main的Activity展示的就是static里面定义的控件，以及Fra调用的布局</li>
+</ul>
+<p>以下代码逻辑流程：<br>MainActivity调用的控件绑定点击事件，当点击发生时，跳转到staticFragment页面；<br>staticFragment这个Activity调用staticfragment的布局文件，其中申明了fragment标签，指向FragmentTest；<br>FragmentTest的onCreateView方法里获取了View对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        findViewById(R.id.txt).setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View view) &#123;</span><br><span class="line">                startActivity(new Intent(MainActivity.this,staticFragment.class));</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class staticFragment extends AppCompatActivity &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.staticfragment);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class FragmentTest extends Fragment&#123;</span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        View view &#x3D;  inflater.inflate(R.layout.fragmentqwq, container,false);</span><br><span class="line">        return view;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;activity_main.xml</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.appcompat.widget.LinearLayoutCompat xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">    tools:context&#x3D;&quot;.MainActivity&quot;&gt;</span><br><span class="line">   &lt;TextView</span><br><span class="line">       android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">       android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">       android:textSize&#x3D;&quot;30sp&quot;</span><br><span class="line">       android:text&#x3D;&quot;hello huh&quot;</span><br><span class="line">       android:id&#x3D;&quot;@+id&#x2F;txt&quot;</span><br><span class="line">       &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;androidx.appcompat.widget.LinearLayoutCompat&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;staticfragment.xml</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:background&#x3D;&quot;#000000&quot;</span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">   &lt;fragment</span><br><span class="line">       android:name&#x3D;&quot;com.example.mytest.FragmentTest&quot;</span><br><span class="line">       android:id&#x3D;&quot;@+id&#x2F;fragmentTest&quot;</span><br><span class="line">       android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">       android:layout_height&#x3D;&quot;300dp&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;fragmentqwq.xml</span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:background&#x3D;&quot;#000000&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:backgroundTint&#x3D;&quot;#ff55ff&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;qwqqq&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:textColor&#x3D;&quot;#ffffff&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;30sp&quot;</span><br><span class="line">        android:text&#x3D;&quot;nihaoya&quot; &#x2F;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;btbt&quot;</span><br><span class="line">        android:text&#x3D;&quot;hello back&quot;</span><br><span class="line"></span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h3><ul>
+<li>将fragment加载到容器里，先定义好容器，给容器添加id便可，然后新建fragment对象，绑定fragment与container。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class staticFragment extends AppCompatActivity &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.staticfragment);</span><br><span class="line">        FragmentTest fragment &#x3D; new FragmentTest();</span><br><span class="line">        getSupportFragmentManager().beginTransaction().add(R.id.listContainer,fragment).commit();</span><br><span class="line">        getSupportFragmentManager().beginTransaction().add(R.id.helloworld,new ListFragment()).commit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Activity向Fragment传值"><a href="#Activity向Fragment传值" class="headerlink" title="Activity向Fragment传值"></a>Activity向Fragment传值</h3><ul>
+<li>自己采用了重写构造函数，传入String，在onCreateView()的时候进行控件修改；</li>
+<li>也有以下做法，不知道哪种更好？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private String str &#x3D; &quot; &quot;;</span><br><span class="line">FragmentTest()&#123;&#125;</span><br><span class="line">FragmentTest(String s)&#123;str&#x3D;s;&#125;</span><br><span class="line">public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">    View view &#x3D;  inflater.inflate(R.layout.fragmentqwq, container,false);</span><br><span class="line">    TextView tv &#x3D; view.findViewById(R.id.qwqqq);</span><br><span class="line">    tv.setText(str);</span><br><span class="line">    return view;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private String str &#x3D; &quot; &quot;;</span><br><span class="line">&#x2F;&#x2F;然后实现一个传值并构造的方法</span><br><span class="line"></span><br><span class="line">Bundle bd &#x3D; new Bundle();</span><br><span class="line">bd.putString(&quot;hehehe&quot;,s);</span><br><span class="line">this.setArguments(bd);</span><br><span class="line"></span><br><span class="line">public void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">    if(getArguments()!&#x3D;null)&#123;</span><br><span class="line">        str &#x3D; getArguments().getString(&quot;hehehe&quot;);</span><br><span class="line">    &#125;super.onCreate(savedInstanceState);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;最后在onCreateView()的时候进行控件修改</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>存在疑问，自己的方法好写且易懂，存在安全漏洞或效率问题吗？</li>
+</ul>
+<h1 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="URL解析"><a href="#URL解析" class="headerlink" title="URL解析"></a>URL解析</h3><p>URL : 协议:// 域名、端口、虚拟目录、参数（key value值）</p>
+<h3 id="网络请求-GET-amp-POST"><a href="#网络请求-GET-amp-POST" class="headerlink" title="网络请求 GET &amp; POST"></a>网络请求 GET &amp; POST</h3><p>GET传输的数据会放在URL参数部分，明文，有长度限制<br>POST的数据放在封装的盒子里，不可见，数据类型不像GET有限制</p>
+<p>GET，获取数据，传输上不安全，本质上安全（只读），幂等（多次操作和一次操作效果完全相同），可缓存<br>POST，提交数据，传输安全，本质上不安全（带修改）</p>
+<h3 id="代码实现GET请求和POST请求"><a href="#代码实现GET请求和POST请求" class="headerlink" title="代码实现GET请求和POST请求"></a>代码实现GET请求和POST请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">private void Get()&#123;</span><br><span class="line">    &#x2F;&#x2F;主界面是事件驱动的，需要不停监控UI</span><br><span class="line">    &#x2F;&#x2F;UI的响应在主线程里不断监控消息，一旦有事件发生，就要做出及时响应，所以不可被其他操作阻塞</span><br><span class="line">    &#x2F;&#x2F;所以来个额外的线程做这件事</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;另外，网络请求权限需要在Manifest中注册</span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;&#x2F;&#x2F;可能传入的不是一个合法URL 因此需要try catch</span><br><span class="line">                URL url &#x3D; new URL(&quot;https:&#x2F;&#x2F;mmfunnytree.github.io&quot;);</span><br><span class="line">                HttpURLConnection connection &#x3D; (HttpURLConnection)url.openConnection();</span><br><span class="line">                connection.setConnectTimeout(30000);&#x2F;&#x2F;设置默认超时时间</span><br><span class="line">                connection.setRequestMethod(&quot;GET&quot;);&#x2F;&#x2F;设置请求方法类型</span><br><span class="line">                connection.setRequestProperty(&quot;content-Type&quot;,&quot;application&#x2F;json&quot;);</span><br><span class="line">                &#x2F;&#x2F;设置希望拿到的数据类型</span><br><span class="line">                connection.setRequestProperty(&quot;charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">                &#x2F;&#x2F;设置希望拿到的数据集</span><br><span class="line">                connection.setRequestProperty(&quot;Accept-charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">                connection.connect();&#x2F;&#x2F;发起连接</span><br><span class="line">                int responseCode &#x3D; connection.getResponseCode();</span><br><span class="line">                String mess &#x3D; connection.getResponseMessage();</span><br><span class="line"></span><br><span class="line">                if(responseCode &#x3D;&#x3D; HttpURLConnection.HTTP_OK) &#123;&#x2F;&#x2F;200 是拿到了</span><br><span class="line">                    InputStream stream &#x3D; connection.getInputStream();</span><br><span class="line">                    &#x2F;&#x2F;获取stream后，往String里面读就行了</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F;对View的操作却不能放在Thread中进行，但可使用</span><br><span class="line">                    runOnUiThread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            &#x2F;&#x2F;   UI操作此时就可以进行了。</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                        </span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 处理连接失败原因</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; catch (MalformedURLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private void Post()&#123;</span><br><span class="line">    new Thread()&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                URL url &#x3D; new URL(&quot;https:&#x2F;&#x2F;mmfunnytree.github.io&quot;);</span><br><span class="line">                HttpURLConnection connection &#x3D; (HttpURLConnection)url.openConnection();</span><br><span class="line">                connection.setConnectTimeout(30000);</span><br><span class="line">                connection.setRequestMethod(&quot;GET&quot;);</span><br><span class="line">                connection.setRequestProperty(&quot;content-Type&quot;,&quot;application&#x2F;json&quot;);</span><br><span class="line">                connection.setRequestProperty(&quot;charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">                connection.setRequestProperty(&quot;Accept-charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">                </span><br><span class="line">                connection.setDoInput(true);</span><br><span class="line">                connection.setDoOutput(true);</span><br><span class="line">                connection.setUseCaches(false);</span><br><span class="line">                </span><br><span class="line">                connection.connect();</span><br><span class="line">                </span><br><span class="line">                String data &#x3D; &quot;hehe&#x3D;&quot;+ URLEncoder.encode(&quot;hehe&quot;)+&quot;&amp;xixi&#x3D;&quot;+URLEncoder.encode(&quot;xx&quot;);</span><br><span class="line"></span><br><span class="line">                OutputStream outputStream &#x3D; connection.getOutputStream();</span><br><span class="line">                outputStream.write(data.getBytes());</span><br><span class="line">                outputStream.flush();</span><br><span class="line">                outputStream.close();</span><br><span class="line">                </span><br><span class="line">                int responseCode &#x3D; connection.getResponseCode();</span><br><span class="line">                String mess &#x3D; connection.getResponseMessage();</span><br><span class="line"></span><br><span class="line">                if(responseCode &#x3D;&#x3D; HttpURLConnection.HTTP_OK) &#123;&#x2F;&#x2F;200 是拿到了</span><br><span class="line">                    InputStream stream &#x3D; connection.getInputStream();</span><br><span class="line">                    &#x2F;&#x2F;获取stream后，往String里面读就行了</span><br><span class="line"></span><br><span class="line">                    &#x2F;&#x2F;对View的操作却不能放在Thread中进行，但可使用</span><br><span class="line">                    runOnUiThread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            &#x2F;&#x2F;   UI操作此时就可以进行了。</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                        </span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    &#x2F;&#x2F; 处理连接失败原因</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; catch (MalformedURLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安卓</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/安卓//" class="article-tag-list-link color3">安卓</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/07/15/androidStudy/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/19/2019.07BDInterview/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019.07 头条安卓开发工程师-面试日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/30/xtu2019exam/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">湘潭大学2019年程序设计实践-验题日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +643,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

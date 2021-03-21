@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>4月份问题总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="近期同学们在作业上遇到的问题整理如下，另外也希望同学们能够更加积极踊跃的来提问、留言。提问非常勤快的同学重点表扬：颜紫腾同学，王浩然同学，陈歆好同学，郭铭荃同学，陈美烨同学，胡嘉麟同学，肖启豪同学； 以下是问题总结，提高和超常在最下方。 入门&amp;基础 输入一个实数，输出平方根，保留4位小数所谓实数，指的是一切有理数和无理数，可以是整数也可以是小数，所以要用double或者float表示。 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4月份问题总结">
+<meta property="og:url" content="http://example.com/2019/05/05/201904for01/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="近期同学们在作业上遇到的问题整理如下，另外也希望同学们能够更加积极踊跃的来提问、留言。提问非常勤快的同学重点表扬：颜紫腾同学，王浩然同学，陈歆好同学，郭铭荃同学，陈美烨同学，胡嘉麟同学，肖启豪同学； 以下是问题总结，提高和超常在最下方。 入门&amp;基础 输入一个实数，输出平方根，保留4位小数所谓实数，指的是一切有理数和无理数，可以是整数也可以是小数，所以要用double或者float表示。 1">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-05T02:51:00.000Z">
+<meta property="article:modified_time" content="2019-05-05T01:48:52.194Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,535 +154,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-201904for01" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      4月份问题总结
+    </h1>
+  
+
+        
+        <a href="/2019/05/05/201904for01/" class="archive-article-date">
+  	<time datetime="2019-05-05T02:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近期同学们在作业上遇到的问题整理如下，另外也希望同学们能够更加积极踊跃的来提问、留言。<br>提问非常勤快的同学重点表扬：颜紫腾同学，王浩然同学，陈歆好同学，郭铭荃同学，陈美烨同学，胡嘉麟同学，肖启豪同学；</p>
+<p>以下是问题总结，提高和超常在最下方。</p>
+<h3 id="入门-amp-基础"><a href="#入门-amp-基础" class="headerlink" title="入门&amp;基础"></a>入门&amp;基础</h3><ul>
+<li><p><strong>输入一个实数，输出平方根，保留4位小数</strong><br>所谓实数，指的是一切有理数和无理数，可以是整数也可以是小数，所以要用double或者float表示。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> x;</span><br><span class="line">    cin&gt;&gt;x;</span><br><span class="line">    cout&lt;&lt;fixed&lt;&lt;<span class="built_in">setprecision</span>(<span class="number">4</span>)&lt;&lt;x&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>输入n，然后输入n个数字，输出它们的累加和</strong><br>这个是基础循环的使用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">double</span> a;cin&gt;&gt;a;</span><br><span class="line">        sum+=a;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>计算1到1000里面7的倍数的累加和</strong><br>循环从1到1000，然后对于每个数字都判一次是不是对7取余等于0，然后累加答案。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i%<span class="number">7</span>==<span class="number">0</span>)sum+=i;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>为什么字符加上256之后，输出的值还是不变的？</strong><br>在计算机里，数据存储是2进制的，char是8bit的数据，那么8个bit的数据范围是0-255，加上一个256相当于加了个0，所以输出的值不会改变。</p>
+</li>
+<li><p><strong>冒泡排序</strong><br>所谓冒泡，就是一个质量很轻的泡泡要从水底上升，这个排序过程恰恰如此。<br>对于当前的值，如果后面的值小于它，那么交换它们的位置，继续操作直到整个序列完全有序。</p>
+</li>
+<li><p><strong>选择排序</strong><br>选择排序就是每次把未排序的序列里面最小元素拿出来，然后放到应该在的位置，一直循环这个过程。<br>那么选择了若干次之后，这个序列就能完全有序。</p>
+</li>
+<li><p><strong>a和b都是3位数，如何输入ab，输出形如ab-1的数</strong><br>因为是三位数，我们可以让a乘以1000，然后加上b再减1便可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line">cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">cout&lt;&lt;a*<span class="number">1000</span>+b<span class="number">-1</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>输出斐波那契数列的前30项</strong><br><a target="_blank" rel="noopener" href="https://mmfunnytree.github.io/2019/03/12/20190312for01/%E9%87%8C%E6%9C%89%E3%80%82">https://mmfunnytree.github.io/2019/03/12/20190312for01/里有。</a><br>平时部分作业在之前的博客中有出现，请同学们及时巩固。</p>
+</li>
+</ul>
+<h3 id="提高-amp-超常"><a href="#提高-amp-超常" class="headerlink" title="提高&amp;超常"></a>提高&amp;超常</h3><ul>
+<li><strong>树的前序遍历，中序遍历，以及后序遍历</strong><br>这个问题在数据结构中很经典，对一棵树进行不同的遍历可以得到不同的访问顺序。</li>
+<li><em>前序遍历就是先访问根结点，再访问左儿子，再访问右儿子；<br>中序遍历就是先访问左儿子，再访问根结点，再访问右儿子；<br>后序遍历就是先访问左儿子，再访问右儿子，再访问根结点；</em>*<br>利用数据结构-栈，我们就可以很方便实现这一功能，也可以了解递归回溯法写这个问题。<br>参考代码：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NULL 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OVERFLOW -1</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">char</span> data;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">lchild</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">rchild</span>;</span></span><br><span class="line">&#125;*bitree;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">depth</span><span class="params">(bitree T)</span><span class="comment">//树的高度</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> m=<span class="built_in">depth</span>(T-&gt;lchild); <span class="keyword">int</span> n=<span class="built_in">depth</span>(T-&gt;rchild); <span class="keyword">return</span> (m&gt;n?m:n)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序，中序 建树</span></span><br><span class="line"><span class="function">struct node *<span class="title">create</span><span class="params">(<span class="keyword">char</span> *pre,<span class="keyword">char</span> *ord,<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> * <span class="title">T</span>;</span></span><br><span class="line"><span class="keyword">int</span> m;</span><br><span class="line">T=<span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">m=<span class="number">0</span>;</span><br><span class="line">T=<span class="built_in"><span class="keyword">new</span></span>(struct node);</span><br><span class="line">T-&gt;data=*pre;</span><br><span class="line">T-&gt;lchild=T-&gt;rchild=<span class="literal">NULL</span>; <span class="keyword">while</span>(ord[m]!=*pre)</span><br><span class="line">m++;</span><br><span class="line">T-&gt;lchild=<span class="built_in">create</span>(pre+<span class="number">1</span>,ord,m);</span><br><span class="line">T-&gt;rchild=<span class="built_in">create</span> (pre+m+<span class="number">1</span>,ord+m+<span class="number">1</span>,n-m<span class="number">-1</span>); <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序递归遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(struct node *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">inorder</span>(T-&gt;lchild );</span><br><span class="line">cout&lt;&lt;T-&gt;data;</span><br><span class="line"><span class="built_in">inorder</span>(T-&gt;rchild );</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inpre</span><span class="params">(struct node *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">cout&lt;&lt;T-&gt;data;</span><br><span class="line"><span class="built_in">inpre</span>(T-&gt;lchild );</span><br><span class="line"><span class="built_in">inpre</span>(T-&gt;rchild );</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">postorder</span><span class="params">(struct node *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!T)</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">postorder</span> (T-&gt;lchild );</span><br><span class="line"><span class="built_in">postorder</span> (T-&gt;rchild );</span><br><span class="line">cout&lt;&lt;T-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//先序非递归遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inpre1</span><span class="params">(struct node *T)</span></span></span><br><span class="line">第2/4页</span><br><span class="line">&#123;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">p</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">stack</span>[20];</span></span><br><span class="line"><span class="keyword">int</span> top=<span class="number">0</span>;</span><br><span class="line">p=T;</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;非递归先序为:&quot;</span>&lt;&lt;endl;</span><br><span class="line"><span class="keyword">while</span>(p||top!=<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">while</span> (p)</span><br><span class="line">&#123;</span><br><span class="line">stack[top++]=p;</span><br><span class="line">cout&lt;&lt;p-&gt;data;</span><br><span class="line">p=p-&gt;lchild;</span><br><span class="line">&#125;</span><br><span class="line">p=stack[--top];</span><br><span class="line"></span><br><span class="line">p=p-&gt;rchild ;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序非递归遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder1</span><span class="params">(struct node *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">p</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">stack</span>[20];</span></span><br><span class="line"><span class="keyword">int</span> top=<span class="number">0</span>;</span><br><span class="line">p=T;</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;非递归中序为:&quot;</span>&lt;&lt;endl;</span><br><span class="line"><span class="keyword">while</span>(p||top!=<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">while</span> (p)</span><br><span class="line">&#123;</span><br><span class="line">stack[top++]=p;</span><br><span class="line">p=p-&gt;lchild ;</span><br><span class="line">&#125;</span><br><span class="line">p=stack[--top];</span><br><span class="line">cout&lt;&lt;p-&gt;data;</span><br><span class="line">p=p-&gt;rchild ;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">bitree T;</span><br><span class="line"><span class="keyword">char</span> pre[<span class="number">30</span>],ord[<span class="number">30</span>];</span><br><span class="line">第<span class="number">3</span>/<span class="number">4</span>页</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;请输入先序为-+a*b%cd/ef的二叉树:&quot;</span>&lt;&lt;endl; <span class="built_in">gets</span>(pre);</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;请输入中序为a+b*c%d-e/f的二叉树:&quot;</span>&lt;&lt;endl; <span class="built_in">gets</span>(ord);</span><br><span class="line">n=<span class="built_in">strlen</span>(pre);</span><br><span class="line">T=<span class="built_in">create</span>(pre,ord,n);</span><br><span class="line">cout&lt;&lt; <span class="string">&quot;后序遍历为:&quot;</span>&lt;&lt;endl;</span><br><span class="line"><span class="built_in">postorder</span> (T);</span><br><span class="line">cout&lt;&lt;endl;</span><br><span class="line"><span class="built_in">inpre1</span>(T);</span><br><span class="line">cout&lt;&lt;endl;</span><br><span class="line"><span class="built_in">inorder1</span>(T);</span><br><span class="line">cout&lt;&lt;endl;</span><br><span class="line">m=<span class="built_in">depth</span>(T);</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;二叉树高度为：&quot;</span>&lt;&lt;m&lt;&lt;endl;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/05/05/201904for01/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/05/12/begin1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019/5/12 day1 解题日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/29/multi5andZJ/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">4月29日-多校5D和浙江省赛K</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

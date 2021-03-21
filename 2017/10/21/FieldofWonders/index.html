@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest E. Field of Wonders | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="E. Field of Wonders time limit per test3 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard outputPolycarpus takes part in the “Field of Wonders” TV show. The participants of t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest E. Field of Wonders">
+<meta property="og:url" content="http://example.com/2017/10/21/FieldofWonders/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="E. Field of Wonders time limit per test3 secondsmemory limit per test256 megabytesinputstandard inputoutputstandard outputPolycarpus takes part in the “Field of Wonders” TV show. The participants of t">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-10-21T13:38:50.000Z">
+<meta property="article:modified_time" content="2019-01-12T10:39:02.546Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="codeforces">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-FieldofWonders" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest E. Field of Wonders
+    </h1>
+  
+
+        
+        <a href="/2017/10/21/FieldofWonders/" class="archive-article-date">
+  	<time datetime="2017-10-21T13:38:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>E. Field of Wonders</p>
+<p>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output<br>Polycarpus takes part in the “Field of Wonders” TV show. The participants of the show have to guess a hidden word as fast as possible. Initially all the letters of the word are hidden.</p>
+<p>The game consists of several turns. At each turn the participant tells a letter and the TV show host responds if there is such letter in the word or not. If there is such letter then the host reveals all such letters. For example, if the hidden word is “abacaba” and the player tells the letter “a”, the host will reveal letters at all positions, occupied by “a”: 1, 3, 5 and 7 (positions are numbered from left to right starting from 1).</p>
+<p>Polycarpus knows m words of exactly the same length as the hidden word. The hidden word is also known to him and appears as one of these m words.</p>
+<p>At current moment a number of turns have already been made and some letters (possibly zero) of the hidden word are already revealed. Previously Polycarp has told exactly the letters which are currently revealed.</p>
+<p>It is Polycarpus’ turn. He wants to tell a letter in such a way, that the TV show host will assuredly reveal at least one more letter. Polycarpus cannot tell the letters, which are already revealed.</p>
+<p>Your task is to help Polycarpus and find out the number of letters he can tell so that the show host will assuredly reveal at least one of the remaining letters.</p>
+<p>Input<br>The first line contains one integer n (1 ≤ n ≤ 50) — the length of the hidden word.</p>
+<p>The following line describes already revealed letters. It contains the string of length n, which consists of lowercase Latin letters and symbols “<em>“. If there is a letter at some position, then this letter was already revealed. If the position contains symbol “</em>“, then the letter at this position has not been revealed yet. It is guaranteed, that at least one letter is still closed.</p>
+<p>The third line contains an integer m (1 ≤ m ≤ 1000) — the number of words of length n, which Polycarpus knows. The following m lines contain the words themselves — n-letter strings of lowercase Latin letters. All words are distinct.</p>
+<p>It is guaranteed that the hidden word appears as one of the given m words. Before the current move Polycarp has told exactly the letters which are currently revealed.</p>
+<p>Output<br>Output the single integer — the number of letters Polycarpus can tell so that the TV show host definitely reveals at least one more letter. It is possible that this number is zero.</p>
+<p>Examples<br>input<br>4<br>a*<em>d<br>2<br>abcd<br>acbd<br>output<br>2<br>input<br>5<br>lo</em>er<br>2<br>lover<br>loser<br>output<br>0<br>input<br>3<br>a*a<br>2<br>aaa<br>aba<br>output<br>1<br>Note<br>In the first example Polycarpus can tell letters “b” and “c”, which assuredly will be revealed.</p>
+<p>The second example contains no letters which can be told as it is not clear, which of the letters “v” or “s” is located at the third position of the hidden word.</p>
+<p>In the third example Polycarpus exactly knows that the hidden word is “aba”, because in case it was “aaa”, then the second letter “a” would have already been revealed in one of previous turns.</p>
+<p>链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/883/problem/E">http://codeforces.com/contest/883/problem/E</a></p>
+<p>题意：<br>给一个字符串 T ，T中有部分为 ’*‘ 表示该位置是未知的，其余表示已知的。</p>
+<p>现在你有 m 个单词，这些单词组合起来一定包含了正确答案。</p>
+<p>问你存在多少个字符，使得这种字符一定能翻转至少一个 ’* ‘。</p>
+<p>思路：<br>1.筛选掉一定错误的单词；<br>2.把筛选剩下的单词放到待测的集合里面；<br>3.遍历a到z，查看是否对于每个单词，都存在一个‘*’使得它能翻转得到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int cnt[256];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(0);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    cout.tie(0);</span><br><span class="line"></span><br><span class="line">    int n,m;</span><br><span class="line">    string t,s;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;t&gt;&gt;m;</span><br><span class="line"></span><br><span class="line">    int cnt[256]&#x3D;&#123;0&#125;;</span><br><span class="line">    int num&#x3D;0;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(t[i]!&#x3D;&#39;*&#39;)</span><br><span class="line">            cnt[t[i]]++;</span><br><span class="line">        else num++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    vector&lt;string&gt; vec;</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;s;</span><br><span class="line">        int flag&#x3D;1;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(t[i]&#x3D;&#x3D;&#39;*&#39;)</span><br><span class="line">            &#123;</span><br><span class="line">                if(cnt[s[i]])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag&#x3D;0;break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if(s[i]!&#x3D;t[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag&#x3D;0;break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag)&#x2F;&#x2F;flag&#x3D;&#x3D;0时说明该串被筛选掉了</span><br><span class="line">        &#123;</span><br><span class="line">            vec.push_back(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans&#x3D;0;</span><br><span class="line"></span><br><span class="line">    for(int f&#x3D;&#39;a&#39;;f&lt;&#x3D;&#39;z&#39;;f++)</span><br><span class="line">    &#123;</span><br><span class="line">        int ff&#x3D;1;</span><br><span class="line">        for(auto tmp:vec)</span><br><span class="line">        &#123;</span><br><span class="line">            int flag&#x3D;0;</span><br><span class="line">            for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(t[i]&#x3D;&#x3D;&#39;*&#39;&amp;&amp;tmp[i]&#x3D;&#x3D;f)</span><br><span class="line">                &#123;</span><br><span class="line">                    flag&#x3D;1;break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(!flag)</span><br><span class="line">            &#123;</span><br><span class="line">                ff&#x3D;0;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans+&#x3D;ff;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return cout&lt;&lt;ans,0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">codeforces</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2017/10/21/FieldofWonders/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/10/21/OrientationofEdges/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest G. Orientation of Edges
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/21/PalindromicCut/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest H. Palindromic Cut</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

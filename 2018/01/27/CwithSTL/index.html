@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>C with STL入门详解（适合初学者） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="1.STL是什么？ STL是Standard Template Library的简称，中文名标准模板库。简单来说就是封装好的一些组件。主要有容器(containers)和算法(algorithms)两部分。  2.C with STL是什么？字面意思，一般来说程设竞赛或程设考试用得上的C++部分其实就是C+STL，有了《C语言程序设计》和《数据结构》这两门课程的基础，学习C+STL并非难事。  3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C with STL入门详解（适合初学者）">
+<meta property="og:url" content="http://example.com/2018/01/27/CwithSTL/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.STL是什么？ STL是Standard Template Library的简称，中文名标准模板库。简单来说就是封装好的一些组件。主要有容器(containers)和算法(algorithms)两部分。  2.C with STL是什么？字面意思，一般来说程设竞赛或程设考试用得上的C++部分其实就是C+STL，有了《C语言程序设计》和《数据结构》这两门课程的基础，学习C+STL并非难事。  3">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-27T09:52:37.000Z">
+<meta property="article:modified_time" content="2019-01-12T09:44:14.680Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="入门相关">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,249 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CwithSTL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C with STL入门详解（适合初学者）
+    </h1>
+  
+
+        
+        <a href="/2018/01/27/CwithSTL/" class="archive-article-date">
+  	<time datetime="2018-01-27T09:52:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.STL是什么？</p>
+<p>STL是Standard Template Library的简称，中文名<code>标准模板库</code>。简单来说就是封装好的一些组件。主要有<code>容器(containers)和算法(algorithms)</code>两部分。</p>
+<hr>
+<p>2.<code>C with STL</code>是什么？<br>字面意思，一般来说程设竞赛或程设考试用得上的C++部分其实就是C+STL，有了《C语言程序设计》和《数据结构》这两门课程的基础，学习C+STL并非难事。</p>
+<hr>
+<p>3.为什么要学STL呢？<br>方便。比如你要实现一个链式队列，以及它的一系列功能，你需要敲几十乃至上百行代码，还要投入精力debug，可在STL里，给你做好现成的queue你用不用？现成的快排你用不用？平均复杂度<code>O(nlogn)</code>的排序只要几句话，手写一个冒泡也得好几行吧？还卡时。</p>
+<hr>
+<p>4.我有兴趣了，怎么学呢？<br>正确的学习姿势，以及，熟能生巧。</p>
+<hr>
+<p>下面步入主题。</p>
+<p>1.<code>swap</code>（交换两元素值，在algorithm下，用法：swap(a,b);）<br>交换两元素的值在C语言课上作为指针讲解的典例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a&#x3D;1,b&#x3D;2;</span><br><span class="line">swap(a,b);</span><br><span class="line">&#x2F;&#x2F;此时a&#x3D;2,b&#x3D;1</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>2.<code>sort</code>（对序列进行排序，在algorithm下）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数组排序：</span><br><span class="line">int a[10]&#x3D;&#123;1,3,5,7,9,2,4,6,8,0&#125;;</span><br><span class="line">sort(a,a+10);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;如果用的是vector，这样写</span><br><span class="line">vector&lt;int&gt; a;</span><br><span class="line">sort(a.begin(),a.end());&#x2F;&#x2F;之后会提到vector，这里不做解释</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;默认由小到大排序，当然我们可以重载排序的顺序</span><br><span class="line"></span><br><span class="line">bool cmp(int a,int b)&#x2F;&#x2F;从大到小排序</span><br><span class="line">&#123;</span><br><span class="line">	return a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;然后</span><br><span class="line">sort(a,a+10,cmp);</span><br><span class="line">sort(a.begin(),a.end(),cmp);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用sort是一个越用越活的过程，你要喜欢，还能用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort(a,a+10,greater&lt;int&gt;());</span><br><span class="line">sort(a.begin(),a.end(),less&lt;int&gt;());</span><br></pre></td></tr></table></figure>
+
+<p>sort的平均时间复杂度是<code>O(nlogn)</code> 。</p>
+<hr>
+<p>3.<code>reverse</code>（翻转序列，在algorithm下）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;常用在字符串上</span><br><span class="line">int a[5]&#x3D;&#123;1,2,3,4,5&#125;;</span><br><span class="line">reverse(a,a+5);</span><br><span class="line">&#x2F;&#x2F;序列现在是 5 4 3 2 1</span><br><span class="line"></span><br><span class="line">char s[]&#x3D;&quot;ericxie&quot;;</span><br><span class="line">reverse(s,s+strlen(s));</span><br><span class="line">&#x2F;&#x2F;序列现在是 &quot;eixcire&quot;</span><br><span class="line"></span><br><span class="line">同样适用于string&#x2F;&#x2F;这个待会儿说</span><br><span class="line">string s&#x3D;&quot;qwer&quot;;</span><br><span class="line">reverse(s.begin(),s.end());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>4.<code>min，max</code>（取大，取小）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a&#x3D;1,b&#x3D;2,c;</span><br><span class="line">c&#x3D;min(a,b);</span><br><span class="line">&#x2F;&#x2F;此时c等于1</span><br><span class="line">c&#x3D;max(a,b);</span><br><span class="line">&#x2F;&#x2F;此时c等于2</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>5.<code>__gcd</code>（这东西想必大家都不陌生了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">手写gcd函数也行，这里介绍一下用法。</span><br><span class="line"></span><br><span class="line">int a&#x3D;4,b&#x3D;6;</span><br><span class="line">int c&#x3D;__gcd(a,b);</span><br><span class="line">&#x2F;&#x2F;注意下划线，此时c等于2</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>6.<code>lower_bound</code>和<code>upper_bound</code>（二分查找）<br>功能：<br>我们来看看百度百科的解释<br>    lower_bound()返回一个 iterator 它指向在[first,last)标记的有序序列中可以插入value，而不会破坏容器顺序的第一个位置，而这个位置标记了一个不小于value 的值。<br>意思就是：找到第一个位置，使得：在这个位置插入value后，原有序序列依旧有序。</p>
+<p>这是lower_bound，那upperbound的效果呢？<br>找到最后一个位置，使得：在这个位置插入value后，原有序序列依旧有序。</p>
+<p>用法如下（上面讲了upper的不同，下面只拿lower做样例，不赘述upper）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数组</span><br><span class="line">int a[100]&#x3D;&#123;1,2,4,4,9,12,12,15&#125;;</span><br><span class="line">int pos1 &#x3D; lower_bound(a,a+8,4)-a;</span><br><span class="line">int pos2 &#x3D; upper_bound(a,a+8,4)-a;</span><br><span class="line">&#x2F;&#x2F;在这个样例下，pos1!&#x3D;pos2</span><br><span class="line"></span><br><span class="line">根据我的理解，这里lower_bound(a,a+8,value)得到的是一个地址，拿这个地址减去数组首地址a[0]，那么刚好就是value应该放入的位置。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;vector</span><br><span class="line">vector&lt;int&gt; a;</span><br><span class="line">若a中目前的元素也是&#123;1,2,4,4,9,12,12,15&#125;;</span><br><span class="line">那么</span><br><span class="line">这里用lower_bound得到的应该也是一个类似于指针的东西，为什么不叫它指针呢？因为他有了一个名字，叫做迭代器。</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;::iterator it;</span><br><span class="line">it &#x3D; lower_bound(a.begin(),a.end(),4);</span><br><span class="line">&#x2F;&#x2F;这里的it就是迭代器，那么*it就是该下标对应的value了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;set(集合，放到后面讲)</span><br><span class="line">set&lt;int&gt; a;</span><br><span class="line">这里只介绍它的使用方法：</span><br><span class="line">set&lt;int&gt;::iterator it;</span><br><span class="line">it &#x3D; a.lower_bound(value);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>7.<code>next_permutation</code> （排列）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">通常用于生成序列的全排列。</span><br><span class="line">int a[]&#x3D;&#123;1,2,3&#125;;</span><br><span class="line">do&#123;</span><br><span class="line">&#x2F;***********这里写你要对当前排列进行的操作**************&#x2F;</span><br><span class="line">&#125;while(next_permutation(a,a+3));</span><br><span class="line"></span><br><span class="line">如果我要输出全排列</span><br><span class="line">结果为：</span><br><span class="line">1 2 3</span><br><span class="line">1 3 2</span><br><span class="line">2 1 3</span><br><span class="line">2 3 1</span><br><span class="line">3 1 2</span><br><span class="line">3 2 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>8.<code>unique</code> （去重）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">如何把序列 a 中的重复元素去除呢？</span><br><span class="line">首先需要对原序列 a 进行排序，保证有序后，调用&#96;unique(a.head , a.tail )&#96;就可以了。</span><br><span class="line"></span><br><span class="line">unique会返回一个新长度，表示去重之后序列的长度。</span><br><span class="line">下面是实例。</span><br><span class="line"></span><br><span class="line">&#x2F;**&#x2F;</span><br><span class="line">int a[]&#x3D;&#123;1,3,5,7,9,2,2,2,1,1,1&#125;;</span><br><span class="line">sort(a,a+11);</span><br><span class="line">int len &#x3D; unique(a,a+11)-a;</span><br><span class="line">for(int i&#x3D;0;i&lt;len;i++)cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">输出结果为：1 2 3 5 7 9 </span><br><span class="line">&#x2F;**&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>9.<code>random_shuffle</code>（随机打乱序列，2018.6.25添加）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">对于一个数组a，我想打乱它原有的顺序，那么可以用该函数。</span><br><span class="line">注意，如果要真正的随机，需要srand(time(NULL))操作，因为random_shuffle用的是随机数发生器，还记得rand()吗，如果不srand随机数种子，得到的随机数是固定的。</span><br><span class="line"></span><br><span class="line">int a[1024];</span><br><span class="line">for(int i&#x3D;0;i&lt;1024;i++)a[i]&#x3D;i;</span><br><span class="line">srand(time(NULL));</span><br><span class="line">random_shuffle(a,a+1024);</span><br><span class="line">&#x2F;&#x2F;以上代码能得到一个permutation。</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;应用：codeforces round 492 div-2 E，用随机生成序列的方法能够ac此题。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>上面这些提到的函数都是些基础吧，不定期更新。<br>2018.5.8更新了一部分函数。</p>
+<p>下面开始介绍一些好用的容器。</p>
+<p>1.<code>vector</code><br>1.1 vector（不定长数组，向量）。<br>1.2 我们有数组，为什么还要用vector呢？<br>    菜刀可以削皮，削皮刀也可以削皮；菜刀可以切丝，切丝器也可以切丝。菜刀这么多用处，那我们为什么还要用削皮刀和切丝器呢？每种不同的数据结构在不同场合下能发挥出不同的作用。（致敬eric）<br>1.3实例：邻接表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">下面就以邻接表为例展开介绍。</span><br><span class="line"></span><br><span class="line">struct edge&#123;&#x2F;&#x2F;定义边</span><br><span class="line">	int from,to,value;</span><br><span class="line">&#125;</span><br><span class="line">const int maxn &#x3D; 1e5+5;</span><br><span class="line">&#x2F;&#x2F;声明：</span><br><span class="line">vector&lt;edge&gt; map[maxn];&#x2F;&#x2F;一维向量相当于二维数组，便于理解。</span><br><span class="line">在这里，如果我们使用二维数组存邻接表，需要开销一个1e10的空间，如果图中实际边数只有1e6，用数组无疑会造成极大浪费。</span><br><span class="line"></span><br><span class="line">1.3.1 &#x2F;&#x2F;初始化：</span><br><span class="line">for(int i&#x3D;0;i&lt;maxn;i++)</span><br><span class="line">&#123;</span><br><span class="line">	map[i].clear();</span><br><span class="line">	&#x2F;&#x2F;clear函数能清空向量，不是变成0，是清空。</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">下面还是用vector&lt;int&gt; a作为样例</span><br><span class="line">a：&#123;1，2，3，4，5，6，7，8，9&#125;</span><br><span class="line"></span><br><span class="line">1.3.2 &#x2F;&#x2F;求向量中元素个数</span><br><span class="line">int n &#x3D; a.size();&#x2F;&#x2F;此时n等于9</span><br><span class="line"></span><br><span class="line">1.3.3 &#x2F;&#x2F;取向量首个元素的迭代器</span><br><span class="line">vector&lt;int&gt;::iterator it &#x3D; a.begin();</span><br><span class="line">注意这里得到的是迭代器，如果要直接得到值：</span><br><span class="line"></span><br><span class="line">1.3.4 &#x2F;&#x2F;取向量首个元素值</span><br><span class="line">int value &#x3D; a.front();&#x2F;&#x2F;此时value等于1</span><br><span class="line"></span><br><span class="line">1.3.5 &#x2F;&#x2F;和begin对应的是end</span><br><span class="line">vector&lt;int&gt;::iterator it &#x3D; a.end();</span><br><span class="line">注意，这里的it指向向量a末尾的下一个位置，注意是下一个位置，下一个位置。</span><br><span class="line"></span><br><span class="line">1.3.6 &#x2F;&#x2F;和front对应的是back，取向量尾部的元素值</span><br><span class="line">int value &#x3D; a.back();&#x2F;&#x2F;此时value等于9</span><br><span class="line"></span><br><span class="line">1.3.7 &#x2F;&#x2F;直接下标访问(这个地方和数组很像)</span><br><span class="line">int value0 &#x3D; a[0];&#x2F;&#x2F;下标从0开始的，所以下标是不超过a.size()-1的</span><br><span class="line">int value1 &#x3D; a[1];</span><br><span class="line"></span><br><span class="line">1.3.8 &#x2F;&#x2F;往尾部添加一个元素（重要，重要，重要）</span><br><span class="line">由于我们不知道再添加元素是放在哪里，所以搞了个push_back函数，往尾部添加一个元素。</span><br><span class="line">a.push_back(value);</span><br><span class="line">&#x2F;&#x2F;若value为1，则 a：&#123;1，2，3，4，5，6，7，8，9，1&#125;</span><br><span class="line"></span><br><span class="line">1.3.9 &#x2F;&#x2F;与之对应，我们还有pop_back()，用于删除尾部第一个元素。</span><br><span class="line">a.pop_back();&#x2F;&#x2F;pop后，序列为 a：&#123;1，2，3，4，5，6，7，8&#125;</span><br><span class="line"></span><br><span class="line">1.3.10 &#x2F;&#x2F;前面提到了reverse函数，翻转向量。</span><br><span class="line">a.reverse(a.begin() , a.end());</span><br><span class="line">&#x2F;&#x2F;翻转后的序列 a：&#123;9，8，7，6，5，4，3，2，1&#125;</span><br><span class="line"></span><br><span class="line">1.3.11 &#x2F;&#x2F;判断向量是否为空</span><br><span class="line">bool isempty &#x3D; a.empty();</span><br><span class="line">向量为空 isempty等于true，否则等于false</span><br><span class="line"></span><br><span class="line">1.3.12 &#x2F;&#x2F;常用的如上，一些不常用的可以在这里找到，这里贴个网址</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp">传送门</a></p>
+<hr>
+<p>2.<code>set</code>（集合）<br>2.1     集合中的元素有三个特征：<br>    1.确定性（集合中的元素必须是确定的）。<br>    2.互异性（集合中的元素互不相同）。<br>    3.无序性（集合中的元素没有先后之分）。<br>2.2    set容器是由红黑树实现的。在这里我们尽量把STL容器当作黑箱子使用，不需要知道原理，会用就行。<br>2.3    由于set的一些特性，我们可以用来做一些特定的工作。十分方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">2.4 主要函数的使用方法</span><br><span class="line"></span><br><span class="line">2.4.1 声明一个set容器</span><br><span class="line">set&lt;int&gt; s;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;下面用set&lt;int&gt; s作为例子 初始s:&#123;1,2,3,4,5&#125;;</span><br><span class="line">2.4.2 清空集合</span><br><span class="line">s.clear();</span><br><span class="line">&#x2F;&#x2F;清空后的 s:&#123;&#125;;</span><br><span class="line"></span><br><span class="line">2.4.3 插入一个元素x</span><br><span class="line">s.insert(x);</span><br><span class="line">&#x2F;&#x2F;如果x等于1，那么插入后的 s:&#123;1,2,3,4,5&#125;;（互异性）</span><br><span class="line">&#x2F;&#x2F;如果x等于6，那么插入后的 s:&#123;1,2,3,4,5,6&#125;;</span><br><span class="line">前面我们提到set由树实现，那么插入一个元素的平均时间复杂度应该是O(logn)的，并且在用迭代器遍历set时，得到的元素应该是有序的。</span><br><span class="line"></span><br><span class="line">2.4.4 查询集合里有无元素x</span><br><span class="line">int hav &#x3D; s.count(x);</span><br><span class="line">同样，平均时间复杂度是O(logn)</span><br><span class="line">因为set的特性，集合里要么有x（表示为1），要么没有（为0）。</span><br><span class="line"></span><br><span class="line">2.4.5 在集合里找到x的位置，返回迭代器</span><br><span class="line">set&lt;int&gt;::iterator it &#x3D; s.find(x);</span><br><span class="line">如果找到了x，那么it指向x所在的位置</span><br><span class="line"></span><br><span class="line">2.4.6 遍历集合所有元素</span><br><span class="line">for(set&lt;int&gt;::iterator it &#x3D; s.begin();it!&#x3D;s.end();it++)</span><br><span class="line">&#123;</span><br><span class="line">int x &#x3D; *it;cout&lt;&lt;x&lt;&lt;&quot;,&quot;;</span><br><span class="line">&#125;</span><br><span class="line">或者</span><br><span class="line">for(auto x:s)</span><br><span class="line">&#123;</span><br><span class="line">cout&lt;&lt;x&lt;&lt;&quot; &quot;;&#x2F;&#x2F;这里的x就是元素值</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;两种方法输出的结果都是1,2,3,4,5,</span><br><span class="line"></span><br><span class="line">2.4.7 判断是否为空集</span><br><span class="line">bool isempty &#x3D; s.empty();</span><br><span class="line">2.4.8 求集合元素个数</span><br><span class="line">int n &#x3D; s.size();</span><br><span class="line">2.4.9 删除元素x</span><br><span class="line">s.erase(x);</span><br><span class="line">&#x2F;&#x2F;如果x等于4，那么删除后的集合 s:&#123;1,2,3,5&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>待更</p>
+<p>前几天更新过，由于浏览器故障没能保存，今天再更新一次吧。–2018.5.8<br>删改了部分非书面或者有错误的描述。</p>
+<p>3.<code>map</code>（映射）</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">入门相关</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/others//" class="article-tag-list-link color2">others</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2018/01/27/CwithSTL/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/02/20/NoTags/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          随便写写
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/17/hanwujiE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">寒武纪测试赛E题题解-Travel</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +421,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

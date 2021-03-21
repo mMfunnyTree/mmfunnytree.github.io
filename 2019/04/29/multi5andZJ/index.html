@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>4月29日-多校5D和浙江省赛K | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="tips: 本日志只是一个提纲，请专心听课，如遇到疑问可以自行查找资料。 hash 什么是hash？把一些不好存储的信息，通过一定的方式（这个方式被称为哈希函数），散放在一个邻接表里。我们通过散列的程度来评价一个哈希函数的优劣。由此，我们有了哈希表这一概念，通过一个哈希函数，把对应的数据放到相应的位置，便于以后进行查询。但如果哈希函数被别人知晓，然后被别人造出针对性数据的话，哈希表将会退化成链表，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4月29日-多校5D和浙江省赛K">
+<meta property="og:url" content="http://example.com/2019/04/29/multi5andZJ/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tips: 本日志只是一个提纲，请专心听课，如遇到疑问可以自行查找资料。 hash 什么是hash？把一些不好存储的信息，通过一定的方式（这个方式被称为哈希函数），散放在一个邻接表里。我们通过散列的程度来评价一个哈希函数的优劣。由此，我们有了哈希表这一概念，通过一个哈希函数，把对应的数据放到相应的位置，便于以后进行查询。但如果哈希函数被别人知晓，然后被别人造出针对性数据的话，哈希表将会退化成链表，">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-29T13:11:46.000Z">
+<meta property="article:modified_time" content="2019-04-29T12:41:55.880Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="赛事相关">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,224 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-multi5andZJ" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      4月29日-多校5D和浙江省赛K
+    </h1>
+  
+
+        
+        <a href="/2019/04/29/multi5andZJ/" class="archive-article-date">
+  	<time datetime="2019-04-29T13:11:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>tips: 本日志只是一个提纲，请专心听课，如遇到疑问可以自行查找资料。</p>
+<h1 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h1><ul>
+<li><p>什么是hash？<br>把一些不好存储的信息，通过一定的方式（这个方式被称为哈希函数），散放在一个邻接表里。我们通过散列的程度来评价一个哈希函数的优劣。<br>由此，我们有了哈希表这一概念，通过一个哈希函数，把对应的数据放到相应的位置，便于以后进行查询。但如果哈希函数被别人知晓，然后被别人造出针对性数据的话，哈希表将会退化成链表，由此，查询效率将大打折扣。</p>
+</li>
+<li><p>unordered_set/unordered_map<br>这是C++11之后的新STL容器，跟平时用到的$set$和$map$有相同点，也有不同点。</p>
+</li>
+<li><p>字符串hash？<br>对于一个字符串$s$，存储的代价是$O(n)$的，当我们不需要知道这个字符串的具体信息，比如某位置的字符时，可以采用散列的方式，让存储代价降低到$O(1)$。<br>假设表头范围是任意64位无符号数。这里直接给出哈希函数：<br>$hash(s[0..n]) = s[0] \times b^{n-1} + s[1] \times b^{n-2} + … + s[n-2] \times b^{1} + s[n-1] \times b^{0} $<br>即：把字符串看成一个b进制的数字（这里是对64位无符号数自动溢出的结果）。<br>经过证明，当b是一个质数时，这种哈希函数的冲突率不到0.01%，是一种特别 <del>不</del> 靠谱的算法。</p>
+</li>
+<li><p>以下是一些简单的模板整理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ull base = <span class="number">131</span>;<span class="comment">//这是上文的b进制</span></span><br><span class="line">ull po[<span class="number">100105</span>],hs[<span class="number">100005</span>];<span class="comment">//po[i]表示$base^&#123;i&#125;$ ，hs[i]表示</span></span><br><span class="line"><span class="function">ull <span class="title">geth</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (ull)hs[r]-po[r-l+<span class="number">1</span>]*hs[l<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">int</span> lens;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s+<span class="number">1</span>);</span><br><span class="line">lens=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lens;i++)&#123;</span><br><span class="line">    hs[i]=hs[i<span class="number">-1</span>]*base+s[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$base$是上文提到的$b$进制<br>$po[i]$表示$base^i$，$hs[i]$表示$s[0] \times b^{i-1} + s[1] \times b^{i-2} + … + s[i-2] \times b^{1} + s[i-1] \times b^{0} $<br>$geth(l,r)$得到的是字符串区间$[l,r]$的$hash$值。</p>
+</li>
+</ul>
+<h1 id="湖南多校第5场"><a href="#湖南多校第5场" class="headerlink" title="湖南多校第5场"></a>湖南多校第5场</h1><p>给一个长度为$10^3$的循环节，问长度为$10^9$的串里面有多少本质不同的子串。</p>
+<ul>
+<li>如果长度不大，其实可以后缀数组或者后缀自动机。</li>
+<li>长度这么大，肯定不能暴力计算，不妨来找找数学规律。</li>
+<li>比如$abba$</li>
+<li>$a,b$</li>
+<li>$ab,bb,ba,aa$</li>
+<li>$abb,bba,baa,aab$</li>
+<li>$abba,bbaa,baab,aabb$</li>
+<li>…</li>
+<li>可以证明在此之后长度不管怎么增大，长度相同而本质不同的子串个数只有$4$个。</li>
+</ul>
+<p>于是可以通过哈希暴力判长度1000以内的子串贡献，然后公式直接计算出答案。</p>
+<h1 id="浙江省赛K题"><a href="#浙江省赛K题" class="headerlink" title="浙江省赛K题"></a>浙江省赛K题</h1><p>给一个串$s$和一个串$t$，问有多少种方案使得翻转一个$s$的子串能够让$s=t$。</p>
+<ul>
+<li>首先，如果s本来就与t相等，那么显然只要翻转s的一个回文子串便可，求字符串的回文子串个数，可以用manacher，pam，或者前文提到的hash(套二分)。</li>
+<li>如果$s$与$t$不相等，不妨找到从左往右第一个不相等的位置$L$，和从右往左的第一个不相等的位置$R$，容易证明$[L..R]$这个区间一定要被翻转。</li>
+<li>那么我们不妨枚举$R$与谁对应（因为$R$位置翻转之后，一定会和某个位置$p$进行交换）。</li>
+<li>这个过程显然是$O(n)$的，配合哈希算法可以在$O(nlogn)$的复杂度下完成这个问题（如果数据范围小）。</li>
+<li>仔细想想，这个与$R$对应的位置只能是$L$，原因是：<ul>
+<li>如果$p \lt L$，由于$s[p..L-1]$已经匹配，就算翻转了也要满足匹配关系，也就相当于没翻转，所以一定不会对答案产生贡献。</li>
+<li>如果$L \lt p$，$L$一定会与$q$对应，且满足$R \lt q$，同理，这种情况也不会对答案产生贡献。</li>
+<li>综上，只有L对应R的时候，会影响答案，那么问题就迎刃而解了。</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">赛事相关</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/04/29/multi5andZJ/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/05/05/201904for01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          4月份问题总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/20/2019zhongshanU/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019年中山大学校赛 解题日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +396,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

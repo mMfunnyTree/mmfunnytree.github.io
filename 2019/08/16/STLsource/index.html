@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>STL源码剖析 阅读笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="前言大一开始接触STL，一直以来熟于使用却疏于原理。读STL源码有什么用呢？作者侯捷在前言中写到这段话： 123456人们常说，不要从轮子重新造起，要站在巨人的肩膀上。面对扮演轮子角色的这些STL 组件，我们是否有必要深究其设计原理或实作细节呢？答案因人而异。从应用的角度思考，你不需要探索实作细节（然而相当程度地认识底层实作，对实务运用有绝对的帮助）。从技术研究与ᴀ质提升的角度看，深究细节可以让你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL源码剖析 阅读笔记">
+<meta property="og:url" content="http://example.com/2019/08/16/STLsource/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言大一开始接触STL，一直以来熟于使用却疏于原理。读STL源码有什么用呢？作者侯捷在前言中写到这段话： 123456人们常说，不要从轮子重新造起，要站在巨人的肩膀上。面对扮演轮子角色的这些STL 组件，我们是否有必要深究其设计原理或实作细节呢？答案因人而异。从应用的角度思考，你不需要探索实作细节（然而相当程度地认识底层实作，对实务运用有绝对的帮助）。从技术研究与ᴀ质提升的角度看，深究细节可以让你">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-16T03:11:58.000Z">
+<meta property="article:modified_time" content="2020-03-12T06:29:48.114Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CPP">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,350 +155,357 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-STLsource" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
+    <h1 class="article-title" itemprop="name">
+      STL源码剖析 阅读笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
+        
+        <a href="/2019/08/16/STLsource/" class="archive-article-date">
   	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大一开始接触STL，一直以来熟于使用却疏于原理。读STL源码有什么用呢？作者侯捷在前言中写到这段话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">人们常说，不要从轮子重新造起，要站在巨人的肩膀上。面对扮演轮子角色的这</span><br><span class="line">些STL 组件，我们是否有必要深究其设计原理或实作细节呢？答案因人而异。从</span><br><span class="line">应用的角度思考，你不需要探索实作细节（然而相当程度地认识底层实作，对实</span><br><span class="line">务运用有绝对的帮助）。从技术研究与ᴀ质提升的角度看，深究细节可以让你彻</span><br><span class="line">底掌握一切；不论是为了重温数据结构和算法，或是想要扮演轮子角色，或是</span><br><span class="line">想要进一步扩张别人的轮子，都可因此获得深厚扎实的基础。</span><br></pre></td></tr></table></figure>
+<p>参考资料：<br>《STL源码剖析》– 侯捷</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">STL 所实现的，是依据泛型思维架设起来的一个概念结构。这个以抽</span><br><span class="line">象概念（abstract concepts）为主体而非以实际类别（classes）为主体的结构，形成</span><br><span class="line">了一个严谨的接口标准。在此接口之下，任何组件有最大的独立性，并以所谓迭</span><br><span class="line">代器（iterator）胶合起来，或以所谓配接器（adapter）互相配接，或以所谓仿函</span><br><span class="line">式（functor）动态选择某种策略（policy 或 strategy）。</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="GNU源码开放精神"><a href="#GNU源码开放精神" class="headerlink" title="GNU源码开放精神"></a>GNU源码开放精神</h2><p>全世界所有STL实品，都源于HP公司拥有的原始版本。每个头文件都有开放源码的声明。</p>
+<h2 id="SGI-STL实作版本"><a href="#SGI-STL实作版本" class="headerlink" title="SGI STL实作版本"></a>SGI STL实作版本</h2><p>SGI版本被GCC采用，可读性非常高，对语言特性支持良好。</p>
+<h2 id="六大组件"><a href="#六大组件" class="headerlink" title="六大组件"></a>六大组件</h2><ul>
+<li><p>container 容器<br>用于存放数据 实质是class template</p>
+</li>
+<li><p>algorithm 算法<br>实质是function template</p>
+</li>
+<li><p>iterator 迭代器<br>容器与算法之间的桥梁，是所谓的泛型指针</p>
+</li>
+<li><p>functor 仿函数<br>行为类似函数，可以作为算法的策略（policy），重载了operator ()的class或class template，或者是函数指针。</p>
+</li>
+<li><p>adapter 适配器<br>修饰容器和仿函数、迭代器的，比如stack和queue其实是deque+适配器</p>
+</li>
+<li><p>allocator 配置器<br>动态空间配置、管理和释放的class</p>
+</li>
+</ul>
+<h2 id="SGI-STL-的编译器组态设定"><a href="#SGI-STL-的编译器组态设定" class="headerlink" title="SGI STL 的编译器组态设定"></a>SGI STL 的编译器组态设定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">不同的编译器对C++语言的支持程度不尽相同。做为一个希望具备广泛移植能力</span><br><span class="line">的链接库，SGI STL 准备了一个环境组态文件&lt;stl_config.h&gt;，其中定义许多常</span><br><span class="line">数，标示某些状态的成立与否。所有 STL 头文件都会直接或间接含入这个组态文件，</span><br><span class="line">并以条件式写法，让前处理器（pre-processor）根据各个常数决定取舍哪一段程序</span><br><span class="line">码。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">&#x2F;&#x2F; in client</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; in &lt;vector&gt;</span><br><span class="line">#include &lt;stl_algobase.h&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; in &lt;stl_algobase.h&gt;</span><br><span class="line">#include &lt;stl_config.h&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="空间配置器-allocator"><a href="#空间配置器-allocator" class="headerlink" title="空间配置器 allocator"></a>空间配置器 allocator</h1><p>如果只是想学应用，空间配置器最不需要学习，因为它隐藏在各种组件的背后，默默付出。</p>
+<p>但如果要掌握container的原理，它又显得极其关键，因为STL整个操作数据都放在容器中，而容器又需要空间配置器为其分配空间。</p>
+<h2 id="具备sub-allocation的SGI空间配置器"><a href="#具备sub-allocation的SGI空间配置器" class="headerlink" title="具备sub-allocation的SGI空间配置器"></a>具备sub-allocation的SGI空间配置器</h2><p>SGI的配置器用的是alloc而非allocator，且STL里面的容器都默认采用alloc配置器，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T,class Alloc &#x3D; alloc&gt; &#x2F;&#x2F;预设使用alloc为配置器</span><br><span class="line">class vector&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其实SGI中也有allocator，但是它自己没使用，也不建议我们使用，allocator只把c++里的new和delete做了一个简单的包装。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">inline T* allocate(ptrdiff_t size,T*)&#123;</span><br><span class="line">    set_new_handler(0);</span><br><span class="line">    T* tmp &#x3D; (T*)(::operator new(size_t)(size * sizeof(T)));</span><br><span class="line">    if(tmp &#x3D;&#x3D; 0 )&#123;</span><br><span class="line">        cerr&lt;&lt;&quot;out of memory&quot;&lt;&lt;endl;</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;return tmp;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class T&gt;</span><br><span class="line">inline void deallocate(T* buffers)&#123;</span><br><span class="line">    ::operator delete(buffer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>new_handler的查阅的一些资料：</p>
+<ul>
+<li>new_handler类型函数将在默认内存申请函数(operator new和operator new[])申请内存失败时被调用。 </li>
+<li>默认情况下，当内存不能够分配时，new操作将抛出一个bad_alloc的异常。你可以改变这个默认操作，通过set_new_handler设置一个new_handler。你可以使用set_new_handler(0)，获得一个不抛出异常的new. </li>
+<li>用户定义的my_handler应该可以做以下几几件事之一:<br>　释放内存，产生更多可用的内存<br>　抛出bad_alloc异常<br>　终止程序</li>
+</ul>
+<p>在这里传入参数0，就不会抛出异常，而是程序直接exit(1)。</p>
+<h2 id="std-alloc"><a href="#std-alloc" class="headerlink" title="std::alloc"></a>std::alloc</h2><p>为了精密分工，STL将内存配置由allocate()负责，内存释放由deallocate()负责；对象构建工作由const ruct()负责，对象析构由destroy()负责。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;memory&gt;中有两个文件：</span><br><span class="line">&lt;stl_alloc.h&gt;负责空间配置和释放</span><br><span class="line">&lt;stl_construct.h&gt;负责对象构造和析构</span><br></pre></td></tr></table></figure>
+
+<p>空间配置的设计思想：</p>
+<ul>
+<li>向system heap申请空间</li>
+<li>考虑多线程状态</li>
+<li>考虑内存不足时的应变措施</li>
+<li>考虑内存fragment问题</li>
+</ul>
+<p>在申请空间的时候为了线程安全，是要对堆空间进行互斥访问的，这里作者为了简化复杂性，忽略了多线程的处理。<br>SGI STL的内存配置基于C语言的malloc和free。另外考虑到小型空间申请可能造成的内存碎片问题，SGI设计了双层级配置器，第一级直接使用malloc和free，第二级就可以根据情况采用不同的策略。<br>如果申请空间大于128字节，就用第一级配置器，否则用后者，采用较为复杂的内存池（memory pool）方式。</p>
+<p>为了符合STL规格，SGI把第一级和第二级配置器包装成了simple_alloc标准接口。</p>
+<p>第一级配置器：</p>
+<ul>
+<li>实现allocate，用malloc</li>
+<li>实现deallocate，用free</li>
+<li>模拟new_handler，处理内存不足的状况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">static void *allocate(size_t n)&#123;</span><br><span class="line">    void *result &#x3D; malloc(n);</span><br><span class="line">    if(0&#x3D;&#x3D;result) result &#x3D; oom_malloc(n);&#x2F;&#x2F;内存不足时调用out_of_memory方式</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">static void deallocate(void *p,size_t)&#123;</span><br><span class="line">    free(p);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;另外，还给了接口，用来自定义oom handler</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;而oom_malloc其实就是在不断尝试释放、配置、释放、配置...</span><br><span class="line">for(;;)&#123;</span><br><span class="line">    my_malloc_handler &#x3D; __malloc_alloc_oom_handler;</span><br><span class="line">    if(0 &#x3D;&#x3D; my_malloc_handler)&#123;__THROW_BAD_ALLOC;&#125;&#x2F;&#x2F;如果处理例程没设定，直接bad alloc</span><br><span class="line">    (*my_malloc_handler)();&#x2F;&#x2F;调用处理例程，企图释放内存</span><br><span class="line">    result &#x3D; malloc(n);</span><br><span class="line">    if(result)return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二级配置器：</p>
+<p>第二级配置器多了一些机制，避免内存碎片。<br>内存碎片带来的问题不仅仅是难以利用，在管理这些内存碎片时也会带来额外负担。<br>当申请内存少于128byte时，以memory pool管理。为了方便管理，第二级配置器会把申请的内存需求上调至8的倍数，并维护16个free-lists，各自管理的大小分别是8,16,24,…,128bytes的空间。（类似于邻接表）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static void *allocate(size_t n)&#123;</span><br><span class="line">    if(n &gt; (size_t) __MAX_BYTES)return malloc_alloc::allocate(n);</span><br><span class="line">    &#x2F;&#x2F;如果申请内存大于最大byte，调用第一级配置器</span><br><span class="line">    </span><br><span class="line">    find result in memory pool</span><br><span class="line">    if(result &#x3D;&#x3D; 0)&#123;</span><br><span class="line">        &#x2F;&#x2F;重新装填free list</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;调整free list</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">static void *deallocate(void *p,size_t n)&#123;</span><br><span class="line">    同样是如果n大于最大byte，说明是第一级配置器给予的，</span><br><span class="line">    调用malloc_alloc::deallocate(n);</span><br><span class="line">    否则回收内存</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不够分配，需要到memory pool取出空间给free list使用，这是chunk_alloc()的工作。</p>
+<h2 id="构造和析构的基本工具construct和destroy"><a href="#构造和析构的基本工具construct和destroy" class="headerlink" title="构造和析构的基本工具construct和destroy"></a>构造和析构的基本工具construct和destroy</h2><p>构造其实就是接受一个指针p和一个初值value，然后实现将初值绑定到指针p所指空间便可。<br>而destroy有两个版本，一种是对接受的指针进行析构，这种直接调用该对象的析构函数即可；而第二种接受first和last两个迭代器，要对迭代器范围内的对象进行析构，考虑效率，可以先利用value_type获得迭代器所指向对象的数据类型，然后判断这些对象的析构是否可以省略。<br>对类型判断和对是否可省略的判断目前当作黑盒子，是可以实现的。</p>
+<h2 id="内存基本处理工具"><a href="#内存基本处理工具" class="headerlink" title="内存基本处理工具"></a>内存基本处理工具</h2><ul>
+<li>uninitialized_copy</li>
+<li>uninitialized_fill</li>
+<li>uninitialized_fill_n</li>
+</ul>
+<p>如果是POD，也就是scalar types或传统的C struct 类型，必然拥有copy/assignment函数，可以采用最有效率的方法，而对于not-POD，就采用保险安全的方法。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class ForwardIterator,class T&gt;</span><br><span class="line">inline void uninitialized_fill(ForwardIterator first,ForwardIterator last,</span><br><span class="line">                                const T&amp; x)&#123;</span><br><span class="line">    __uninitialized_fill(first,last,x,value_type(first));                                </span><br><span class="line">&#125;</span><br><span class="line">template&lt;class ForwardIterator,class T&gt;</span><br><span class="line">inline void __uninitialized_fill(ForwardIterator first,ForwardIterator last,</span><br><span class="line">                                const T&amp; x,__true_type)&#123;</span><br><span class="line">    fill(first,last,x);</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class ForwardIterator,class T&gt;</span><br><span class="line">inline void __uninitialized_fill(ForwardIterator first,ForwardIterator last,</span><br><span class="line">                                const T&amp; x,__false_type)&#123;</span><br><span class="line">    ForwardIterator cur &#x3D; first;</span><br><span class="line">    (;cur!&#x3D;last;cur++)construct(&amp; *cur,x);&#x2F;&#x2F;必须一个一个构造，不能用STL算法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器 Iterator"></a>迭代器 Iterator</h1><p>迭代器的中心思想在于，将数据容器container和算法algorithm分开，彼此独立设计，再用迭代器将它们联系起来。如何设计出这两者之间的良好胶着剂，是个大难题。</p>
+<p>迭代器是一种行为类似指针的对象，因此迭代器最重要的工作就是对operator*和operator-&gt;进行重载。</p>
+<p>可参考auto_ptr（一个用来包装原生指针的对象，帮助解决内存泄漏的问题）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void func()&#123;</span><br><span class="line">    auto_ptr&lt;string&gt; ps(new string(&quot;hello&quot;));</span><br><span class="line">    cout&lt;&lt;*ps&lt;&lt;endl;</span><br><span class="line">    cout&lt;&lt;ps-&gt;size()&lt;&lt;endl;&#x2F;&#x2F;离开不需要释放内存，会自动回收</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>在这里不妨对智能指针做一个简单的了解。<br>所谓智能指针其实就是一个类对象，当超出对象作用域时，类自动调用析构函数，自动释放资源，简化了内存管理。</p>
+<h3 id="auto-ptr"><a href="#auto-ptr" class="headerlink" title="auto_ptr"></a>auto_ptr</h3><p>智能指针可以像类的原始指针一样访问类的public成员，成员函数get()返回一个原始的指针;<br>成员函数reset()重新绑定指向的对象，而原来的对象则会被释放。<br>注意我们访问auto_ptr 的成员函数时用的是“.”，访问指向对象的成员时用的是“-&gt;”。我们也可用声明一个空智能指针auto_ptr<Test>ptest();<br>当我们对智能指针进行赋值时，如ptest2 = ptest，ptest2会接管ptest原来的内存管理权，ptest会变为空指针；<br>如果ptest2原来不为空，则它会释放原来的资源。<br>基于这个原因，应该避免把auto_ptr放到容器中，因为算法对容器操作时，很难避免STL内部对容器实现了赋值传递操作，这样会使容器中很多元素被置为NULL。<br>判断一个智能指针是否为空不能使用if(ptest == NULL)，应该使用if(ptest.get() == NULL)。<br>release这个函数只是把智能指针赋值为空，但是它原来指向的内存并没有被释放，相当于它只是释放了对资源的所有权。</p>
+<h3 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h3><p>C++11新标准，取代了C++98的auto_ptr。<br>unique_ptr 是一个独享所有权的智能指针，它提供了严格意义上的所有权，包括：<br>1、拥有它指向的对象<br>2、无法进行复制构造，无法进行复制赋值操作。即无法使两个unique_ptr指向同一个对象。但是可以进行移动构造和移动赋值操作<br>3、保存指向某个对象的指针，当它本身被删除释放的时候，会使用给定的删除器释放它指向的对象<br>unique_ptr 可以实现如下功能：<br>1、为动态申请的内存提供异常安全<br>2、讲动态申请的内存所有权传递给某函数<br>3、从某个函数返回动态申请内存的所有权<br>4、在容器中保存指针<br>5、auto_ptr 应该具有的功能<br>unique_ptr 和 auto_ptr用法很相似，不过不能使用两个智能指针赋值操作，应该使用std::move; 而且它可以直接用if(ptest == NULL)来判断是否空指针；release、get、reset等用法也和auto_ptr一致，使用函数的返回值赋值时，可以直接使用=, 这里使用c++11 的移动语义特性。另外注意的是当把它当做参数传递给函数时（使用值传递，应用传递时不用这样），传实参时也要使用std::move,比如foo(std::move(ptest))。它还增加了一个成员函数swap用于交换两个智能指针的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ptest2 &#x3D; std::move(ptest);</span><br><span class="line">&#x2F;&#x2F;不能直接ptest2 &#x3D; ptest，调用了move后ptest2原本的对象会被释放，ptest2对象指向原本ptest对象的内存</span><br><span class="line">if(ptest &#x3D;&#x3D; NULL)cout&lt;&lt;&quot;ptest &#x3D; NULL\n&quot;;</span><br><span class="line">&#x2F;&#x2F;因为两个unique_ptr不能指向同一内存地址，所以经过前面move后ptest会被赋值NULL，输出ptest&#x3D;NULL</span><br><span class="line">Test* p &#x3D; ptest2.release();</span><br><span class="line">&#x2F;&#x2F;release成员函数把ptest2指针赋为空，但是并没有释放指针指向的内存，所以此时p指针指向原本ptest2指向的内存</span><br></pre></td></tr></table></figure>
+
+<h3 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h3><p>从名字share就可以看出了资源可以被多个指针共享，它使用计数机制来表明资源被几个指针共享。可以通过成员函数use_count()来查看资源的所有者个数。出了可以通过new来构造，还可以通过传入auto_ptr, unique_ptr,weak_ptr来构造。当我们调用release()时，当前指针会释放资源所有权，计数减一。当计数等于0时，资源会被释放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout&lt;&lt;ptest2.use_count()&lt;&lt;endl;&#x2F;&#x2F;显示此时资源被几个指针共享</span><br></pre></td></tr></table></figure>
+
+<h3 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a>weak_ptr</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">weak_ptr是用来解决shared_ptr相互引用时的死锁问题,</span><br><span class="line">如果说两个shared_ptr相互引用,那么这两个指针的引用计数永远不可能下降为0,</span><br><span class="line">资源永远不会释放。</span><br><span class="line">它是对对象的一种弱引用，不会增加对象的引用计数，</span><br><span class="line">和shared_ptr之间可以相互转化，shared_ptr可以直接赋值给它，</span><br><span class="line">它可以通过调用lock函数来获得shared_ptr。</span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代器类型"><a href="#迭代器类型" class="headerlink" title="迭代器类型"></a>迭代器类型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在实现迭代器的过程中，往往会暴露出太多容器的实现细节，而这些细节本该是封装隐藏起来的。</span><br><span class="line">要自己设计迭代器，就要对容器有非常深刻的理解，不如干脆把迭代器的开发工作交给容器设计者好了。</span><br><span class="line"></span><br><span class="line">如此一来，所有实现细节反而得以封装不被使用者看到。</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用function-template的参数推导机制，获取变量类型。"><a href="#利用function-template的参数推导机制，获取变量类型。" class="headerlink" title="利用function template的参数推导机制，获取变量类型。"></a><strong>利用function template的参数推导机制，获取变量类型。</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">I</span>,<span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(I iter,T t)</span></span>&#123;</span><br><span class="line">    T tmp;<span class="comment">//这样就获取了迭代器指向变量的类型</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">I</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(I iter)</span></span>&#123;</span><br><span class="line">    <span class="built_in">func2</span>(iter,*iter);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;<span class="built_in">func</span>(&amp;a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样只要对外展示func函数，把实际操作放到func2中，就可以推导出迭代器指向类型。</p>
+<h2 id="traits-萃取器"><a href="#traits-萃取器" class="headerlink" title="traits 萃取器"></a>traits 萃取器</h2><p>定义迭代器所指对象的类型为value type。<br>如果函数要以value type作为返回值，就无法使用参数推导了。<br>可以用内嵌类型解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">struct Iter&#123;</span><br><span class="line">    typedef T value_type;&#x2F;&#x2F;申明内嵌类型</span><br><span class="line">    T* ptr;</span><br><span class="line">    Iter(T* ptr&#x3D;0):ptr(ptr)&#123;&#125;</span><br><span class="line">    T&amp; operator*() const&#123;return *ptr;&#125;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class I&gt;</span><br><span class="line">typename I::value_type func(I iter)&#123;</span><br><span class="line">    return *iter;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    Iter&lt;int&gt; it(new int(0));</span><br><span class="line">    cout&lt;&lt;func(it)&lt;&lt;endl;&#x2F;&#x2F;typename I::value_type自动具象化为int</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>typename修饰必不可少，因为在被编译器具象化之前，T是未知的，所以需要告诉编译器这是一个成员函数，而不是一个成员变量。<br>这个做法有个缺陷，就是不能对原生指针进行萃取。因为原生类型不是class type，无法内嵌类型。</p>
+<h3 id="偏特化"><a href="#偏特化" class="headerlink" title="偏特化"></a>偏特化</h3><p>含义：如何类模板中拥有一个或以上的模板参数，我们可以针对其中某个模板参数进行特化工作，也就是说在泛化设计中提供特化版本，赋予某些模板参数一个明确指定的版本。<br><strong>偏特化是针对模板参数做出的更进一步条件限制所设计出来的一个特化版本。</strong></p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">class C&#123;...&#125;;&#x2F;&#x2F;允许T为任何类型</span><br><span class="line"></span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">class C&lt;T*&gt;&#123;...&#125;;&#x2F;&#x2F;这个特化版本只适用于T为原生指针的情况，即“进一步限制”</span><br></pre></td></tr></table></figure>
+
+<p>traits就像一台“特性萃取机”，萃取各个迭代器的相应类型。通过class template偏特化的作用，不论原生指针或class迭代器，都可以让外界方便获得相应类型。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">value type</span><br><span class="line">difference type</span><br><span class="line">pointer</span><br><span class="line">reference</span><br><span class="line">iterator categoly</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">I</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator_traits</span>&#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> I::iterator_category;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> I::value_type;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> I::difference_type;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> I::pointer;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> I::reference;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="value-type"><a href="#value-type" class="headerlink" title="value type"></a>value type</h3><p>value type是指迭代器所指对象的类型。</p>
+<h3 id="difference-type"><a href="#difference-type" class="headerlink" title="difference type"></a>difference type</h3><p>difference_type用来表示两个迭代器之间的距离。</p>
+<p>对于原生指针的特化版本：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator_traits</span>&lt;</span>T*&gt;&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">ptrdiff_t</span> difference_type;<span class="comment">//偏特化版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于const修饰的原生指针的特化版本：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator_traits</span>&lt;</span><span class="keyword">const</span> T*&gt;&#123;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">ptrdiff_t</span> difference_type;<span class="comment">//偏特化版本</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么，现在想要任何迭代器I的difference_type，可以写成：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typename</span> iterator_traits&lt;I&gt;::difference_type;</span><br></pre></td></tr></table></figure>
+
+<h3 id="reference-type"><a href="#reference-type" class="headerlink" title="reference type"></a>reference type</h3><p>从迭代器是否可以改变所指对象内容来看，迭代器分constant iterators（如const int* pic）和mutable iterators（如int * pi），当对一个和mutable iterator进行引用时，得到的是一个左值，因为左值允许赋值操作。</p>
+<p>在C++中，函数如果传回左值，都是以引用的方式进行。比如p的value type是T，那么*p的类型不应该是T，而是T&amp;；如果p的value type是const T，那么 * p的类型是const T&amp;。这里讨论的 * p就是reference type。</p>
+<h3 id="pointer"><a href="#pointer" class="headerlink" title="pointer"></a>pointer</h3><p>pointer和reference在C++中有密切关联。<br>如果传回一个左值，用之表示所指之物是可能的，那么传回一个左值，用之表示所指之物的地址也是可能的。也就是说，我们传回一个pointer指向迭代器所指之物。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Item&amp; <span class="keyword">operator</span>*() <span class="keyword">const</span> &#123;<span class="keyword">return</span> *ptr;&#125;</span><br><span class="line">Item* <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span> &#123;<span class="keyword">return</span> ptr;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="iterator-category"><a href="#iterator-category" class="headerlink" title="iterator_category"></a>iterator_category</h3><p>迭代器根据移动特性和操作分为五类：</p>
+<ul>
+<li>input iterator 只读</li>
+<li>output iterator 只写</li>
+<li>forward iterator 允许读写</li>
+<li>bidrectional iterator 双向移动</li>
+<li>random access iterator 支持随机访问</li>
+</ul>
+<p>比如实现一个advance函数，对于不同迭代器有不同实现方法，使用函数重载机制能够在编译期就确定正确的版本。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">input_iterator_tag</span>&#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">output_iterator_tag</span>&#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">forward_iterator_tag</span>:</span><span class="keyword">public</span> input_iterator_tag&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bidirectional_iterator_tag</span>:</span><span class="keyword">public</span> forward_iterator_tag&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">random_access_iterator_tag</span>:</span><span class="keyword">public</span> bidirectional_iterator_tag&#123;&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">编译器需要使用它们进行重载判断，这些类只做标记使用。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>,<span class="keyword">class</span> <span class="title">Distance</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __advance(InputIterator&amp; i,Distance n,input_iterator_tag)&#123;</span><br><span class="line">    <span class="keyword">while</span>(n--)++i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>,<span class="keyword">class</span> <span class="title">Distance</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __advance(InputIterator&amp; i,Distance n,forward_iterator_tag)&#123;</span><br><span class="line">    __advance(i,n,<span class="built_in">input_iterator_tag</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>,<span class="keyword">class</span> <span class="title">Distance</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __advance(InputIterator&amp; i,Distance n,bidirectional_iterator_tag)&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;=<span class="number">0</span>)<span class="keyword">while</span>(n--)++i;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">while</span>(n++)--i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>,<span class="keyword">class</span> <span class="title">Distance</span>&gt;</span></span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">void</span> __advance(InputIterator&amp; i,Distance n,random_access_iterator_tag)&#123;</span><br><span class="line">    i+=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">InputIterator</span>,<span class="keyword">class</span> <span class="title">Distance</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">advance</span><span class="params">(InputIterator&amp; i,Distance n)</span></span>&#123;</span><br><span class="line">    __advance(i,n,iterator_traits&lt;InputIterator&gt;::<span class="built_in">iterator_category</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过继承，不必再写单纯只做传递调用的函数。</p>
+<h2 id="std-iterator"><a href="#std-iterator" class="headerlink" title="std::iterator"></a>std::iterator</h2><p>为了规范迭代器类型，便于traits萃取，所有新设计的迭代器都继承自std iterators class，就可保证STL所需规范。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">Category</span>,<span class="keyword">class</span> <span class="title">T</span>,<span class="keyword">class</span> <span class="title">Distance</span> =</span> <span class="keyword">ptrdiff_t</span>,</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Pointer</span> =</span> T*,<span class="class"><span class="keyword">class</span> <span class="title">Reference</span> =</span> T&amp;&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator</span>&#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//要使用iterator，就传入前两个参数即可，如</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">Item</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListIter</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> std::iterator&lt;std::forward_iterator_tag,Item&gt;&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="iterator源代码完整重列"><a href="#iterator源代码完整重列" class="headerlink" title="iterator源代码完整重列"></a>iterator源代码完整重列</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 5种迭代器类型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">input_iterator_tag</span>&#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">output_iterator_tag</span>&#123;</span>&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">forward_iterator_tag</span>:</span><span class="keyword">public</span> input_iterator_tag&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bidirectional_iterator_tag</span>:</span><span class="keyword">public</span> forward_iterator_tag&#123;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">random_access_iterator_tag</span>:</span><span class="keyword">public</span> bidirectional_iterator_tag&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自行开发的迭代器最好继承自std::iterator</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// traits 萃取器</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">Iterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator_traits</span> &#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> Iterator::iterator_category iterator_category;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> Iterator::value_type value_type;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> Iterator::difference_type difference_type;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> Iterator::pointer pointer;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">typename</span> Iterator::reference reference;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原生指针traits偏特化版</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">iterator_traits</span>&lt;</span>T*&gt; &#123;</span><br><span class="line">    <span class="keyword">typedef</span> random_access_iterator_tag iterator_category;</span><br><span class="line">    <span class="keyword">typedef</span> T value_type;</span><br><span class="line">    <span class="keyword">typedef</span> <span class="keyword">ptrdiff_t</span> difference_type;</span><br><span class="line">    <span class="keyword">typedef</span> T* pointer;</span><br><span class="line">    <span class="keyword">typedef</span> T&amp; reference;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以及还有部分源码，就不贴了，大概都是如何获取traits类型，以及迭代器distance方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="SGI-STL的私房菜-type-traits"><a href="#SGI-STL的私房菜-type-traits" class="headerlink" title="SGI STL的私房菜 __type_traits"></a>SGI STL的私房菜 __type_traits</h2><p>不在标准规范以内，是SGI STL内部的东西。<br>这里我们关注的类型特性指：这个类型是否可以copy？是否可以赋值？是否可以直接释放？<br>根据结果可以采用最有效率的措施，比如构造、析构、拷贝、赋值时的特殊操作。这样能够使得容器获得显著的效率提升。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">__type_traits&lt;T&gt;::has_trivial_default_constructor</span><br><span class="line">__type_traits&lt;T&gt;::has_trivial_copy_constructor</span><br><span class="line">__type_traits&lt;T&gt;::has_trivial_assignment_operator</span><br><span class="line">__type_traits&lt;T&gt;::has_trivial_destructor</span><br><span class="line">__type_traits&lt;T&gt;::is_POD_type  <span class="comment">// plain old data</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 针对char、signed char、short、int等基本类型提供特化版本，采用最快速的方式，如memcpy等进行copy和assgin。</span></span><br><span class="line"></span><br><span class="line">__STL_TMPLATE_NULL <span class="class"><span class="keyword">struct</span> __<span class="title">type_traits</span>&lt;</span><span class="keyword">char</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">typedef</span> __true_type has_trivial_default_constructor;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过这个，在__unitialized_fill_n函数里，就可以根据__true_type和__false_type走不动调用。以上只是对原生指针进行了介绍，实际上还有很多复杂情形。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="容器-Container"><a href="#容器-Container" class="headerlink" title="容器 Container"></a>容器 Container</h1><p>学完空间分配器后，原本打算按照顺序先看迭代器，但对于特征萃取器部分非常困惑，于是打算先跳过迭代器，看容器部分。</p>
+<p>容器可以分为序列式和关系式，容器之间存在内含的关系，比如heap内含一个vector，而stack和queue内含一个deque等等。</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T,class Alloc &#x3D; alloc&gt;</span><br><span class="line">class vector &#123;</span><br><span class="line">    public :</span><br><span class="line">    &#x2F;&#x2F; 嵌套类型定义</span><br><span class="line">    typedef T value_type;</span><br><span class="line">    typedef value_type* pointer;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    protected :</span><br><span class="line">    typedef simple_alloc&lt;value_type, Alloc&gt; data_allocator;</span><br><span class="line">    &#x2F;&#x2F;定义了巢状型别</span><br><span class="line">    iterator start,finish,end_of_storage;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    public :</span><br><span class="line">    explicit vector(size_type n) &#123; fill_initialize(n, T()); &#125;</span><br><span class="line">    &#x2F;&#x2F; explicit关键字限制了这个构造函数只能显式调用，规范了代码编写，避免一些错误</span><br><span class="line"></span><br><span class="line">    void push_back(const T&amp; x)&#123;</span><br><span class="line">        if(finish &#x3D;&#x3D; end_of_storage)&#123;</span><br><span class="line">            insert_aux(end(), x);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            construct(finish++, x);&#x2F;&#x2F;在alloc里面，construct使用了placement new对迭代器位置进行覆盖。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>vector是线性连续空间，因此迭代器的类型是可随机访问的，如果写出vector<int>::iterator it，其实类似于int*。</p>
+<p>在构造、元素添加时，如果容量不够，会扩充至2倍。而扩张的过程必须经历“重新配置空间、元素复制、释放原空间”的过程。</p>
+<p>注意：一旦vector进行了空间重新配置，之前的迭代器就会失效了，这里经常容易犯错。<br>vector属于平时用的很多的容器，要特别注意。<br>在涉及insert、append、pop等操作时，通用做法都是检查是否会超size，然后再挪位，并且做相应的构造和析构操作。</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>list对于空间运用是精准的，insert和erase的时候都会涉及申请和释放一个空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">struct __list_node &#123;</span><br><span class="line">    typedef void* void_pointer;</span><br><span class="line">    void_pointer prev; &#x2F;&#x2F; 按理说这里可以用__list_node&lt;T&gt;*</span><br><span class="line">    void_pointer next;</span><br><span class="line">    T data;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 双向链表</span><br></pre></td></tr></table></figure>
+
+<p>list的结点不能单纯的用原生指针存储，因为这些结点不保证在存储空间中连续存在。因为要支持双向链表的功能，所以迭代器的类型是Bidrectional Iterators。</p>
+<p>主要可以关注迭代器实现的++和–运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">typedef __list_iterator&lt;T,Ref,Ptr&gt; self;</span><br><span class="line">typedef __list_node&lt;T&gt;* link_type;</span><br><span class="line">link_type node; &#x2F;&#x2F; 指向list的结点</span><br><span class="line"></span><br><span class="line">self&amp; operator++()&#123;</span><br><span class="line">    node &#x3D; (link_type)((*node).next);</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br><span class="line">self operator++(this)&#123;</span><br><span class="line">    self tmp &#x3D; *this;</span><br><span class="line">    ++*this;</span><br><span class="line">    return tmp;</span><br><span class="line">&#125;</span><br><span class="line">self&amp; operator--()&#123;</span><br><span class="line">    node &#x3D; (link_type)((*node).prev);</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br><span class="line">self operator--(this)&#123;</span><br><span class="line">    self tmp &#x3D; *this;</span><br><span class="line">    --*this;</span><br><span class="line">    return tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SGI list是一个环形双向链表。因此，如果需要满足前闭后开原则，可以让node指向一个空结点。node表示最后一个结点的下一个位置，即end。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">iterator begin() &#123;</span><br><span class="line">    return (link_type)((*node).next);</span><br><span class="line">&#125;</span><br><span class="line">iterator end() &#123;</span><br><span class="line">    return node;</span><br><span class="line">&#125;</span><br><span class="line">bool empty() const &#123;</span><br><span class="line">    return node-&gt;next &#x3D;&#x3D; node;</span><br><span class="line">&#125;</span><br><span class="line">size_type size() const &#123;</span><br><span class="line">    size_type result &#x3D; 0;</span><br><span class="line">    distance(begin(),end(),result);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">reference front() &#123;</span><br><span class="line">    return *begin();</span><br><span class="line">&#125;</span><br><span class="line">reference back() &#123;</span><br><span class="line">    return *(--end());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h2><p>deque是一种双向开口的连续线性空间，可以在头尾做元素的插入和删除操作。deque允许动态地以分段连续空间组合，也就是随时增加一段新的空间，并链接起来。<br>deque提供随机访问，但是迭代器的实现复杂程度是vector不能比的。除非必要，还是使用vector效率更高。<br>deque的连续空间是由一段一段定量连续空间组成的，一旦有必要在首尾增加新空间，deque就配置一段新的连续空间，并且维护其整体连续的假象。<br>deque采用一块MAP作为主控，MAP中每个元素都是一个指针，指向另一块较大的连续线性空间，称为缓存区。缓存区才是deque的空间主体。<br>MAP本质上是一个T**，也就是MAP本身是一个指针，所指之物又是一个指针，指向一块类型为T的空间。</p>
+<p>deque实现难点在迭代器。而迭代器的++和–运算非常复杂，需要配合MAP进行维持“整体连续”的假象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T,class Ref,class Ptr, size_t BufSiz&gt;</span><br><span class="line">struct __deque_iterator &#123;</span><br><span class="line">    typedef __deque_iterator&lt;T,T&amp;,T*,BufSiz&gt; iterator;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; deque的迭代器没继承std::iterator</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于MAP的维护类似于vector，再引入start和finish对MAP的首尾进行跟踪。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">start.cur 指向当前MAP首部指向线性区域的具体位置</span><br><span class="line">start.first&#x2F;last 指向当前MAP首部指向线性区域的首尾</span><br><span class="line">start.node 指向start在MAP所在的位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><p>stack以deque作为缺省时的底部结构。由于stack是在底部容器的基础上完成所有工作，这种性质称为adapter（适配器）。stack一般被称为适配器容器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T,class Sq &#x3D; deque&lt;T&gt; &gt;</span><br><span class="line">class stack &#123;</span><br><span class="line">    protected:</span><br><span class="line">    Sq c; &#x2F;&#x2F; 底层容器</span><br><span class="line">    bool empty() const &#123;</span><br><span class="line">        return c.empty();</span><br><span class="line">    &#125;</span><br><span class="line">    size_type size() const &#123;</span><br><span class="line">        return c.size();</span><br><span class="line">    &#125;</span><br><span class="line">    reference top() &#123;</span><br><span class="line">        return c.back();</span><br><span class="line">    &#125;</span><br><span class="line">    const_reference top() const &#123;</span><br><span class="line">        return c.back();</span><br><span class="line">    &#125;</span><br><span class="line">    void push(const value_type&amp; x) &#123;</span><br><span class="line">        c.push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    void pop() &#123;</span><br><span class="line">        c.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了用deque实现stack，也可以用vector、list等。stack不提供走访功能，因此不需要迭代器。</p>
+<h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><p>类似stack。</p>
+<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><p>heap是priority_queue的幕后英雄。关于heap可以主要了解一下heap算法。<br>heap底层容器可以用vector实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push_heap:把新加入的元素放到vector的end()处，然后将新结点跟父结点比较，如果需要交换位置就交换，直到不需要交换为止。</span><br><span class="line"></span><br><span class="line">pop_heap:拿走根结点。这个时候要对top位置做一个填充。可以从root的左右两端拿走较大的，一直这样递归下去，直到停止。然后再把heap的最后一个元素放在空位。</span><br></pre></td></tr></table></figure>
+
+<p>堆算法感觉能够手写pop和push的代码就足够了。利用heap的性质，还能实现sort_heap算法。本质是利用popHeap一直取最值。</p>
+<h2 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h2><p>只允许在底增加元素，在顶部取出元素。缺省情况下使用max-heap完成。</p>
+<h2 id="slist"><a href="#slist" class="headerlink" title="slist"></a>slist</h2><p>单向链表。</p>
+<h1 id="关联式容器"><a href="#关联式容器" class="headerlink" title="关联式容器"></a>关联式容器</h1><p>关联式容器，每笔数据都有一个key和一个value，当元素被插入到关联式容器中时，容器内部结构会按照其key值，来决定放置的适当位置。关联式容器没有所谓头尾，不会有popBack、pushBack、popFront等操作。<br>一般而言，关联式容器内部实现是平衡树（和散列表），以获得更好的搜寻效率。</p>
+<h2 id="AVL-tree"><a href="#AVL-tree" class="headerlink" title="AVL tree"></a>AVL tree</h2><p>为确保整理深度为O(logN)，直观上是每个节点的左右儿子的高度相同，AVL tree退而求其次，只要任何结点的左右儿子高度差不超过1，则认为平衡。</p>
+<p>zig-zag就不看了，在竞赛时期对于这个通常使用模板，不用特别深究实现，了解原理即可。</p>
+<h2 id="RB-tree"><a href="#RB-tree" class="headerlink" title="RB tree"></a>RB tree</h2><p>红黑树被应用于set和map，满足以下规则：</p>
+<ol>
+<li>每个结点不是红色就是黑色</li>
+<li>根节点为黑色</li>
+<li>如果节点是红色，那么它的子节点必须为黑色</li>
+<li>任意一个结点到达其叶子的任何路径，所含黑节点数必须相同</li>
+</ol>
+<p>根据规则4，新增结点必须为红色。<br>根据规则3，新增结点的父结点必须为黑色。如果新增节点插入后未满足以上规则，就要对颜色和树形进行修改。</p>
+<p>RB tree在插入、删除性能上优于AVL tree，AVL tree适用于在大量查询、少量插删的场景，否则在调整树形时会消耗太多的性能。</p>
+<p>因为规则3和4，能够保证从节点x到它所有叶子的距离差不超过2倍。证明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设x到a是最短路径，而x到b是最长路径，且dis(x,a) &lt; dis(x,b)，有x到a路径上所有点都是黑色，而路径x到b一定是红黑各有。此时，最坏情况下，x到b路径上红点和黑点的数量是相等的。也就是，dis(x,b) &lt;&#x3D; 2 * dis(x,a) 。</span><br></pre></td></tr></table></figure>
+
+<p>对于zig-zag具体实现不做深究，主要了解一下插入时需要做什么：<br>0. 插入点一定是红色的，如果是黑色的，就破坏了规则4</p>
+<ol>
+<li>插入节点作为根结点（规则2）：把红色变成黑色</li>
+<li>父亲节点为黑色：不需要改变</li>
+<li>父亲节点为红色，且叔叔也是红色：将父亲和叔叔改成黑色，同时让爷爷变红，递归</li>
+<li>父亲为红色，叔叔为黑色（默认空结点为黑色）：进行相应的换色和旋转</li>
+</ol>
+<p>RB tree 的node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct __rb_tree_node_base &#123;</span><br><span class="line">    color_type color;</span><br><span class="line">    base_ptr parent;</span><br><span class="line">    base_ptr left;</span><br><span class="line">    base_ptr right;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class value&gt; </span><br><span class="line">struct __rb_tree_node : public __rb_tree_node_base &#123;</span><br><span class="line">    typedef __rb_tree_node&lt;value&gt; *link_type;</span><br><span class="line">    value value_field; &#x2F;&#x2F; 获取节点的值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>RB tree的迭代器</p>
+<p>要将红黑树实现成一个支持泛型的容器，迭代器的设计非常关键，首先要考虑迭代器类型、前进、后退，以及成员访问等操作。<br>RB tree的iterator提供双向迭代，但不具备随机访问能力，前进和后退比较特殊，iterator的operator++()和operator–()调用了基层迭代器的increment()和decrement()，前进后退是按照二叉树的节点排列实现的。</p>
+<p>看看increment和decrement</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void increment()&#123;</span><br><span class="line">    if (node-&gt;right)&#123;</span><br><span class="line">        node &#x3D; node-&gt;right;</span><br><span class="line">        while(node-&gt;left)node &#x3D; node-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;*</span><br><span class="line">    如果当前节点有右儿子，那么只要找到右儿子子树里最小节点便可</span><br><span class="line">    *&#x2F;</span><br><span class="line">    else &#123;</span><br><span class="line">        base_ptr y &#x3D; node-&gt;parent;</span><br><span class="line">        while(node &#x3D;&#x3D; y-&gt;right)&#123;</span><br><span class="line">            node&#x3D;y;</span><br><span class="line">            y &#x3D; y-&gt;parent;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;*</span><br><span class="line">        本身就是个右儿子，那么就一直往上找到第一个不是右儿子的位置，然后此时的父节点就是解答</span><br><span class="line">        *&#x2F;</span><br><span class="line">        if (node-&gt;right !&#x3D; y) &#123;</span><br><span class="line">            node &#x3D; y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过代码可以看出，实际上operator++()和operator–()的时间复杂度是O(logN)的。</p>
+<p>通过这个例子也可以从源码中看出，一些我们认为是O(1)的操作，其实都是O(logN)的。比如begin()、end()等。</p>
+<p>RB tree的内存管理<br>专属空间配置器rb_tree_node_allocator，每次只配置一个节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class key, class value, class keyOfValue,class compare, class Alloc &#x3D; alloc&gt;</span><br><span class="line">class rb_tree &#123;</span><br><span class="line">    protected:</span><br><span class="line">    typedef __rb_tree_node&lt;value&gt; rb_tree_node;</span><br><span class="line">    typedef simple_alloc&lt;rb_tree_node, Alloc&gt; rb_tree_node_allocator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>set的元素会根据键值排序，不允许有两个相同的键值。<br>不能通过set的迭代器改变set的元素值，因为元素值就是键值，如果任意改变，就会影响set的组织。因此，在底层把set的iterator定义成const_iterator。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class Key,class Compare &#x3D; less&lt;Key&gt;, class Alloc &#x3D; alloc&gt;</span><br><span class="line">class set&#123;</span><br><span class="line">    rep_type t; &#x2F;&#x2F; 采用红黑树来表现set</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>所有元素根据key进行排序，所有元素都是pair，同时拥有key和value。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T1,class T2&gt;</span><br><span class="line">struct pair &#123;</span><br><span class="line">    typedef T1 first_type;</span><br><span class="line">    typedef T2 second_type;</span><br><span class="line">    first_type first;</span><br><span class="line">    second_type second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hashtable"><a href="#hashtable" class="headerlink" title="hashtable"></a>hashtable</h2><p>二叉搜索树具有对数时间复杂度的表现，而散列表可以在插入、删除、搜寻上具有常数时间复杂度的表现。<br>使用hash会带来一个碰撞的问题，解决碰撞光是做各种探测是不够的，当表内元素过多时，需要做一次rehashing。</p>
+<p>线性探测：<br>先了解什么是负载系数，指的是元素个数/表大小。<br>采用线性探测时，最坏情况需要遍历整个表，然后放入一个元素后，下次又要遍历整个表。插入成本的提高速度，远远高于负载系数的成长速度，这样的效率非常低。</p>
+<p>二次探测：<br>如果计算出哈希值为H，则下一次使用 $ (H+1)^2 $，而不是线性探测那样。<br>假设表大小为质数，并且永远保持负载系数为0.5以下，那么可以确定每插入一个元素需要的探测次数不超过2。<br>而根据等式整理可得，二次探测并不需要真的去使用乘法和取模运算，而是加减法。</p>
+<p>二次探测能够很好的避免线性探测带来的问题，但是假如x!=y &amp;&amp; h(x)==h(y)，这时的冲突还是不可避免的。这种情况可以使用双哈希。</p>
+<p>开链：<br>开链方法会让负载系数大于1，SGI STL的hash table就是用这个方法实现的。<br>简单来说就是现在表的一个元素并不只是一个节点，而是一个桶，桶x可以放入所有h(a)==x的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class value&gt;</span><br><span class="line">struct __hashtable_node &#123;</span><br><span class="line">    __hashtable_node* next;</span><br><span class="line">    value val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hashtable的迭代器</p>
+<p>__hashtable_iterator是一种单向迭代器，由于node中自带了next指针，所以迭代器可以轻松的进行前进操作。</p>
+<p>实现iterator operator ++()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class v,class k,class hf,class exk,class eqk,class a&gt;</span><br><span class="line">__hashtable_iterator&lt;v,k,hf,exk,eqk,a&gt;&amp;</span><br><span class="line">__hashtable_iterator&lt;v,k,hf,exk,eqk,a&gt; operator ++()&#123;</span><br><span class="line">    const node* old &#x3D; cur;</span><br><span class="line">    cur &#x3D; cur-&gt;next;</span><br><span class="line">    if (!cur) &#123;</span><br><span class="line">        size_type bucket &#x3D; ht-&gt;bkt_num(old-&gt;val);</span><br><span class="line">        while(!cur &amp;&amp; ++bucket &lt; ht-&gt;buckets.size())</span><br><span class="line">            cur &#x3D; ht-&gt;buckets[bucket];</span><br><span class="line">    &#125;</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hashtable的数据结构<br>hashtable的bucket聚合体是由vector实现，以完成动态扩充的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class k,class v,class hashfcn,class extractKey,class equalKey,class Alloc &#x3D; alloc&gt;</span><br><span class="line">class hashtable &#123;&#125;</span><br><span class="line">vector&lt;node*, Alloc&gt;buckets;</span><br><span class="line">size_type num_elements;</span><br><span class="line">size_type bucket_count() const &#123;return buckets.size();&#125;</span><br></pre></td></tr></table></figure>
+<p>其中extractkey是从节点取出键值的方法，equalkey是判断键值是否相同的方法。</p>
+<p>前面提到hashtable的表大小最好是质数，所以SGI STL预设了28个质数，存放在一个数组里，用来提供给vector动态扩充时参考。</p>
+<p>在insert时做了一次判断是否需要表格重整，根据vector的当前大小和已插入元素个数来比较。<br>而重构时的算法非常优美，节省了很大常数，整体复杂度是O(m)的。</p>
+<p>在判断元素的落脚处，是hash function的责任，SGI把这个任务封装成一层，从而取得一个可以执行取模运算的数字。这是因为有些数据是无法进行取模运算的，比如字符串const char*，这时候就需要我们提供一些转换函数。</p>
+<p>来看看find和count函数怎么实现的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">iterator <span class="title">find</span><span class="params">(<span class="keyword">const</span> key_type&amp; key)</span> </span>&#123;</span><br><span class="line">    size_type n = <span class="built_in">bkt_num</span>(key);</span><br><span class="line">    node *first;</span><br><span class="line">    <span class="keyword">for</span> (first = buckets[n]; first &amp;&amp; !<span class="built_in">equals</span>(<span class="built_in">get_key</span>(first-&gt;val),key));</span><br><span class="line">    first = first-&gt;next)&#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">iterator</span>(first,<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">size_type <span class="title">count</span><span class="params">(<span class="keyword">const</span> key_type&amp; key)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> size_type n = <span class="built_in">bkt_num_key</span>(key);</span><br><span class="line">    size_type result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> node* cur = buckets[n];cur;cur = cur-&gt;next) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">equals</span>(<span class="built_in">get_key</span>(cur-&gt;val),key))++result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hash functions<br>提到计算元素位置，就不得不见识一下。<br>bkt_num()调用了hash functions里面的方法，针对char、int、long等整数类型做一个返回原值。但对于const char*，就设计了转换函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class key&gt; struct hash&#123;&#125;;</span><br><span class="line">inline size_t __stl_hash_string(const char* s) &#123;</span><br><span class="line">    unsigned long h &#x3D; 0;</span><br><span class="line">    for(;*s;++s)h &#x3D; 5*h+*s;</span><br><span class="line">    return size_t(h);</span><br><span class="line">&#125;</span><br><span class="line">由此可见，SGI STL对于无法处理的元素，如string、double等，就需要用户自行定义hash function。</span><br><span class="line"></span><br><span class="line">## hash_set</span><br><span class="line"></span><br><span class="line">STL只规范复杂度和接口，并不规范实现方法，但STL的set基本是用RB tree实现的，而SGI在标准规格之外提供了hash_set，以hashtable为底层机制。</span><br><span class="line">如果一个类型没有hash function，那么它的hash_set就无法使用，因为hashtable是无法处理的。</span><br></pre></td></tr></table></figure>
+<p>template&lt;class value,<br>         class hashFcn = hash<value>,<br>         class equalkey= equal_to<value>,<br>         class Alloc = alloc&gt;<br>class hash_set {<br>    typedef hashtable&lt;value,value,hashfcn,identity<value>,equalkey,Alloc&gt; ht;<br>    ht rep; // 底层是hashtable<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要使用hash_set维护const char*，需要添加hashFcn，用strcmp的值来比较是否相同，而不是直接比较const char*。</span><br></pre></td></tr></table></figure>
+<p>struct eqstr {<br>    bool operator()(const char *s1,const char *s2)const {<br>        return strcmp(s1,s2)==0;<br>    }<br>}<br>int main(){<br>    hash_set&lt;const char*,hash&lt;const char*&gt;,eqstr&gt; set;<br>    set.insert(“haha”);<br>    set.insert(“hvva”);<br>    set.insert(“hvaa”);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可以知道，hash_set里的元素遍历输出，是没有排序的结果。</span><br><span class="line"></span><br><span class="line">## hash_map</span><br><span class="line"></span><br><span class="line">SGI还提供了hash_map，几乎都是调用hashtable的操作行为而已。</span><br><span class="line">使用map，是为了能够根据key快速搜寻元素，而map和hash_map的区别就是key是否有自动排序功能。由于基本是封装了hashtable的方法，在此不做展开。</span><br><span class="line"></span><br><span class="line"># 算法 algorithms</span><br><span class="line"></span><br><span class="line">## mutating algorithms</span><br><span class="line">所有stl算法都作用在迭代器指示的区间上，所谓质变算法，是指运算过程中会更改区间内迭代器所指的元素内容。比如swap、replace、fill、remove、permutation、partition、random suffling、sort等。</span><br><span class="line">如果把质变算法作用在const迭代器上，就会出现错误，如:</span><br></pre></td></tr></table></figure>
+<p>vector<int> vec(10);<br>vector<int>::const_iterator it1 = vec.begin();<br>vector<int>::const_iterator it2 = vec.end();<br>sort(it1,it2); // 报错，因为mutating algorithm作用在const 迭代器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## nonmutating algorithms</span><br><span class="line">如find、serach、count、for_each、equal、max、min。</span><br><span class="line">但是for_each是可以嵌套质变算法的，如在for_each嵌套一个修改迭代器指向值的functor。</span><br></pre></td></tr></table></figure>
+<p>template<class T><br>struct plus2 {<br>    void operator()(T &amp;x)const {<br>        x+=2;<br>    }<br>};<br>int ia[]= {1,2,3,4,566,745,1};<br>vector<int> iv(ia,ia+sizeof(ia)/sizeof(int));</p>
+<p>for_each(iv.begin(),iv.end(),plus2<int>());</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## STL算法的一般形式</span><br><span class="line"></span><br><span class="line">所有泛型算法前两个参数都接收一对迭代器，称为first和last，是一对左闭右开的区间。这个区间的必要条件是，经过increment反复运用后，能够从first到达last。如果这个条件无法达到，那就会造成无法预料的结果。对于迭代器类型，不同的泛型算法能够接收的迭代器类型也不一样。</span><br><span class="line"></span><br><span class="line">许多STL算法支持多个版本，在缺省情况使用缺省运算版本，另一个版本接收外界传入的functor。</span><br><span class="line"></span><br><span class="line">质变算法有两种，第一种是在原来的空间进行质变（in-place），第二种是复制一份副本，在copy版进行质变。这种方法通常有函数名称尾词，如replace()和replace_copy()。</span><br><span class="line"></span><br><span class="line">STL的算法独立于其处理的数据结构，不受数据结构的羁绊，比如遇到array、vector，或者是list、deque，正确实现所有操作。</span><br><span class="line">关键在于对操作对象的类型加以抽象，迭代器的移动加以抽象，整个算法就能在抽象的层面工作了。</span><br><span class="line"></span><br><span class="line">比如：</span><br></pre></td></tr></table></figure>
+<p>template<typename T><br>T* find(T *begin, T *end, const T&amp; value) {<br>    while(begin != end &amp;&amp; *begin != value) ++ begin;<br>    return begin;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这样的find是很好的。因为几乎适用于任何容器，而指针们应该支持以下操作：判断不等inequally、取值dereferencelm、迭代器递增prefix increment、复制copy。</span><br><span class="line">对于以上find，除了支持原生指针，还可以用Iterator进行泛化。</span><br></pre></td></tr></table></figure>
+<p>template&lt;class Iterator, class T&gt;<br>Iterator find(Iterator begin, Iterator end, const T&amp; value) {<br>    while(begin != end &amp;&amp; *begin != value) ++ begin;<br>    return begin;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**个人认为STL里的algorithm部分，简单的算法只需要简单了解即可。迭代器、容器用的比较多，几个最常见的algorithm掌握。**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>// accumulate<br>template&lt;class InputIterator, class T&gt;<br>T accumulate(InputIterator first,InputIterator last, T init) {<br>    for(;first!=last;++first) init = init + *first;<br>    return init;<br>}</p>
+<p>template&lt;class InputIterator, class T,class BinaryOperation&gt;<br>T accumulate(InputIterator first,InputIterator last, T init,<br>             BinaryOperation binary_op) {<br>    for(;first!=last;++first) init = binary_op(init,*first);<br>    return init;<br>}</p>
+<p>// adjacent_difference<br>// 计算相邻元素的差值<br>template&lt;class InputIterator, class OutputIterator&gt;<br>OutputIterator adjacent_difference(InputIterator first, InputIterator last, OutputIterator result) {<br>    if (first == last)return result;<br>    *result = *first;<br>    …<br>}</p>
+<p>// partial_sum<br>template&lt;class InputIterator, class OutputIterator&gt;<br>OutputIterator partial_sum(InputIterator first,InputIterator last,OutputIterator result) {<br>    if (first == last) return result;<br>    *result = <em>first;<br>    return __partial_sum(first,last,result,value_type(first));<br>}<br>template&lt;class InputIterator, class OutputIterator,class T&gt;<br>OutputIterator __partial_sum(InputIterator first,InputIterator last,OutputIterator result, T</em>) {<br>    T value = *first;<br>    while(++first != last) {<br>        value = value + * first;<br>        *++result = value;<br>    }<br>    return ++result;<br>}</p>
+<p>// power SGI专属，不在STL标准内，计算某数的n次方。使用快速幂完成的<br>template&lt;class T,class Integer&gt;<br>inline T power(T x,Integer n) {<br>    return power(x, n, multiplies<T>());<br>}</p>
+<p>// fill 将[first, end)内所有元素填上新值<br>template&lt;class InputIterator, class T&gt;<br>void fill(ForwardIterator first,ForwardIterator last, const T&amp; value) {<br>    for(; first != last;++first) *first = value;<br>}</p>
+<p>// iter_swap 交换两个迭代器所指之物的值</p>
+<p>// lexicographical_compare 两个区间的字典序，第一个是否严格小于第二个<br>template<class T><br>inline const T&amp; max(const T&amp; a,const T&amp; b) {<br>    return a&lt;b?b:a;<br>}<br>template&lt;class T,class Compare&gt;<br>inline const T&amp; max(const T&amp; a,const T&amp; b, Compare comp) {<br>    return comp(a,b)?b:a;<br>}</p>
+<p>// swap<br>template<class T><br>inline void swap(T&amp; a,T&amp; b) {<br>    T tmp = a;<br>    a = b;<br>    b = tmp;<br>}</p>
+<p>// copy 强化效率无所不用其极</p>
+<p>不论是对客户端程序或者对STL内部而言，copy都是一个常常被调用的函数，由于copy进行的是复制操作，不外乎运用assignment operator或copy constructor，这取决于当前元素是否是trivial assignment的。如果可以直接进行复制行为，如memcpy、memmove等，就大量节省时间。</p>
+<p>copy 特化： memmove() const char *内存底层操作，速度极快<br>copy 泛化： __copy_dispatch()</p>
+<p>// max_element</p>
+<p>// merge 应用于有序区间<br>while(first1 != last1 &amp;&amp; first2!=last2) {<br>    if …;<br>    else;<br>}<br>最后把剩余的copy进去</p>
+<p>// gcd</p>
+<p>template<class T><br>T __gcd(T m, T n) {<br>    while(n) {<br>        T t = m%n;m=n;n=t;<br>    }<br>    return m;<br>}</p>
+<p>// unique 移除重复的元素(需要先排序)<br>unique会返回一个迭代器，指向新区间的尾端，新区间内不含相邻重复的元素。<br>unique产生的残留可以用erase去除。<br>template<class ForwardIterator><br>ForwardIterator unique(ForwardIterator first, ForwardIterator last) {<br>    first = adjacent_find(first,last); // 找到相邻重复元素起点<br>    return unique_copy(first,last,first);<br>}<br>template&lt;class InputIterator, class OutputIterator&gt;<br>inline OutputIterator unique_copy(InputIterator first, InputIterator last,<br>                                  OutputIterator result) {<br>    if (first == last) return result;<br>    return __unique_copy(first, last, result, iterator_category(result));<br>}</p>
+<p>// 根据iterator_category有若干种适应不同类型的方法。</p>
+<p>// lower_bound<br>有两个版本，1是根据 &lt; 确定位置，2是根据comp(value,*it2)确定位置。</p>
+<p>// next_permutation<br>这个用的次数还比较多，而且对于原理也不是很清楚，趁此机会可以好好看看如何实现的<br>有两个版本，1是根据less than来确定顺序，2是根据comp(value,*it2)确定顺序。</p>
+<p>template<class BidirectionalIterator><br>bool next_permutation(BidirectionalIterator first, BidirectionalIterator last) {<br>    if (first == last) return false; // 如果没有元素， false<br>    BidirectionalIterator i = first;<br>    ++ i;<br>    if (i == last) return false; // 如果只有1个元素， false<br>    i = last;<br>    – i;</p>
+<pre><code>for(;;)&#123;
+    BidirectionalIterator ii = i; // 从尾部推进
+    --i;
+    if (*i &lt; * ii) &#123; // 出现可以交换的位置了，那么这次肯定是true
+        BidirectionalIterator j = last;
+        while(!(*i &lt; *--j));
+        iter_swap(i,j);
+        reverse(ii,last);
+        return true;
+    &#125;
+    if (i == first) &#123;
+        reverse(first, last);
+        return false;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>设3 6 4 2为pn，下一个序列pn+1应该是4 2 3 6。观察第一个序列可以发现pn中的6 4 2已经为减序，在这个子集中再也无法排出更大的序列了，因此必须移动3的位置且要找一个数来取代3的位置。在6 4 2中6和4都比3大，但6比3大的太多了，只能选4。将4和3的位置对调后形成排列4 6 3 2。注意，由于4和3大小的相邻关系，对调后产生的子集6 3 2仍保持逆序，即该子集最大的一种排列。而4是第一次移动到头一位的，需要右边的子集为最小的排列，因此直接将6 3 2倒转为2 3 6便得到了正确的一个序列pn+1</p>
+<p>整体复杂度是O(n)的。</p>
+<p>// random_shuffle<br>random_shuffle会在N!个结果中均匀的产生一个解。有两个版本，差别就在于随机数的取值。1是使用内部随机数产生器，2是使用一个产生随机数的functor。</p>
+<p>template<class RandomAccessIterator><br>inline void random_shuffle(RandomAccessIterator first, RandomAccessIterator last) {<br>    __random_shuffle(first, last, distance_type(first));<br>}<br>template&lt;class RandomAccessIterator, class Distance&gt;<br>void __random_shuffle(RandomAccessIterator first,RandomAccessIterator last, Distance*){<br>    if(first == last)return;<br>    for(RandomAccessIterator i = first+1;i!=last;++ i){<br>        #if_def __STL_NO_DRAND48<br>        iter_swap(i, first+Distance(rand() % ((i - first) + 1)));<br>        #else<br>        iter_swap(i, first+Distance(lrand48() % ((i - first) + 1)));<br>        #endif<br>    }<br>}</p>
+<p>O(n)，遍历每个位置i，然后产生一个随机位置j，交换i和j。</p>
+<p>// sort<br>快速排序</p>
+<p>在SGI中，设置了阈值，当超过阈值使用快速排序，如果数据量小于某个门槛，为避免快速排序递归调用带来过大的额外开销，就改用插入排序。如果递归深度过大，会改成堆排序。<br>插入排序复杂度是O(n2)的，听起来不是很好，但是在数据量小，且做了优化后，性能有不错的效果。<br>当分割行为有恶化的趋势时，采用堆排序。</p>
+<p>在SGI中，使用的是三点中值法来确定pivot。即首、尾、中央三个位置的元素。<br>显然，迭代器必须要是RandomAccessIterator。</p>
+<p>在源码中，如果元素个数小于等于16，就用插入排序完成。</p>
+<p>//nth_element<br>确定第x位的排名，排在x之前的一定比x小，排在x后的一定比x大。</p>
+<p>如果长度大于3，使用类似于快速排序的中值法分割序列，而当长度不大于3时，就用插入排序。</p>
+<p>// merge_sort<br>归并排序。 因为归并排序需要借助额外内存，并且在内存之间移动时会耗费不少时间，所以merge sort的性能是比不上sort的，但是实现简单、概念简单。</p>
+<p>```</p>
+<h1 id="Funtors-函数对象"><a href="#Funtors-函数对象" class="headerlink" title="Funtors 函数对象"></a>Funtors 函数对象</h1><p>函数对象，一种具有函数特质的对象。仿函数主要用在哪里？STL提供的各种algorithms，允许用户使用两种版本，其中一个版本表现出最常用的运算，第二种版本则表现出最好的泛化演算，允许用户用template参数来指定要采取的策略。</p>
+<p>先将操作设计成一个函数，再将函数指针当作算法的一个参数（或者把这个操作设计成一个对象）。</p>
+<p>仿函数存在的意义是，函数指针不能完全满足STL对于抽象性的要求，也不能满足灵活性，无法与其他组件产生很好的搭配。</p>
+<p>仿函数实际上就是一个“行为类似函数”的对象，其类型定义中必须自定义function call operator()。</p>
+<p>1.有一元和二元的区别<br>2.有算术类、关系运算类、逻辑运算类三种类型</p>
+<h1 id="Adapters-适配器"><a href="#Adapters-适配器" class="headerlink" title="Adapters 适配器"></a>Adapters 适配器</h1><p>应用于容器、迭代器、仿函数；<br>容器实例有stack和queue；<br>迭代器实例；<br>仿函数实例：对返回值进行否定、函数指针、成员函数指针。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -505,7 +517,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -518,167 +530,112 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/08/16/STLsource/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/23/begin14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019CCPC网络赛 解题日志
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/16/begin13/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019/8/16 day13 解题日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +659,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

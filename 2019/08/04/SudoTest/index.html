@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>数独破解 安卓开发练习 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="前言update:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊…… update: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。 https:&#x2F;&#x2F;mmfunnytree.github.io&#x2F;2019&#x2F;07&#x2F;15&#x2F;androidStudy&#x2F;#more （安卓学习笔记）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数独破解 安卓开发练习">
+<meta property="og:url" content="http://example.com/2019/08/04/SudoTest/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言update:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊…… update: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。 https:&#x2F;&#x2F;mmfunnytree.github.io&#x2F;2019&#x2F;07&#x2F;15&#x2F;androidStudy&#x2F;#more （安卓学习笔记）">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-04T12:11:48.000Z">
+<meta property="article:modified_time" content="2019-08-13T12:47:30.117Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="安卓">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,273 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SudoTest" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数独破解 安卓开发练习
+    </h1>
+  
+
+        
+        <a href="/2019/08/04/SudoTest/" class="archive-article-date">
+  	<time datetime="2019-08-04T12:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>update</strong>:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊……</p>
+<p><strong>update</strong>: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。</p>
+<p><a target="_blank" rel="noopener" href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a> （安卓学习笔记）<br>半个月零零碎碎的整理学习，现在打算通过实战项目来巩固。</p>
+<p>关于选题：本来想做博奕类游戏的<strong>最佳策略分析</strong>（如象棋残局、五子棋残局等），但一是对$ \alpha \beta<br>$搜索和博弈树剪枝还不太了解，所以先拿个简单的题目练练手。</p>
+<p>数独的破解其实主要就是常规搜索以及优化了，由于不存在对抗性，难度降低了不少。但对于最坏情况，依旧有非常大的解空间树，因此我将利用搜索算法以及剪枝去尽可能优化。如果性能非常好的话，继续挑战<strong>拓展玩法</strong>。</p>
+<p>做完后会上传至github。</p>
+<h1 id="UI分析"><a href="#UI分析" class="headerlink" title="UI分析"></a>UI分析</h1><h2 id="载入页面"><a href="#载入页面" class="headerlink" title="载入页面"></a>载入页面</h2><ul>
+<li>因为只是练习，美工啥的就不用做的太好了。</li>
+<li>线性布局，垂直摆放空间：TextView，Button1，Button2</li>
+<li>Button1留坑，如果有兴趣以后可以尝试做做普通的数独游戏，尝试网络通信</li>
+<li>Button2进入数独破解页面</li>
+<li>载入页面没什么好讲的，也没什么代码值得分享的。</li>
+</ul>
+<h2 id="Grid类"><a href="#Grid类" class="headerlink" title="Grid类"></a>Grid类</h2><ul>
+<li><p>由于数独游戏有81个小格子，每个格子都可以填入数字，使用静态xml未免有点太“暴力”……所以我定义了一个Grid类继承自FrameLayout，可以认为它就是一个带着Button和数字的小格子。</p>
+</li>
+<li><p>在兼容性问题上卡了很久，使用大二时学的在sizeChanged方法下进行尺寸获取和动态建View的方法一直无法正常工作，经过查阅资料知道了原因是：<strong>在sizeChanged方法执行时，整个页面的View已经被确定下来了，无法再添加控件，那么只需要在构造方法执行的时候去添加Grid便可</strong>。</p>
+</li>
+</ul>
+<h2 id="GridView类"><a href="#GridView类" class="headerlink" title="GridView类"></a>GridView类</h2><ul>
+<li>继承自GridLayout，定义了81+9个Grid，在构造方法里完成了Grid的初始化和控件添加，被main_page.xml引用</li>
+</ul>
+<h2 id="MainPage类"><a href="#MainPage类" class="headerlink" title="MainPage类"></a>MainPage类</h2><ul>
+<li>数独破解的主界面，包括上方提示栏和中间的9*9矩阵，以及下方的操纵Button。</li>
+</ul>
+<h2 id="几个点"><a href="#几个点" class="headerlink" title="几个点"></a>几个点</h2><p>简单介绍了各个类以及作用后，详细讲讲遇到的问题</p>
+<p><strong>1.Grid正常初始化</strong></p>
+<ul>
+<li>因为兼容性原因，无法对GridView当中每个Grid进行初始化，所有Grid对应的Button都无法生成，界面就是空的，只能得到空白方阵。</li>
+<li>在GridView方法构造的时候，进行对每个Grid的构造，往里面添加Button。</li>
+<li>至于屏幕尺寸，可以通过别的方法获取，不再使用onSizeChanged方法。</li>
+</ul>
+<p><strong>2.对每个Grid对应的Button进行绑定</strong></p>
+<ul>
+<li>由于数量庞大，先在资源文件下建了个ids.xml文件，生成的item对应id，然后在java代码中引用便可，用final修饰的数组存储按顺序下来，便于一一对应的绑定。</li>
+</ul>
+<p><strong>3.点击事件的监听</strong></p>
+<ul>
+<li>最好的方法是生成一个监听对象，然后每个Button都与这个实例对象进行绑定，这样最省空间（不需要每个Grid都声明一个监听对象）。那么前面用到的final修饰的R.id数组就派上用场了，用View.getID方法获得监听对象的ID，然后到数组里去找便可。</li>
+</ul>
+<p><strong>4.点击事件的设定</strong></p>
+<ul>
+<li>根据交互习惯，当点击了一个Button，就修改它的颜色，并记录它的位置lastx，lasty，便于之后进行撤回操作</li>
+<li>对1-9的Button进行监听，当被点击时，对位于lastx，lasty的Button进行数字修改</li>
+<li>再做个撤回位置lastx，lasty的设定操作便可</li>
+</ul>
+<h1 id="算法及数据结构"><a href="#算法及数据结构" class="headerlink" title="算法及数据结构"></a>算法及数据结构</h1><p><a target="_blank" rel="noopener" href="http://www.sudokufans.org.cn/">http://www.sudokufans.org.cn/</a><br>这里有个数独爱好者的网站。</p>
+<h2 id="algo类"><a href="#algo类" class="headerlink" title="algo类"></a>algo类</h2><ul>
+<li>没必要拿着GridView类去做，只需要把里面有用的数字信息提取出来处理便可，因此创建了algo类，取algorithm之意。</li>
+<li>定义几种构造方法，可以传一个GridView，也可以直接传入一个数组，这是为了方便以后进行不同功能适配问题。</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private static final String TAG &#x3D; &quot;algo&quot;;</span><br><span class="line">private boolean imp;&#x2F;&#x2F;记录是否无解或者已经找到解</span><br><span class="line">private int mp[][];&#x2F;&#x2F;用来存储当前矩阵里放着什么数字</span><br><span class="line">private boolean ini[][];&#x2F;&#x2F;true表示该位置是用户输入的，固定不能改变</span><br><span class="line">private int countRow[],countCol[],countSq[];&#x2F;&#x2F;行列以及矩阵里出现数字种类数</span><br><span class="line">private boolean flagRow[][],flagCol[][],flagSq[][];&#x2F;&#x2F;标记某行某列数字出现没</span><br></pre></td></tr></table></figure>
+
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><ul>
+<li>由于数独分析只要求找到一组可行解，并不要求找到所有解，不妨根据策略进行深度优先搜索，当找到一组解后马上保留并退出。所以，搜索过程是基于dfs的。</li>
+<li>成员方法详见代码吧，懒得贴了。</li>
+<li>加了一些玄学剪枝后，发现程序真的跑的飞起啊……</li>
+</ul>
+<h1 id="open-code"><a href="#open-code" class="headerlink" title="open code"></a>open code</h1><h2 id="FirstPage-java"><a href="#FirstPage-java" class="headerlink" title="FirstPage.java"></a>FirstPage.java</h2><p>首先是第一页，用来挡住丑丑的主界面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mmfunnytree.github.io;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstPage</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        findViewById(R.id.beginAidBt).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                Intent to = <span class="keyword">new</span> Intent(FirstPage.<span class="keyword">this</span>, MainPage.class);</span><br><span class="line">                startActivity(to);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        findViewById(R.id.beginSudoBt).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(FirstPage.<span class="keyword">this</span>,<span class="string">&quot;此功能还在完善中...&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="activity-main-xml"><a href="#activity-main-xml" class="headerlink" title="activity_main.xml"></a>activity_main.xml</h2><p>然后是FirstPage绑定的xml文件，就俩Button交互。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.appcompat.widget.LinearLayoutCompat xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">    android:background&#x3D;&quot;#FFC107&quot;</span><br><span class="line">    tools:context&#x3D;&quot;.FirstPage&quot;&gt;</span><br><span class="line">&lt;TextView</span><br><span class="line">    android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;0dp&quot;</span><br><span class="line">    android:gravity&#x3D;&quot;center&quot;</span><br><span class="line">    android:layout_gravity&#x3D;&quot;center&quot;</span><br><span class="line">    android:textColor&#x3D;&quot;#ffffff&quot;</span><br><span class="line">    android:textSize&#x3D;&quot;26sp&quot;</span><br><span class="line">    android:textStyle&#x3D;&quot;bold&quot;</span><br><span class="line">    android:layout_weight&#x3D;&quot;2&quot;</span><br><span class="line">    android:typeface&#x3D;&quot;serif&quot;</span><br><span class="line">    android:text&#x3D;&quot;@string&#x2F;SudoName&quot;&#x2F;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;beginSudoBt&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:layout_weight&#x3D;&quot;1&quot;</span><br><span class="line">        android:gravity&#x3D;&quot;center&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;30sp&quot;</span><br><span class="line">        android:textColor&#x3D;&quot;#ff0000&quot;</span><br><span class="line">        android:layout_gravity&#x3D;&quot;center&quot;</span><br><span class="line">        android:text&#x3D;&quot;开始游戏&quot;</span><br><span class="line">        android:background&#x3D;&quot;#ffffff&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;beginAidBt&quot;</span><br><span class="line">        android:text&#x3D;&quot;数独破解&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:layout_weight&#x3D;&quot;1&quot;</span><br><span class="line">        android:layout_gravity&#x3D;&quot;center&quot;</span><br><span class="line">        android:gravity&#x3D;&quot;center&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;30sp&quot;</span><br><span class="line">        android:textColor&#x3D;&quot;#ffffff&quot;</span><br><span class="line">        android:background&#x3D;&quot;#03A9F4&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;androidx.appcompat.widget.LinearLayoutCompat&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="MainPage-java"><a href="#MainPage-java" class="headerlink" title="MainPage.java"></a>MainPage.java</h2><p>主界面。(带了点注释)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mmfunnytree.github.io;</span><br><span class="line"><span class="keyword">import</span> android.content.DialogInterface;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AlertDialog;</span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicLong;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainPage</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">&quot;MainPage&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span>  GridView gv;</span><br><span class="line">    <span class="keyword">private</span> Button btstart,waitbt;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> score = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MainPage mainActivity = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainPage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mainActivity = <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MainPage <span class="title">getMainActivity</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mainActivity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        setContentView(R.layout.activity_game_view);</span><br><span class="line">        gv=findViewById(R.id.gvgv);</span><br><span class="line">        waitbt=findViewById(R.id.waitbt);</span><br><span class="line">        btstart=findViewById(R.id.startBfs);</span><br><span class="line">        btstart.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;<span class="comment">//设置开始破解数独的监听器</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                showNormalDialog();</span><br><span class="line">                Toast.makeText(MainPage.<span class="keyword">this</span>,<span class="string">&quot;start bfs&quot;</span>,Toast.LENGTH_LONG).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        waitbt.setOnClickListener(<span class="keyword">new</span> View.OnClickListener()&#123;<span class="comment">//设置取消上一次操作的监听器</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                gv.backGrid();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showNormalDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">        AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">        dialog.setTitle(<span class="string">&quot;提示&quot;</span>)</span><br><span class="line">                .setMessage(<span class="string">&quot;确认开始破解吗？&quot;</span>)</span><br><span class="line">                .setPositiveButton(<span class="string">&quot;Yes&quot;</span>, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialogInterface, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">                        main_solve();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .setNegativeButton(<span class="string">&quot;wait&quot;</span>,<span class="keyword">null</span>).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showFailedDialog</span><span class="params">()</span></span>&#123;</span><br><span class="line">        AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">        dialog.setTitle(<span class="string">&quot;提示&quot;</span>)</span><br><span class="line">                .setMessage(<span class="string">&quot;你填入的矩阵有误，找不到解，请填入合法矩阵！&quot;</span>)</span><br><span class="line">                .setPositiveButton(<span class="string">&quot;Yes&quot;</span>,<span class="keyword">null</span>).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showSuccessDialog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AlertDialog.Builder dialog = <span class="keyword">new</span> AlertDialog.Builder(<span class="keyword">this</span>);</span><br><span class="line">        dialog.setTitle(<span class="string">&quot;提示&quot;</span>)</span><br><span class="line">                .setMessage(<span class="string">&quot;solve it !&quot;</span>)</span><br><span class="line">                .setPositiveButton(<span class="string">&quot;Yes&quot;</span>,<span class="keyword">null</span>).show();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">main_solve</span><span class="params">()</span></span>&#123;<span class="comment">//点击开始时，如果algo A.solve()返回true，就把结果返回到界面</span></span><br><span class="line">        algo A=<span class="keyword">new</span> algo(<span class="number">9</span>,<span class="number">9</span>,gv);</span><br><span class="line">        <span class="keyword">boolean</span> solved = A.solve();</span><br><span class="line">        <span class="keyword">if</span>(!solved)&#123;</span><br><span class="line">            showFailedDialog();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Log.i(TAG, <span class="string">&quot;main_solve: &quot;</span>+solved);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">9</span>;++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">9</span>;++j)&#123;</span><br><span class="line">                Log.i(TAG, <span class="string">&quot;main_solve: &quot;</span>+A.getMp(i,j));</span><br><span class="line">                gv.setXYnum(i,j,A.getMp(i,j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        showSuccessDialog();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*以下全是废弃代码，当时陷入了fragment的未解坑中出不来，就放弃了</span></span><br><span class="line"><span class="comment">    can&#x27;t use fragment to solve this problem</span></span><br><span class="line"><span class="comment">    private FragmentGrid frag[][]=new FragmentGrid[3][3];</span></span><br><span class="line"><span class="comment">    private int idx[]=&#123;R.id.fra1,R.id.fra2,R.id.fra3,R.id.fra4,R.id.fra5,R.id.fra6,R.id.fra7,R.id.fra8,R.id.fra9&#125;;</span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span></span><br><span class="line"><span class="comment">        super.onCreate(savedInstanceState);</span></span><br><span class="line"><span class="comment">        setContentView(R.layout.activity_game_view);</span></span><br><span class="line"><span class="comment">       initView();</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    private void initView() &#123;</span></span><br><span class="line"><span class="comment">        for(int i=0;i&lt;9;++i)&#123;</span></span><br><span class="line"><span class="comment">            frag[i/3][i%3] = new FragmentGrid();</span></span><br><span class="line"><span class="comment">            getSupportFragmentManager().beginTransaction().add(idx[i],frag[i/3][i%3] ).commit();</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="activity-game-view-xml"><a href="#activity-game-view-xml" class="headerlink" title="activity_ game _ view.xml"></a>activity_ game _ view.xml</h2><p>除了引用了GridView，其余都很常规。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.appcompat.widget.LinearLayoutCompat xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:background&#x3D;&quot;#F1E9E3&quot;</span><br><span class="line">    android:orientation&#x3D;&quot;vertical&quot;</span><br><span class="line">    tools:context&#x3D;&quot;.MainPage&quot;&gt;</span><br><span class="line">&lt;LinearLayout</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:text&#x3D;&quot;填入要破解的数独&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;24sp&quot;</span><br><span class="line">        android:padding&#x3D;&quot;30dp&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;LinearLayout&gt;</span><br><span class="line">    &lt;mmfunnytree.github.io.GridView</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;gvgv&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:layout_weight&#x3D;&quot;1&quot;</span><br><span class="line">        android:background&#x3D;&quot;#000000&quot;</span><br><span class="line">       &#x2F;&gt;</span><br><span class="line">&lt;LinearLayout</span><br><span class="line">    android:orientation&#x3D;&quot;horizontal&quot;</span><br><span class="line">    android:layout_width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    android:layout_height&#x3D;&quot;wrap_content&quot;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;waitbt&quot;</span><br><span class="line">        android:background&#x3D;&quot;@color&#x2F;Cyan&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;24sp&quot;</span><br><span class="line">        android:text&#x3D;&quot;取消&quot;</span><br><span class="line">        android:layout_weight&#x3D;&quot;1&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot; &#x2F;&gt;</span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_weight&#x3D;&quot;2&quot;</span><br><span class="line">        android:padding&#x3D;&quot;50dp&quot;</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;startBfs&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;0dp&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;match_parent&quot;</span><br><span class="line">        android:text&#x3D;&quot;开始&quot;</span><br><span class="line">        android:textSize&#x3D;&quot;24sp&quot;</span><br><span class="line">        android:background&#x3D;&quot;#ff0000&quot;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;LinearLayout&gt;</span><br><span class="line">&lt;&#x2F;androidx.appcompat.widget.LinearLayoutCompat&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="value文件"><a href="#value文件" class="headerlink" title="value文件"></a>value文件</h2><ul>
+<li>colors.xml来自网上</li>
+<li>ids.xml自己生成的，写个cpp for循环输出一下就好了</li>
+<li>在这里不贴了。</li>
+</ul>
+<h2 id="grid-java"><a href="#grid-java" class="headerlink" title="grid.java"></a>grid.java</h2><p>可以认为它就是一个主界面里填数字的小格子，内含注释</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mmfunnytree.github.io;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.Gravity;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.CompoundButton;</span><br><span class="line"><span class="keyword">import</span> android.widget.ToggleButton;</span><br><span class="line"><span class="keyword">import</span> android.widget.FrameLayout;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">grid</span> <span class="keyword">extends</span> <span class="title">FrameLayout</span> </span>&#123;<span class="comment">//继承自FrameLayout</span></span><br><span class="line">    <span class="keyword">private</span> Button bt;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">&quot;grid&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">grid</span><span class="params">(<span class="meta">@NonNull</span>  Context context,<span class="keyword">int</span> init)</span></span>&#123;</span><br><span class="line">    <span class="comment">//传入的init数字表示是固定的Button还是可动的</span></span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">        bt = <span class="keyword">new</span> Button(getContext());</span><br><span class="line">        setNum(init);<span class="comment">//固定的是1-9，可动的是0，那么setNum时非常方便</span></span><br><span class="line">        <span class="keyword">if</span>(init!=<span class="number">0</span>)bt.setTextColor(getResources().getColor(R.color.light_blue));</span><br><span class="line">        bt.setTextSize(<span class="number">32</span>);</span><br><span class="line">        bt.setGravity(Gravity.CENTER);</span><br><span class="line">        bt.setPadding(<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        bt.setBackgroundColor(<span class="number">0x33ffffff</span>);</span><br><span class="line">        LayoutParams pa = <span class="keyword">new</span> LayoutParams(-<span class="number">1</span>,-<span class="number">1</span>);</span><br><span class="line">        pa.setMargins(<span class="number">2</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        addView(bt,pa);<span class="comment">//把控件插到grid中</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setlis</span><span class="params">(View.OnClickListener clk)</span></span>&#123;</span><br><span class="line">    <span class="comment">//设置监听器，在GridView里实现的监听器，便于省实例对象</span></span><br><span class="line">        bt.setOnClickListener(clk);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBtID</span><span class="params">(<span class="keyword">int</span> idx)</span></span>&#123;bt.setId(idx);&#125;<span class="comment">//绑定布局文件id，方便进行set修改</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">setNum</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//修改text内容</span></span><br><span class="line">        num=x;</span><br><span class="line">        <span class="keyword">if</span>(x&gt;<span class="number">0</span>)bt.setText(x+<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> bt.setText(<span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNum</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> num;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="GridView-java"><a href="#GridView-java" class="headerlink" title="GridView.java"></a>GridView.java</h2><p>被MainPage的布局文件引用，落在主页面的正方形9*9大格子，下面有注释</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mmfunnytree.github.io;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.util.DisplayMetrics;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.Button;</span><br><span class="line"><span class="keyword">import</span> android.widget.GridLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridView</span> <span class="keyword">extends</span> <span class="title">GridLayout</span> </span>&#123;<span class="comment">//继承自GridLayout</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">&quot;GridView&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> grid[][] mp = <span class="keyword">new</span> grid[<span class="number">10</span>][<span class="number">9</span>];<span class="comment">//生成grid对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);initGame();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context,attrs,defStyleAttr);</span><br><span class="line">        initGame();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        initGame();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backGrid</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//把lastx，lasty的数字撤回，提供给MainPage的</span></span><br><span class="line">        <span class="keyword">if</span>(lastx==-<span class="number">1</span>)<span class="keyword">return</span>;</span><br><span class="line">        mp[lastx][lasty].setNum(<span class="number">0</span>);</span><br><span class="line">        mp[lastx][lasty].setBackgroundColor(<span class="number">0x33ffffff</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cardW=<span class="number">0</span>;<span class="comment">//记录能够获得的屏幕尺寸</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GetCardWidth</span><span class="params">()</span> </span>&#123;<span class="comment">//获得屏幕尺寸</span></span><br><span class="line">        <span class="comment">//屏幕信息的对象</span></span><br><span class="line">        DisplayMetrics displayMetrics;</span><br><span class="line">        displayMetrics = getResources().getDisplayMetrics();</span><br><span class="line">        <span class="comment">//获取屏幕信息</span></span><br><span class="line">        <span class="keyword">int</span> cardWidth;</span><br><span class="line">        cardWidth = displayMetrics.widthPixels;</span><br><span class="line">       cardW = ( cardWidth - <span class="number">10</span> ) / <span class="number">9</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initGame</span><span class="params">()</span></span>&#123;<span class="comment">//初始化GridView</span></span><br><span class="line">        setColumnCount(<span class="number">9</span>);</span><br><span class="line">        setBackgroundColor(<span class="number">0x33ffffff</span>);</span><br><span class="line">        GetCardWidth();</span><br><span class="line">        addCard(cardW,cardW);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getXYnum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="comment">//返回（x,y）对应的数字</span></span><br><span class="line">        <span class="keyword">return</span> mp[x][y].getNum();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setXYnum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val)</span></span>&#123;mp[x][y].setNum(val);&#125;</span><br><span class="line">    <span class="comment">//设置数字为val</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addCard</span><span class="params">(<span class="keyword">int</span> cardWidth,<span class="keyword">int</span> cardHeight)</span></span>&#123;</span><br><span class="line">    <span class="comment">//插入实例，绑定id，并且绑定监听器等。</span></span><br><span class="line">        grid c;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> y=<span class="number">0</span>; y&lt;<span class="number">9</span>; y++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;<span class="number">9</span>; x++)&#123;</span><br><span class="line">                c = <span class="keyword">new</span> grid(getContext(),<span class="number">0</span>);</span><br><span class="line">                c.setBtID(IDX[<span class="number">9</span>*x+y]);</span><br><span class="line">                addView(c,cardWidth,cardHeight);</span><br><span class="line">                mp[x][y] = c;mp[x][y].setlis(clk);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;<span class="number">9</span>;++y)&#123;</span><br><span class="line">            c = <span class="keyword">new</span> grid(getContext(),y+<span class="number">1</span>);</span><br><span class="line">            c.setBtID(cs[y]);</span><br><span class="line">            addView(c,cardWidth,cardHeight);</span><br><span class="line">            mp[<span class="number">9</span>][y]=c;mp[<span class="number">9</span>][y].setlis(clk);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> lastx=-<span class="number">1</span>,lasty=-<span class="number">1</span> ;<span class="comment">//记录上次操作的位置</span></span><br><span class="line">    <span class="keyword">private</span> onclickListener clk = <span class="keyword">new</span> onclickListener();</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">onclickListener</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span></span>&#123;</span><br><span class="line">    <span class="comment">//成员内部类实现监听器，一个控制81+9个Button</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> id = view.getId();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cs.length;++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(lastx==-<span class="number">1</span>)<span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(cs[i]==id)&#123;</span><br><span class="line">                    mp[lastx][lasty].setNum(i+<span class="number">1</span>);id=-<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(id==-<span class="number">1</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">9</span>&amp;&amp;id!=-<span class="number">1</span>;++i)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">9</span>;++j)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(IDX[i*<span class="number">9</span>+j]==id)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(lastx!=-<span class="number">1</span>)mp[lastx][lasty].setBackgroundColor(<span class="number">0x33ffffff</span>);</span><br><span class="line">                        lastx=i;lasty=j;</span><br><span class="line">                        mp[lastx][lasty].setBackgroundColor(getResources().getColor(R.color.GoldenRod));id=-<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//id的存储（因为设置的最低兼容版本太低了，导致不能直接设置ID）</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> IDX[]=&#123;R.id.tb0,R.id.tb1,R.id.tb2,R.id.tb3,R.id.tb4,R.id.tb5,R.id.tb6,R.id.tb7,R.id.tb8,R.id.tb9,R.id.tb10,</span><br><span class="line">            R.id.tb11,R.id.tb12,R.id.tb13,R.id.tb14,R.id.tb15,R.id.tb16,R.id.tb17,R.id.tb18,R.id.tb19,R.id.tb20,R.id.tb21,R.id.tb22,R.id.tb23,</span><br><span class="line">            R.id.tb24,R.id.tb25,R.id.tb26,R.id.tb27,R.id.tb28,R.id.tb29,R.id.tb30,R.id.tb31,R.id.tb32,R.id.tb33,R.id.tb34,R.id.tb35,R.id.tb36,</span><br><span class="line">            R.id.tb37,R.id.tb38,R.id.tb39,R.id.tb40,R.id.tb41,R.id.tb42,R.id.tb43,R.id.tb44,R.id.tb45,R.id.tb46,R.id.tb47,R.id.tb48,R.id.tb49,</span><br><span class="line">            R.id.tb50,R.id.tb51,R.id.tb52,R.id.tb53,R.id.tb54,R.id.tb55,R.id.tb56,R.id.tb57,R.id.tb58,R.id.tb59,R.id.tb60,R.id.tb61,R.id.tb62,R.id.tb63,R.id.tb64,R.id.tb65,</span><br><span class="line">            R.id.tb66,R.id.tb67,R.id.tb68,R.id.tb69,R.id.tb70,R.id.tb71,R.id.tb72,R.id.tb73,R.id.tb74,R.id.tb75,R.id.tb76,R.id.tb77,R.id.tb78,R.id.tb79,R.id.tb80&#125;;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> cs[]=&#123;R.id.cs1,R.id.cs2,R.id.cs3,R.id.cs4,R.id.cs5,R.id.cs6,R.id.cs7,R.id.cs8,R.id.cs9&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完（不知道以后还会不会把这个东西进行进一步优化和加强，比如扩大数独矩阵大小，变成拓展数独等）。</p>
+<h1 id="upd测试"><a href="#upd测试" class="headerlink" title="upd测试"></a>upd测试</h1><p>怎么检测代码正确性和性能呢？<br>2种方案：</p>
+<ul>
+<li>随机产生填入的数据，如果得到的返回解，经过检测不合法，说明algo中存在bug；</li>
+<li>构建一个一定有解的数据，并且删除部分位置，如果检测出无解，说明algo中存在bug。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">algoTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">int</span> maxmod = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> initGrid[][] = &#123;<span class="comment">//一组合法的矩阵，用于全排列生成其他矩阵</span></span><br><span class="line">            &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">9</span>&#125;,</span><br><span class="line">            &#123;<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">7</span>&#125;,</span><br><span class="line">            &#123;<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">8</span>&#125;,</span><br><span class="line">            &#123;<span class="number">4</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">5</span>&#125;,</span><br><span class="line">            &#123;<span class="number">5</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="number">6</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">7</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">6</span>&#125;,</span><br><span class="line">            &#123;<span class="number">8</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,</span><br><span class="line">            &#123;<span class="number">9</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">2</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> arr[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> coy[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a[][]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">private</span> algo A;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestFunction</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> testCount=<span class="number">0</span>;testCount&lt;<span class="number">100</span>;++testCount)&#123;<span class="comment">//测试组数，可以根据需要调高</span></span><br><span class="line">            generate(<span class="number">0</span>);</span><br><span class="line">            generate(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rand</span><span class="params">()</span></span>&#123;<span class="comment">//随机数生成器</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)(Math.random()*maxmod);<span class="comment">//产生0到maxmod-1以内的整数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">arrClear</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr[i].length;++j)arr[i][j]=initGrid[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">arrInitRandom</span><span class="params">(<span class="keyword">boolean</span> legal)</span></span>&#123;<span class="comment">//随机产生数据</span></span><br><span class="line">        <span class="keyword">int</span> mod;</span><br><span class="line">        <span class="keyword">if</span>(legal)mod = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">else</span> mod = maxmod;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr[i].length;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(rand()&gt;<span class="number">10</span>)arr[i][j]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> arr[i][j]=rand()%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">arrCopy</span><span class="params">()</span></span>&#123;<span class="comment">//复制答案</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr[i].length;++j)coy[i][j]=A.getMp(i,j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">crossOther</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="comment">//检测[x,y]位置是否冲突</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;coy.length;++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(coy[i][y]==coy[x][y]&amp;&amp;i!=x)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;coy[x].length;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(coy[x][j]==coy[x][y]&amp;&amp;j!=y)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sqx = x/<span class="number">3</span>*<span class="number">3</span>,sqy=y/<span class="number">3</span>*<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=sqx;i&lt;sqx+<span class="number">3</span>;++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=sqy;j&lt;sqy+<span class="number">3</span>;++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(coy[i][j]==coy[x][y]&amp;&amp;(i!=x||j!=y))<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//System.out.println(x+&quot; +++ &quot;+y);</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">checklegal</span><span class="params">()</span></span>&#123;<span class="comment">//判断algo跑出的正确答案是否正确，按照数独规则检测便可</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;coy.length;++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;coy[i].length;++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(crossOther(i,j))&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> aa=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> f[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">generate</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="comment">//参数a=0是随机数据，a=1是构造好的数据全排列打乱</span></span><br><span class="line">        <span class="keyword">if</span>(a==<span class="number">0</span>)arrInitRandom(rand()&lt;(<span class="keyword">int</span>)(maxmod*<span class="number">0.9</span>));</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;f.length;++i)&#123;</span><br><span class="line">                <span class="keyword">int</span> j=rand()%f.length;</span><br><span class="line">                <span class="keyword">int</span> tmp=f[j];</span><br><span class="line">                f[j]=f[i];</span><br><span class="line">                f[i]=tmp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;++i)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr[i].length;++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(rand()&gt;<span class="number">50</span>)arr[i][j] = f[initGrid[i][j]-<span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">else</span> arr[i][j]=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        A = <span class="keyword">new</span> algo(<span class="number">9</span>,<span class="number">9</span>,arr);</span><br><span class="line">        <span class="keyword">boolean</span> solved = A.solve();</span><br><span class="line">        arrCopy();</span><br><span class="line">        <span class="keyword">if</span>(solved == <span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">boolean</span> checkOk = checklegal();</span><br><span class="line">            <span class="keyword">if</span> (checkOk == <span class="keyword">false</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;找到错误！&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; ++i) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; ++j) &#123;</span><br><span class="line">                        System.out.print(coy[i][j] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println();</span><br><span class="line">                &#125;</span><br><span class="line">                System.exit(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(a!=<span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;找到错误！&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; ++i) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; ++j) &#123;</span><br><span class="line">                        System.out.print(f[initGrid[i][j]] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println();</span><br><span class="line">                &#125;</span><br><span class="line">                System.exit(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">run</span></span>&#123;<span class="comment">//main函数</span></span><br><span class="line">    <span class="keyword">static</span> algoTest atest=<span class="keyword">new</span> algoTest();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> bg = System.currentTimeMillis();</span><br><span class="line">        atest.TestFunction();</span><br><span class="line">        <span class="keyword">long</span> ed = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;未发现错误，运行时间：&quot;</span>+(ed-bg)+<span class="string">&quot;ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安卓</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/安卓//" class="article-tag-list-link color3">安卓</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/08/04/SudoTest/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/09/OS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          操作系统学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/30/ComputerNetwork/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络学习笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +445,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

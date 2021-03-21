@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/page/8/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="John Doe">
@@ -152,250 +152,342 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-LostinTransliteration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
+      <a class="article-title" href="/2017/10/21/LostinTransliteration/">2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest F. Lost in Transliteration</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/21/LostinTransliteration/" class="archive-article-date">
+  	<time datetime="2017-10-21T13:20:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>F. Lost in Transliteration<br>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output<br>There are some ambiguities when one writes Berland names with the letters of the Latin alphabet.</p>
+<p>For example, the Berland sound u can be written in the Latin alphabet as “u”, and can be written as “oo”. For this reason, two words “ulyana” and “oolyana” denote the same name.</p>
+<p>The second ambiguity is about the Berland sound h: one can use both “h” and “kh” to write it. For example, the words “mihail” and “mikhail” denote the same name.</p>
+<p>There are n users registered on the Polycarp’s website. Each of them indicated a name represented by the Latin letters. How many distinct names are there among them, if two ambiguities described above are taken into account?</p>
+<p>Formally, we assume that two words denote the same name, if using the replacements “u”  “oo” and “h”  “kh”, you can make the words equal. One can make replacements in both directions, in any of the two words an arbitrary number of times. A letter that resulted from the previous replacement can participate in the next replacements.</p>
+<p>For example, the following pairs of words denote the same name:</p>
+<p>“koouper” and “kuooper”. Making the replacements described above, you can make both words to be equal: “koouper” “kuuper” and “kuooper”  “kuuper”.<br>“khun” and “kkkhoon”. With the replacements described above you can make both words to be equal: “khun”  “khoon” and “kkkhoon”  “kkhoon”  “khoon”.<br>For a given list of words, find the minimal number of groups where the words in each group denote the same name.</p>
+<p>Input<br>The first line contains integer number n (2 ≤ n ≤ 400) — number of the words in the list.</p>
+<p>The following n lines contain words, one word per line. Each word consists of only lowercase Latin letters. The length of each word is between 1 and 20 letters inclusive.</p>
+<p>Output<br>Print the minimal number of groups where the words in each group denote the same name.</p>
+<p>Examples<br>input<br>10<br>mihail<br>oolyana<br>kooooper<br>hoon<br>ulyana<br>koouper<br>mikhail<br>khun<br>kuooper<br>kkkhoon<br>output<br>4<br>input<br>9<br>hariton<br>hkariton<br>buoi<br>kkkhariton<br>boooi<br>bui<br>khariton<br>boui<br>boi<br>output<br>5<br>input<br>2<br>alex<br>alex<br>output<br>1<br>Note<br>There are four groups of words in the first example. Words in each group denote same name:</p>
+<p>“mihail”, “mikhail”<br>“oolyana”, “ulyana”<br>“kooooper”, “koouper”<br>“hoon”, “khun”, “kkkhoon”<br>There are five groups of words in the second example. Words in each group denote same name:</p>
+<p>“hariton”, “kkkhariton”, “khariton”<br>“hkariton”<br>“buoi”, “boooi”, “boui”<br>“bui”<br>“boi”<br>In the third example the words are equal, so they denote the same name.</p>
+<p>链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/883/problem/F">http://codeforces.com/contest/883/problem/F</a></p>
+<p>题意：波兰语中的”h”和”kh”可以互换，”u”和”oo”可以呼唤，给若干个名字，问互不相同的名字有多少个</p>
+<p>思路：根据数据范围，暴力将 u 全部转化成 oo ，将 存在的 kh 全部转化成 h</p>
+<p>然后塞进set里面，最后输出set的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string check(string s)</span><br><span class="line">&#123;</span><br><span class="line">    string t;</span><br><span class="line">    for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[i]&#x3D;&#x3D;&#39;u&#39;)</span><br><span class="line">            t+&#x3D;&quot;oo&quot;;</span><br><span class="line">        else if(s[i]&#x3D;&#x3D;&#39;k&#39;)</span><br><span class="line">        &#123;</span><br><span class="line">            int flag&#x3D;0;</span><br><span class="line">            for(int j&#x3D;i+1;j&lt;s.length();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(s[j]&#x3D;&#x3D;&#39;k&#39;)continue;</span><br><span class="line">                if(s[j]&#x3D;&#x3D;&#39;h&#39;)</span><br><span class="line">                &#123;</span><br><span class="line">                    flag&#x3D;j;break;</span><br><span class="line">                &#125;</span><br><span class="line">                else break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag)</span><br><span class="line">            &#123;</span><br><span class="line">                t+&#x3D;&quot;h&quot;;</span><br><span class="line">                i&#x3D;flag;</span><br><span class="line">            &#125;</span><br><span class="line">            else t+&#x3D;&quot;k&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else t+&#x3D;s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(0);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    cout.tie(0);</span><br><span class="line">    int n;cin&gt;&gt;n;</span><br><span class="line">    string s;</span><br><span class="line">    set&lt;string&gt; st;</span><br><span class="line">    while(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;s;</span><br><span class="line">        s &#x3D; check(s);</span><br><span class="line">        st.insert(s);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;st.size()&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">codeforces</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/21/LostinTransliteration/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
+    <article id="post-QuadcopterCompetition" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
+      <a class="article-title" href="/2017/10/21/QuadcopterCompetition/">2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest M. Quadcopter Competition</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/21/QuadcopterCompetition/" class="archive-article-date">
+  	<time datetime="2017-10-21T13:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>M. Quadcopter Competition<br>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output<br>Polycarp takes part in a quadcopter competition. According to the rules a flying robot should:</p>
+<p>start the race from some point of a field,<br>go around the flag,<br>close cycle returning back to the starting point.<br>Polycarp knows the coordinates of the starting point (x1, y1) and the coordinates of the point where the flag is situated (x2, y2). Polycarp’s quadcopter can fly only parallel to the sides of the field each tick changing exactly one coordinate by 1. It means that in one tick the quadcopter can fly from the point (x, y) to any of four points: (x - 1, y), (x + 1, y), (x, y - 1) or (x, y + 1).</p>
+<p>Thus the quadcopter path is a closed cycle starting and finishing in (x1, y1) and containing the point (x2, y2) strictly inside.</p>
+<p>The picture corresponds to the first example: the starting (and finishing) point is in (1, 5) and the flag is in (5, 2).<br>What is the minimal length of the quadcopter path?</p>
+<p>Input<br>The first line contains two integer numbers x1 and y1 ( - 100 ≤ x1, y1 ≤ 100) — coordinates of the quadcopter starting (and finishing) point.</p>
+<p>The second line contains two integer numbers x2 and y2 ( - 100 ≤ x2, y2 ≤ 100) — coordinates of the flag.</p>
+<p>It is guaranteed that the quadcopter starting point and the flag do not coincide.</p>
+<p>Output<br>Print the length of minimal path of the quadcopter to surround the flag and return back.</p>
+<p>Examples<br>input<br>1 5<br>5 2<br>output<br>18<br>input<br>0 1<br>0 0<br>output<br>8</p>
+<p>链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/883/problem/M">http://codeforces.com/contest/883/problem/M</a></p>
+<p>题意：从起点出发，绕旗子走一周再回到起点，求最短路径。</p>
+<p>思路：<br>签到题，从起始点绕旗子一周，那么<br>走的dx = max（2，abs（x1,x2））;<br>       dy = max（2，abs（y1,y2））;<br>答案就是2dx+2dy；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int x1,y1,x2,y2;</span><br><span class="line">    cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">    int x &#x3D; max(2,abs(x1-x2)+1);</span><br><span class="line">    int y &#x3D; max(2,abs(y1-y2)+1);</span><br><span class="line">    cout&lt;&lt;2*x+2*y&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">codeforces</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/21/QuadcopterCompetition/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
+    <article id="post-HDU5971" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
+      <a class="article-title" href="/2017/10/11/HDU5971/">HDU 5971 Wrestling Match（dfs）2016 icpc 大连 A题</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/11/HDU5971/" class="archive-article-date">
+  	<time datetime="2017-10-11T15:58:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>题目链接：<a target="_blank" rel="noopener" href="http://acm.split.hdu.edu.cn/showproblem.php?pid=5971">http://acm.split.hdu.edu.cn/showproblem.php?pid=5971</a></p>
+<p>2016icpc 区域赛 大连<br>题意：<br> n 个人进行 m 场比赛，其中的 x 人被认为是“good player”，其中 y 人被认为是“ bad player ”，人们认为这些比赛只在good player 与bad player之间展开，问是否存在一种划分，使得参赛选手一定处于两类之一，且不矛盾。</p>
+<p>思路：<br>令val[i]=1, 0 ,-1<br>0表示该选手未知<br>1表示该选手是good player<br>-1表示该选手是bad player</p>
+<p>那么只需要先构建边，然后从已知的good player和bad player进行dfs，他们的对手 j 应当为相反的val[j]，若val[j]==0 ，更新val[j]为 i 的对立面；否则，如果val[j]的值与val[i]矛盾，说明无法将选手划分成两部分。</p>
+<p>详见代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">这#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m,x,y,a,b;</span><br><span class="line">int vis[1001];	&#x2F;&#x2F;标记该选手是否出现过</span><br><span class="line">int val[1001];	&#x2F;&#x2F;标记该选手属于的阵营</span><br><span class="line">int flag;</span><br><span class="line">vector&lt;int&gt; g[1001];	&#x2F;&#x2F;构图</span><br><span class="line">vector&lt;int&gt; og,ob;</span><br><span class="line">		&#x2F;&#x2F;初始的good 和bad 阵营	</span><br><span class="line"></span><br><span class="line">void dfs(int u,int f)</span><br><span class="line">&#123;</span><br><span class="line">    if(!flag)return;</span><br><span class="line">    vis[u]&#x3D;1;</span><br><span class="line">    val[u]&#x3D;f;</span><br><span class="line">    for(auto v:g[u])</span><br><span class="line">    &#123;</span><br><span class="line">        if(val[v]&#x3D;&#x3D;f)</span><br><span class="line">        &#123;</span><br><span class="line">            flag&#x3D;0;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        if(!vis[v])</span><br><span class="line">            dfs(v,-f);&#x2F;&#x2F; 选手 v 的阵营应该是选手 u 的对立面</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;x,&amp;y)!&#x3D;EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        og.clear();ob.clear();</span><br><span class="line">        flag&#x3D;1;</span><br><span class="line">        memset(vis,0,sizeof(vis));</span><br><span class="line">        memset(val,0,sizeof(val));</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">            g[i].clear();</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</span><br><span class="line">            vis[a]&#x3D;vis[b]&#x3D;1;</span><br><span class="line">            g[a].push_back(b);</span><br><span class="line">            g[b].push_back(a);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;x;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">            val[a]&#x3D;1;</span><br><span class="line">            vis[a]&#x3D;1;</span><br><span class="line">            og.push_back(a);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;y;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">            val[a]&#x3D;-1;</span><br><span class="line">            vis[a]&#x3D;1;</span><br><span class="line">            ob.push_back(a);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                flag&#x3D;0;break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;NO\n&quot;);continue;</span><br><span class="line">        &#125;</span><br><span class="line">        memset(vis,0,sizeof(vis));</span><br><span class="line">        if(x)</span><br><span class="line">        &#123;</span><br><span class="line">            for(auto u:og)</span><br><span class="line">            if(!vis[u])</span><br><span class="line">                dfs(u,1);</span><br><span class="line">        &#125;</span><br><span class="line">        if(y)</span><br><span class="line">        &#123;</span><br><span class="line">            for(auto u:ob)</span><br><span class="line">            if(!vis[u])</span><br><span class="line">                dfs(u,-1);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dfs(i,1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">            if(!val[i])flag&#x3D;0;</span><br><span class="line"></span><br><span class="line">        cout&lt;&lt;((flag)?&quot;YES\n&quot;:&quot;NO\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status</span><br><span class="line">Accepted </span><br><span class="line"></span><br><span class="line">Time</span><br><span class="line">62ms </span><br><span class="line"></span><br><span class="line">Memory</span><br><span class="line">2056kB </span><br><span class="line"></span><br><span class="line">Length</span><br><span class="line">1809 </span><br><span class="line"></span><br><span class="line">Lang</span><br><span class="line">G++ </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HDU</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/11/HDU5971/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1265Page" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
+      <a class="article-title" href="/2017/10/11/XTU1265Page/">XTU 1265 Page</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+        
+        <a href="/2017/10/11/XTU1265Page/" class="archive-article-date">
+  	<time datetime="2017-10-11T15:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>书页<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1265">http://202.197.224.59/exam/index.php/problem/read/id/1265</a><br>题目描述</p>
+<p>一本书的书页码从1开始编，已知页码一共用了n个数码，请问这本书有多少页？ 比如一本100页的书，页码就用了192个数码。</p>
+<p>输入</p>
+<p>第一行是一个整数T(1≤T≤10000)，表示样例的个数。 以后每行一个整数n(1≤n≤109)，表示使用的数码的个数（输入保证有解）。</p>
+<p>输出</p>
+<p>每行输出一个样例的结果</p>
+<p>样例输入</p>
+<p>2<br>1<br>192</p>
+<p>样例输出</p>
+<p>1<br>100</p>
+<p>思路：<br>数码为1位的数字有9个<br>数码为2位的数字有90个<br>…..<br>数码为9位的数字有9e8个<br>所以只需要讨论剩下的数码够不够凑成当前数位的页码便可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll __int64</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        ll n,res&#x3D;0;</span><br><span class="line">        ll base&#x3D;1;</span><br><span class="line">        scanf(&quot;%I64d&quot;,&amp;n);</span><br><span class="line">        ll now&#x3D;9;&#x2F;&#x2F;表示当前位数的页码一共有多少个</span><br><span class="line">        ll nex&#x3D;2;&#x2F;&#x2F;表示下一种页码，每个数字有多少个数码</span><br><span class="line">        while(n)</span><br><span class="line">        &#123;</span><br><span class="line">            if(n&gt;now)&#x2F;&#x2F;如果n大于当前位数的页码总和</span><br><span class="line">            &#123;</span><br><span class="line">                n-&#x3D;now;</span><br><span class="line">                res+&#x3D;9*base;</span><br><span class="line">                base*&#x3D;10;</span><br><span class="line">                now&#x3D;9*nex*base;</span><br><span class="line">                nex++;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                res+&#x3D;(n&#x2F;(nex-1));</span><br><span class="line">                n&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%I64d\n&quot;,res);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Problem: 1265   User: 2016551517 </span><br><span class="line">Memory: 1364K  Time: 0MS </span><br><span class="line"></span><br><span class="line">anguage: G++  Result: Accepted </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>转载请注明出处^ ^</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -407,277 +499,641 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/11/XTU1265Page/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1262Fish" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
+      <a class="article-title" href="/2017/10/10/XTU1262Fish/">XTU 1262 Fish(优先队列+贪心)</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/XTU1262Fish/" class="archive-article-date">
+  	<time datetime="2017-10-10T13:59:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>钓鱼<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1262">http://202.197.224.59/exam/index.php/problem/read/id/1262</a><br>题目描述</p>
+<p>小明很喜欢钓鱼，现在有n个池塘可以钓鱼，第i个池塘首次内能钓到ai条鱼。 第i个池塘如果被钓过k次，那么每次下一次能钓到的鱼的数目为max{0,ai−k×bi}。 现在小明能钓m次鱼，请问他最多能钓到多少条鱼？</p>
+<p>输入</p>
+<p>第一行是一个整数T(1≤T≤100)，表示样例的个数。<br>每个样例的第一行是n(1≤n≤1000),m(1≤m≤100000)；<br>以后的n行，每行是ai(1≤ai≤10000),bi(0≤bi≤10000)。 </p>
+<p>输出</p>
+<p>每行输出一个样例的结果。</p>
+<p>样例输入</p>
+<p>2<br>3 5<br>3 1<br>4 2<br>1 0<br>2 5<br>2 1<br>1 1<br>样例输出</p>
+<p>12<br>4<br>样例解释</p>
+<p>第一个样例，在第1个池塘钓3次，第2个池塘钓2次，3+2+1+4+2 = 12；<br>第二个样例，在第1个池塘钓2次，第2个池塘钓1次，2+1+1 = 4。</p>
+<p>思路：<br>维护一个优先队列，使价值最高的鱼优先级最高，钓出这种鱼后，从队首弹出这种鱼，改变价值后再压入，这样便能保证每次钓到的鱼都是价值最高的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int a,b;</span><br><span class="line">    friend bool operator &lt;(node A,node B)&#x2F;&#x2F;价值高的优先级高</span><br><span class="line">    &#123;</span><br><span class="line">        return A.a&lt;B.a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt;pq;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t,n,m,a,b;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        while(!pq.empty())</span><br><span class="line">            pq.pop();</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">        node now;</span><br><span class="line">        while(n--)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</span><br><span class="line">            now.a&#x3D;a;</span><br><span class="line">            now.b&#x3D;b;</span><br><span class="line">            pq.push(now);</span><br><span class="line">        &#125;</span><br><span class="line">        int ans&#x3D;0;</span><br><span class="line">        while(!pq.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            now&#x3D;pq.top();</span><br><span class="line">            pq.pop();</span><br><span class="line"></span><br><span class="line">            if(now.b&#x3D;&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                ans+&#x3D;now.a*m;</span><br><span class="line">                m&#x3D;0;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                ans+&#x3D;now.a;</span><br><span class="line">                now.a &#x3D; max(0,now.a-now.b);</span><br><span class="line">                m--;</span><br><span class="line">                pq.push(now);</span><br><span class="line">            &#125;</span><br><span class="line">            if(!m)break;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Problem: 1262		User: 2016551517</span><br><span class="line">Memory: 1416K		Time: 1531MS</span><br><span class="line">Language: G++		Result: Accepted</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1262Fish/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1264" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
+      <a class="article-title" href="/2017/10/10/XTU1264/">XTU 1264 字符不重复子串(DP)</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/XTU1264/" class="archive-article-date">
+  	<time datetime="2017-10-10T13:37:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>字符不重复子串<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1264">http://202.197.224.59/exam/index.php/problem/read/id/1264</a><br>题目描述</p>
+<p>给一个只含英文小写的字符串，求其最长的字符不重复的子串。比如字符串”abcabc”，最长字符不重复子串长度为3，最长字符不重复子串为”abc”,”bca”,”cab”；字符串”aaaaa”，最长字符不重复子串长度为1，字符串为”a”。</p>
+<p>输入</p>
+<p>存在多个样例，每行输入一个字符串，串长不超过10000。</p>
+<p>输出</p>
+<p>每个样例先输出最长的字符不重复子串的长度，然后按字典序输出这些不重复子串，每个子串输出一行。</p>
+<p>样例输入</p>
+<p>abcabc<br>aaaaa<br>样例输出</p>
+<p>3<br>abc<br>bca<br>cab<br>1<br>a</p>
+<p>思路：<br>对于每个小写字母，只需记录下它在字符串中上一次出现的位置，如果目前为止截获的最长子串的长度小于该段的长度，就可以更新最长值。</p>
+<p>dp[i]表示到当前位置为止，前面出现的最长不重复子串的长度。</p>
+<p>那么dp[i]值就分2种情况：<br>一是，包含当前节点的字符串的长度不能覆盖最长长度，那么更新当前字符串长度；<br>二是，把当前节点加入原字符串中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">char s[10001];</span><br><span class="line">int dp[10001];</span><br><span class="line">int vis[10001];</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    char ans[30];</span><br><span class="line">&#125;as[10001];</span><br><span class="line"></span><br><span class="line">bool cmp(node a,node b)&#x2F;&#x2F;按照字典序排序</span><br><span class="line">&#123;</span><br><span class="line">    return strcmp(a.ans,b.ans)&lt;0;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%s&quot;,s)!&#x3D;EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        int len &#x3D; strlen(s);</span><br><span class="line">        memset(dp,0,sizeof(dp));</span><br><span class="line">        memset(vis,-1,sizeof(vis));</span><br><span class="line">        dp[0]&#x3D;1;</span><br><span class="line">        vis[s[0]]&#x3D;0;</span><br><span class="line">        int lst&#x3D;0,maxl&#x3D;1;</span><br><span class="line">        &#x2F;&#x2F;lst表示当前字符串的起始位置，maxl表示最长字符串的长度</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;1;i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(vis[s[i]]&#x3D;&#x3D;-1)&#x2F;&#x2F;vis[i]表示字符s[i]上一次出现的位置</span><br><span class="line">            &#123;</span><br><span class="line">                dp[i]&#x3D;dp[i-1]+1;</span><br><span class="line">                vis[s[i]]&#x3D;i;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if(lst&lt;&#x3D;vis[s[i]])&#x2F;&#x2F;如果字符s[i]上一次出现的位置在当前字符串起始位置lst之后，那么以lst为起点的字符串的最长长度就到此为止了。</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i] &#x3D; i-vis[s[i]];</span><br><span class="line">                    lst &#x3D; vis[s[i]]+1;&#x2F;&#x2F;更新起始位置</span><br><span class="line">                    vis[s[i]]&#x3D;i;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i]&#x3D;dp[i-1]+1;</span><br><span class="line">                    vis[s[i]]&#x3D;i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(dp[i]&gt;maxl)</span><br><span class="line">                maxl&#x3D;dp[i];</span><br><span class="line">        &#125;</span><br><span class="line">        int cnt&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(dp[i]&#x3D;&#x3D;maxl)</span><br><span class="line">            &#123;</span><br><span class="line">                as[cnt].ans[0]&#x3D;&#39;\0&#39;;</span><br><span class="line">                strncat(as[cnt++].ans,s+(i-maxl)+1,maxl);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(as,as+cnt,cmp);</span><br><span class="line">        printf(&quot;%d\n&quot;,maxl);</span><br><span class="line">        printf(&quot;%s\n&quot;,as[0].ans);</span><br><span class="line">        for(int i&#x3D;1;i&lt;cnt;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(strcmp(as[i].ans,as[i-1].ans)&#x3D;&#x3D;0)continue;</span><br><span class="line">            printf(&quot;%s\n&quot;,as[i].ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">Problem: 1264		User: 2016551517</span><br><span class="line">Memory: 1244K		Time: 31MS</span><br><span class="line">Language: C++		Result: Accepted</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1264/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1268" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
+      <a class="article-title" href="/2017/10/10/XTU1268/">XTU 1268 鞍点</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/XTU1268/" class="archive-article-date">
+  	<time datetime="2017-10-10T12:41:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>矩阵的鞍点<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1268">http://202.197.224.59/exam/index.php/problem/read/id/1268</a><br>题目描述</p>
+<p>给一个矩阵An×m，其元素aij我们称其为鞍点，则满足它是第i行里最大值且第j列里最小值或者第i行里最小值且第j列里最大值。 现在给你一个矩阵，请求出其所有的鞍点。</p>
+<p>输入</p>
+<p>第一行是一个整数T(1≤T≤100)，表示样例的个数。 每个样例的第一行是两个整数n,m(1≤n,m≤100)，表示矩阵的行和列的大小。<br>以后的n行，每行m个整数，表示元素aij(0≤aij≤1000)。</p>
+<p>输出</p>
+<p>如果存在鞍点，则先输出一行，鞍点个数，。 然后按行优先原则，输出所有鞍点坐标（坐标从0开始计数）和鞍点的值，每行输出一个。<br>如果不存在鞍点，则输出“None”。</p>
+<p>样例输入</p>
+<p>2<br>3 3<br>1 2 3<br>4 5 4<br>1 4 3<br>3 3<br>1 5 2<br>7 3 6<br>4 8 9<br>样例输出</p>
+<p>3<br>0 2 3<br>1 0 4<br>1 2 4<br>None</p>
+<p>思路：<br>把每一行每一列的最小值、最大值都用数组记录下来，再拿记录下来的值与输入的值暴力匹配一遍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#define max(a,b) a&gt;b?a:b;</span><br><span class="line">#define min(a,b) a&lt;b?a:b;</span><br><span class="line">int a[101][101];</span><br><span class="line">int h[101][2],l[101][2];</span><br><span class="line">int n,m;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">        memset(h,-1,sizeof(h));</span><br><span class="line">        memset(l,-1,sizeof(l));</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line">            if(h[i][0]&lt;0)    h[i][0]&#x3D;a[i][j];</span><br><span class="line">            else             h[i][0]&#x3D;max(h[i][0],a[i][j]);</span><br><span class="line">            if(h[i][1]&lt;0)    h[i][1]&#x3D;a[i][j];</span><br><span class="line">            else             h[i][1]&#x3D;min(h[i][1],a[i][j]);</span><br><span class="line">            if(l[j][0]&lt;0)    l[j][0]&#x3D;a[i][j];</span><br><span class="line">            else             l[j][0]&#x3D;max(l[j][0],a[i][j]);</span><br><span class="line">            if(l[j][1]&lt;0)    l[j][1]&#x3D;a[i][j];</span><br><span class="line">            else             l[j][1]&#x3D;min(l[j][1],a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        int ans&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)&#123;</span><br><span class="line">            if(a[i][j]&#x3D;&#x3D;h[i][0]&amp;&amp;a[i][j]&#x3D;&#x3D;l[j][1])</span><br><span class="line">                ans++;</span><br><span class="line">            else if(a[i][j]&#x3D;&#x3D;h[i][1]&amp;&amp;a[i][j]&#x3D;&#x3D;l[j][0])</span><br><span class="line">                ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ans)printf(&quot;%d\n&quot;,ans);</span><br><span class="line">        else&#123;printf(&quot;None\n&quot;);continue;&#125;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)&#123;</span><br><span class="line">            if(a[i][j]&#x3D;&#x3D;h[i][0]&amp;&amp;a[i][j]&#x3D;&#x3D;l[j][1])</span><br><span class="line">                printf(&quot;%d %d %d\n&quot;,i,j,a[i][j]);</span><br><span class="line">            else if(a[i][j]&#x3D;&#x3D;h[i][1]&amp;&amp;a[i][j]&#x3D;&#x3D;l[j][0])</span><br><span class="line">                printf(&quot;%d %d %d\n&quot;,i,j,a[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Problem: 1268		User: 2016551517</span><br><span class="line">Memory: 984K		Time: 78MS</span><br><span class="line">Language: C++		Result: Accepted</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1268/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1270UniqueDigitNumber" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
+      <a class="article-title" href="/2017/10/10/XTU1270UniqueDigitNumber/">XTU 1270 Unique Digit Number（打表，推公式）</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/XTU1270UniqueDigitNumber/" class="archive-article-date">
+  	<time datetime="2017-10-10T12:21:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数位不同的数<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1270">http://202.197.224.59/exam/index.php/problem/read/id/1270</a><br>题目描述</p>
+<p>数位不同的数是指所有数位上的数码都不一样的数，比如“123”三个数码1,2,3，都不一样，所以是数位不同的数；但是“1232”中有两个相同的数码2，所以不是。请写一个程序，计算第几个符合条件的数是什么？</p>
+<p>输入</p>
+<p>每行输入一个整数n(1≤n≤8877691)。</p>
+<p>输出</p>
+<p>每行输出一个整数，为对应样例的结果。</p>
+<p>样例输入</p>
+<p>1<br>10<br>100<br>8877691<br>样例输出</p>
+<p>0<br>9<br>120<br>9876543210</p>
+<p>思路：<br>第一种当然是推公式啊，可是我不会啊（暗中膜400B过的大佬orz）</p>
+<p>第二种当然是数位dp+二分查找啊，可是我不会啊。</p>
+<p>其实打表是世界上最好的算法。<br>不难看出不同数字的排列组合应该和数的位数n挂钩，<br>一位数有10种，<br>二位数有9 * 9种，<br>三位数有9 * 9 * 8种，<br>……<br>九位数有9 * 9 *  8 * 7 * 6 * 5 *  4 * 3 *  2种<br>十位数有9 * 9 *  8 * 7 * 6 * 5 *  4 * 3 *  2 * 1种<br>于是我们可以开10个数组用来存不同位数的答案，用暴力回溯实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll __int64</span><br><span class="line">ll ans1[10+1];</span><br><span class="line">ll ans2[9*9+1];</span><br><span class="line">ll ans3[9*9*8+1];</span><br><span class="line">ll ans4[9*9*8*7+1];</span><br><span class="line">ll ans5[9*9*8*7*6+1];</span><br><span class="line">ll ans6[9*9*8*7*6*5+1];</span><br><span class="line">ll ans7[9*9*8*7*6*5*4+1];</span><br><span class="line">ll ans8[9*9*8*7*6*5*4*3+1];</span><br><span class="line">ll ans9[9*9*8*7*6*5*4*3*2+1];</span><br><span class="line">ll ans10[9*9*8*7*6*5*4*3*2+1];</span><br><span class="line">int cnt[11];</span><br><span class="line">bool vis[11];</span><br><span class="line">void dfs(int id,int mid,ll x)</span><br><span class="line">&#123;</span><br><span class="line">    if(id&#x3D;&#x3D;mid)</span><br><span class="line">    &#123;</span><br><span class="line">        if(mid&#x3D;&#x3D;1)&#123;ans1[cnt[1]++]&#x3D;x;dfs(1,2,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;2)&#123;ans2[cnt[2]++]&#x3D;x;dfs(2,3,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;3)&#123;ans3[cnt[3]++]&#x3D;x;dfs(3,4,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;4)&#123;ans4[cnt[4]++]&#x3D;x;dfs(4,5,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;5)&#123;ans5[cnt[5]++]&#x3D;x;dfs(5,6,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;6)&#123;ans6[cnt[6]++]&#x3D;x;dfs(6,7,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;7)&#123;ans7[cnt[7]++]&#x3D;x;dfs(7,8,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;8)&#123;ans8[cnt[8]++]&#x3D;x;dfs(8,9,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;9)&#123;ans9[cnt[9]++]&#x3D;x;dfs(9,10,x);&#125;</span><br><span class="line">        else if(mid&#x3D;&#x3D;10)&#123;ans10[cnt[10]++]&#x3D;x;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;10;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(vis[i])continue;</span><br><span class="line">            if(i||x)</span><br><span class="line">            &#123;</span><br><span class="line">                vis[i]&#x3D;true;</span><br><span class="line">                dfs(id+1,mid,x*10+i);</span><br><span class="line">                vis[i]&#x3D;false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    fill(cnt,cnt+10,1);cnt[1]&#x3D;2;</span><br><span class="line">    dfs(0,1,0);</span><br><span class="line">    int n;</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;n)!&#x3D;EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;10;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(i&#x3D;&#x3D;10)&#123;printf(&quot;%I64d\n&quot;,ans10[n-1]);break;&#125;</span><br><span class="line">            else if(n&gt;cnt[i]-1)</span><br><span class="line">                n-&#x3D;(cnt[i]-1);</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if(i&#x3D;&#x3D;1)&#123;printf(&quot;%I64d\n&quot;,ans1[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;2)&#123;printf(&quot;%I64d\n&quot;,ans2[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;3)&#123;printf(&quot;%I64d\n&quot;,ans3[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;4)&#123;printf(&quot;%I64d\n&quot;,ans4[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;5)&#123;printf(&quot;%I64d\n&quot;,ans5[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;6)&#123;printf(&quot;%I64d\n&quot;,ans6[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;7)&#123;printf(&quot;%I64d\n&quot;,ans7[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;8)&#123;printf(&quot;%I64d\n&quot;,ans8[n]);break;&#125;</span><br><span class="line">                else if(i&#x3D;&#x3D;9)&#123;printf(&quot;%I64d\n&quot;,ans9[n]);break;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">Problem: 1270		User: 2016551517</span><br><span class="line">Memory: 70868K		Time: 640MS</span><br><span class="line">Language: G++		Result: Accepted</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">打表</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1270UniqueDigitNumber/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XTU1271Color" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
+      <a class="article-title" href="/2017/10/10/XTU1271Color/">XTU 1271 Color</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/10/XTU1271Color/" class="archive-article-date">
+  	<time datetime="2017-10-09T16:43:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>染色<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1271">http://202.197.224.59/exam/index.php/problem/read/id/1271</a><br>题目描述</p>
+<p>Alice在玩一个游戏，她在一个m×n的格子里，随机涂黑k个格子。然后她每次可以把一行或者一列的格子染成红色，但是这一行中不能有黑色的格子。 请问她最多能把多少个格子涂成红色？</p>
+<p>输入</p>
+<p>第一行是一个整数T(T≤100)，表示样例的个数。 每个样例的第一行是m(1≤m≤100),n(1≤n≤100),k(0≤k≤m×n)。 以后的k行,每行两个整数x(1≤x≤m),y(1≤y≤n)，表示(x,y)为黑色格子。</p>
+<p>输出</p>
+<p>每行输出一个样例的结果。</p>
+<p>样例输入</p>
+<p>1<br>3 4 2<br>1 1<br>3 3</p>
+<p>样例输出</p>
+<p>8</p>
+<p>思路：x的种类数 * y的种类数就是所有点（x,y）不能染色的集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define r(n) scanf(&quot;%d&quot;,&amp;n)</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    set&lt;int&gt;x,y;</span><br><span class="line">    int t;</span><br><span class="line">    r(t);</span><br><span class="line">    int a,b,n;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        x.clear();y.clear();</span><br><span class="line">        r(a);r(b);r(n);</span><br><span class="line">        int s &#x3D; a*b;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            r(a);r(b);</span><br><span class="line">            x.insert(a);</span><br><span class="line">            y.insert(b);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,s - x.size()*y.size());</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">Problem: 1271   User: 2016551517 </span><br><span class="line">Memory: 1404K  Time: 78MS </span><br><span class="line">Language: G++  Result: Accepted </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1271Color/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
+    <article id="post-XTU1272Robot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
-    </div></section>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/XTU1272Robot/">XTU 1272 Robot</a>
+    </h1>
   
 
+        
+        <a href="/2017/10/10/XTU1272Robot/" class="archive-article-date">
+  	<time datetime="2017-10-09T16:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Robot<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1272">http://202.197.224.59/exam/index.php/problem/read/id/1272</a><br>题目描述</p>
+<p>机器人一开始站在原点，可以上下左右（分别用“UDLR”表示）移动，每次移动一步。Estrella想知道对于某个指令序列，如果把某一种指令全部替换成另一种指令，新的指令序列可以让机器人回到原点。</p>
+<p>输入</p>
+<p>存在多个样例，每个样例一行，为一条指令序列，长度不超过200。</p>
+<p>输出</p>
+<p>每行输出一个样例的结果，可以输出“Yes”，否则输出“No”。</p>
+<p>样例输入</p>
+<p>LD<br>LLDDD</p>
+<p>样例输出</p>
+<p>Yes<br>No</p>
+<p>思路：记录各种操作出现的次数，然后暴力判断即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    string s;</span><br><span class="line">    vector&lt;int&gt; a;</span><br><span class="line">    while(cin&gt;&gt;s)</span><br><span class="line">    &#123;</span><br><span class="line">        a.clear();</span><br><span class="line">        int l&#x3D;0,r&#x3D;0,u&#x3D;0,d&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s[i]&#x3D;&#x3D;&#39;L&#39;)l++;else if(s[i]&#x3D;&#x3D;&#39;R&#39;)r++;</span><br><span class="line">            else if(s[i]&#x3D;&#x3D;&#39;U&#39;)u++;else if(s[i]&#x3D;&#x3D;&#39;D&#39;)d++;</span><br><span class="line">        &#125;</span><br><span class="line">        int ok&#x3D;0;</span><br><span class="line">        if((l+u&#x3D;&#x3D;r&amp;&amp;!d)||(l+d&#x3D;&#x3D;r&amp;&amp;!u))</span><br><span class="line">            ok&#x3D;1;</span><br><span class="line">        if((r+u&#x3D;&#x3D;l&amp;&amp;!d)||(r+d&#x3D;&#x3D;l&amp;&amp;!u))</span><br><span class="line">            ok&#x3D;1;</span><br><span class="line">        if((l+u&#x3D;&#x3D;d&amp;&amp;!r)||(r+u&#x3D;&#x3D;d&amp;&amp;!l))</span><br><span class="line">            ok&#x3D;1;</span><br><span class="line">        if((l+d&#x3D;&#x3D;u&amp;&amp;!r)||(r+d&#x3D;&#x3D;u&amp;&amp;!l))</span><br><span class="line">            ok&#x3D;1;</span><br><span class="line">        cout&lt;&lt;((ok)?&quot;Yes\n&quot;:&quot;No\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">Problem: 1272   User: 2016551517 </span><br><span class="line">Memory: 1376K  Time: 31MS </span><br><span class="line">Language: G++  Result: Accepted </span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/XTU1272Robot/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -701,9 +1157,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

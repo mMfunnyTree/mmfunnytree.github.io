@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>操作系统学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="中断和异常概念 中断发生时，CPU进入核心态，当前执行的进程暂停，内核对中断进行处理 中断是让CPU从用户态切换到核心态的唯一方法，使操作系统获得计算机的控制权 用户态就是应用程序的活动区间，当它们需要使用I&#x2F;O资源、CPU资源时，需要进行系统调用 内核从本质上来说就是控制计算机各类资源的软件，为应用程序提供运行环境  分类内中断：来自CPU内部，跟当前执行指令有关（指令错误，缺页处理、trap）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统学习笔记">
+<meta property="og:url" content="http://example.com/2019/08/09/OS/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="中断和异常概念 中断发生时，CPU进入核心态，当前执行的进程暂停，内核对中断进行处理 中断是让CPU从用户态切换到核心态的唯一方法，使操作系统获得计算机的控制权 用户态就是应用程序的活动区间，当它们需要使用I&#x2F;O资源、CPU资源时，需要进行系统调用 内核从本质上来说就是控制计算机各类资源的软件，为应用程序提供运行环境  分类内中断：来自CPU内部，跟当前执行指令有关（指令错误，缺页处理、trap）">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-09T03:11:48.000Z">
+<meta property="article:modified_time" content="2019-08-10T15:04:10.033Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,497 +155,265 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OS" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
+    <h1 class="article-title" itemprop="name">
+      操作系统学习笔记
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
+        
+        <a href="/2019/08/09/OS/" class="archive-article-date">
   	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="中断和异常"><a href="#中断和异常" class="headerlink" title="中断和异常"></a>中断和异常</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>中断发生时，CPU进入核心态，当前执行的进程暂停，内核对中断进行处理</li>
+<li>中断是让CPU从用户态切换到核心态的唯一方法，使操作系统获得计算机的控制权</li>
+<li>用户态就是应用程序的活动区间，当它们需要使用I/O资源、CPU资源时，需要进行系统调用</li>
+<li>内核从本质上来说就是控制计算机各类资源的软件，为应用程序提供运行环境</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>内中断：来自CPU内部，跟当前执行指令有关（指令错误，缺页处理、trap）<br>外中断，来自CPU外部，跟当前执行指令无关（I/O反馈等）</p>
+<h1 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程 = 程序段（程序代码）+ 数据段 + PCB（进程控制块）<br>PCB：进程ID；用户ID；进程状态和执行优先级；资源指针；寄存器，如记录当前程序执行到了哪句指令。</p>
+<p>进程状态：运行态（占有CPU并运行）、就绪态（万事俱备，只欠CPU）、阻塞态（等待某一事件）</p>
+<p>创建进程：分配独立资源，创建PCB<br>销毁进程：回收资源，撤销PCB</p>
+<p>就绪-&gt;运行    进程调度<br>运行-&gt;就绪    时间片轮转，或者被高优先级进程抢占<br>运行-&gt;阻塞    请求资源分配，或等待事件发生<br>阻塞-&gt;就绪    资源到手，只差CPU</p>
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><ul>
+<li><p>共享存储，消息传递，管道等</p>
+</li>
+<li><p>进程是资源分配的基本单位，各个进程之间资源相对独立</p>
+</li>
+</ul>
+<h3 id="共享空间"><a href="#共享空间" class="headerlink" title="共享空间"></a>共享空间</h3><p>共享空间的访问是互斥的，基于数据结构的分享和基于存储区的分享</p>
+<h3 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h3><p>管道其实就是一个用于连接读写进程的共享文件，在内存中开辟一个固定大小的缓冲区</p>
+<ul>
+<li>半双工通信（某个时间段只能实现单向传输，如需双向同时传输，可以设两个管道）</li>
+<li>进程访问管道是互斥的</li>
+<li>没写完不能读，没读完不能写</li>
+<li>最多只能有一个读进程</li>
+</ul>
+<h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p>以格式化消息为单位，消息包括：消息头，消息体</p>
+<p>消息头包括发送进程ID，接收进程ID，消息类型、长度等内容（类似于报头）</p>
+<p>每个进程都有一个消息缓冲队列，可以直接放到接收方的队列<br>（还可以一个信箱作为中间载体，管理进程间的消息收发）</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>有的进程可能需要同时做很多事，但传统进程只能串行执行某一程序段，引入线程，增加并发度</p>
+<p>引入线程后，提高了并发度，减少了系统开销，切换线程时不需要切换进程环境，所以开销小</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li>是CPU调度的基本单位</li>
+<li>有线程ID和线程控制块TCB</li>
+<li>同一进程的不同线程共享进程资源</li>
+<li>同一进程的不同线程通信无需系统干预</li>
+<li>同一进程的线程切换不引起进程切换</li>
+<li>切换同一进程的线程，开销小</li>
+</ul>
+<h2 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h2><p>进程拥有独立的内存空间，当进程崩溃时不会影响其他进程，而同一进程的线程之间内存共享，当线程崩溃时会导致进程崩溃，所以多进程程序相较于多线程程序有更好的健壮性；<br>多线程程序的并发效率更高，对于一些需要同时进行又要共享数据的并发操作，只能用线程。</p>
+<h1 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h1><p>资源数量并不能满足为多进程同时服务的需求，因此处理机需要确定某种规则来合理决定进程执行的顺序。</p>
+<ul>
+<li><p>先来先服务<br>根据作业到达的时间先后顺序进行服务<br>非抢占式<br>算法简单、但容易让短作业体验极差<br>不会饥饿</p>
+</li>
+<li><p>短作业优先<br>最少平均带权周转时间<br>导致饥饿</p>
+</li>
+<li><p>高响应比优先<br>折合考虑等待时间和运行时间<br>不会饥饿</p>
+</li>
+<li><p>时间片轮转<br>若未能在时间片内运行完，被抢占<br>时间片太大：先来先服务<br>时间片太小：进程切换频繁，系统花费大量时间处理进程切换</p>
+</li>
+<li><p>优先级调度<br>有抢占式和非抢占式<br>动态优先级和静态优先级</p>
+</li>
+<li><p>多级反馈队列</p>
+</li>
+</ul>
+<h1 id="管程解决生产者消费者问题"><a href="#管程解决生产者消费者问题" class="headerlink" title="管程解决生产者消费者问题"></a>管程解决生产者消费者问题</h1><p>1.定义共享数据（比如生产者消费者中的缓冲区）<br>2.设定一些访问共享数据的入口，并保证只有通过入口才能访问到共享数据<br>3.每次只能有一个入口被访问，这些互斥特性是编译器实现的，不需程序员关心<br>4.访问完数据后，记得归还入口。</p>
+<p>通过函数封装的方法，让程序员不用关心复杂的细节，就能很方便的实现进程同步/互斥了。</p>
+<h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><p>异步性：并发执行的进程各自独立，速度未知</p>
+<p>进程同步机制，来实现进程并发时的限定顺序，保证正常执行<br>eg：管道通信的读写进程，并发异步，但需要保证写进程-&gt;读进程，所以需要引入同步制约关系</p>
+<h2 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h2><p>系统中某些资源在一个时间段内只能提供给一个进程访问<br>一个时间段内只能提供给一个进程访问的资源，叫做临界资源</p>
+<p>对临界资源访问过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line">&#x2F;&#x2F;进入区 检查是否还有临界资源，如果有，进入临界区，并且上锁</span><br><span class="line">&#x2F;&#x2F;临界区 访问临界资源</span><br><span class="line">&#x2F;&#x2F;退出区 解除锁</span><br><span class="line">&#x2F;&#x2F;剩余区 其他处理</span><br><span class="line">&#125;while(true)</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>为实现对临界资源的互斥访问，又要保证系统整体性能：</p>
+<ul>
+<li>空闲让进，临界区空闲时让进程进入</li>
+<li>忙则等待，已被占用时让进程有限等待</li>
+<li>有限等待，应保证在有限时间内能进入临界区，不会饥饿</li>
+<li>让权等待，当进程不能进入临界区时，释放CPU，避免忙等（不要占用处理机）</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><ul>
+<li><p>单标识法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int turn &#x3D; 0;&#x2F;&#x2F;表示当前允许进入临界区的进程号</span><br></pre></td></tr></table></figure>
+<p>违背空闲让进原则，只有当turn指向的进程完成访问后才修改turn的值，这时候该进程如果占用了且不访问，就造成别的进程不能访问。</p>
+</li>
+<li><p>双标志前检查法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool flag[2] 标记各进程是否想进入，并且检查其他进程是否进入</span><br></pre></td></tr></table></figure>
+<p>违背忙则等待原则，因为一开始都是false，然后同时检查，执行read还没来得及write，于是同时进入。</p>
+</li>
+<li><p>双标志后检查法<br>可能导致饥饿</p>
+</li>
+</ul>
+<p>其实互斥代码实现中，也存在一些问题，由于进程异步性导致一系列问题。</p>
+<ul>
+<li>petersen算法</li>
+</ul>
+<p>1.主动争取<br>2.主动谦让<br>3.检查对方是否也想要，且最近是不是自己谦让<br>可能忙等。</p>
+<ul>
+<li>在双标志检查法中，检查和上锁操作无法一气呵成，导致两个进程可能同时进入临界区</li>
+<li>所有方法都无法实现让权等待原则。</li>
+</ul>
+<h3 id="硬件实现"><a href="#硬件实现" class="headerlink" title="硬件实现"></a>硬件实现</h3><ul>
+<li><p>中断屏蔽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">关中断&#x2F;&#x2F;进程开始访问临界区到结束访问这段时间里不可被中断，也就不会发生进程切换</span><br><span class="line">临界区</span><br><span class="line">开中断</span><br></pre></td></tr></table></figure>
+<p>简单高效，但不适用于多处理机，不适用于用户进程，只适用于内核进程（内核态指令）</p>
+</li>
+<li><p>TestAndSet 指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool TestAndSet(bool *lock)&#123;</span><br><span class="line">    bool old &#x3D; *lock;</span><br><span class="line">    *lock &#x3D; true;</span><br><span class="line">    return old;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">while(TestAndSet(&amp;lock));</span><br><span class="line">&#x2F;&#x2F;临界区</span><br><span class="line">lock &#x3D; false;</span><br><span class="line">&#x2F;&#x2F;剩余区</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>一开始是false，则返回false，进入临界区<br>一开始是true，则一直是true，直到访问临界区的进程执行lock=false的指令</p>
+<p>TSL指令把上锁和解锁变成了一气呵成的原子操作，实现简单，使用于多处理机环境<br>不满足让权等待原则，当进入while循环后不会让出CPU，从而出现忙等。</p>
+<ul>
+<li>swap指令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bool old &#x3D; true</span><br><span class="line">while(old &#x3D;&#x3D; true)swap(lock , old);</span><br><span class="line">&#x2F;&#x2F;临界区</span><br><span class="line">lock &#x3D; false;</span><br><span class="line">&#x2F;&#x2F;剩余区</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h3><p>原语指的是一气呵成执行，不可被中断的程序段<br>信号量可以看作是一个变量，可以用来表示一种资源</p>
+<ul>
+<li>wait 和 signal，简称为p v操作 （一对原语）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;以打印机为例子</span><br><span class="line">int s&#x3D;1;</span><br><span class="line">void wait(int s)&#123;&#x2F;&#x2F;相当于进入区</span><br><span class="line">    while(s&lt;&#x3D;0);</span><br><span class="line">    s--;</span><br><span class="line">&#125;</span><br><span class="line">void signal(int s)&#123;&#x2F;&#x2F;相当于退出区</span><br><span class="line">    s++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+类似于双标志先检查法，但由于是原语操作，避免了并发异步导致的问题<br>不满足让权等待原则，会出现忙等</li>
+</ul>
+<p>以上是整型信号量，如果采用记录型信号量，可避免忙等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">    int s;</span><br><span class="line">    struct process *queue;</span><br><span class="line">&#125;semaphore;</span><br><span class="line">void wait(semaphore s)&#123;</span><br><span class="line">    --s.s;</span><br><span class="line">    if(s.s&lt;0)block(s.queue);</span><br><span class="line">    &#x2F;&#x2F;block原语可以让队首进程从运行态进入阻塞态</span><br><span class="line">&#125;</span><br><span class="line">void signal(semaphore s)&#123;</span><br><span class="line">    ++s.s;</span><br><span class="line">    if(s.s&lt;&#x3D;0)wakeup(s.queue);</span><br><span class="line">    &#x2F;&#x2F;wakeup原语唤醒队列里等待的进程，从阻塞态进入就绪态</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>遵循了让权等待原则，不会出现忙等现象</p>
+<h2 id="信号量机制实现同步"><a href="#信号量机制实现同步" class="headerlink" title="信号量机制实现同步"></a>信号量机制实现同步</h2><ul>
+<li>初始化同步信号量为0</li>
+<li>在前操作之后进行signal，在后操作之前进行wait<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int s&#x3D;0;</span><br><span class="line">progress 1</span><br><span class="line">&#x2F;&#x2F;1</span><br><span class="line">&#x2F;&#x2F;2</span><br><span class="line">wait(s)</span><br><span class="line">&#x2F;&#x2F;3</span><br><span class="line"></span><br><span class="line">progress 2</span><br><span class="line">&#x2F;&#x2F;4</span><br><span class="line">wait(s)</span><br><span class="line">&#x2F;&#x2F;5</span><br><span class="line">&#x2F;&#x2F;6</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h1><ul>
+<li>缓冲区没满，生产者才能把产品放入缓冲区，否则必须等待（同步问题）</li>
+<li>缓冲区没空，消费者才能把产品拿出缓冲区，否则必须等待（同步问题）</li>
+<li>缓冲区是临界资源，各进程必须互斥的访问，不然可能生产者产品覆盖（互斥问题）</li>
+</ul>
+<p>问题转化为：<br>生产者每次消耗一个空闲缓冲区，释放一个产品；<br>消费者每次消耗一个产品，释放一个缓冲区；<br>消耗就是wait操作，释放就是signal操作；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1;&#x2F;&#x2F;实现临界区访问互斥</span><br><span class="line">semaphore empty &#x3D; n;&#x2F;&#x2F;记录空闲缓冲区数量</span><br><span class="line">semaphore full  &#x3D; 0;&#x2F;&#x2F;记录填满的缓冲区数量</span><br><span class="line"></span><br><span class="line">生产者()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        produce;</span><br><span class="line">        wait(empty);</span><br><span class="line">        wait(mutex);</span><br><span class="line">        put produce;</span><br><span class="line">        signal(mutex);</span><br><span class="line">        signal(full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">消费者()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        consume;</span><br><span class="line">        wait(full);</span><br><span class="line">        wait(mutex);</span><br><span class="line">        get produce;</span><br><span class="line">        signal(mutex);</span><br><span class="line">        signal(empty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>实现互斥的P操作一定要放在实现同步的P操作之后，这样才能避免死锁</strong></li>
+</ul>
+<h1 id="写者-读者问题"><a href="#写者-读者问题" class="headerlink" title="写者-读者问题"></a>写者-读者问题</h1><p>读者只读不修改缓冲区，而写者会修改缓冲区，因此读者与读者之间不存在互斥关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1;&#x2F;&#x2F;表示当前是否有文件在进行访问</span><br><span class="line">int count&#x3D;0;&#x2F;&#x2F;表示当前有几个读者</span><br><span class="line">semaphore mutex &#x3D; 1;&#x2F;&#x2F;因为count计算不是原语，可能导致读者不能同时读，因此需要互斥访问count</span><br><span class="line">&#x2F;&#x2F; semaphore w &#x3D; 1;&#x2F;&#x2F;避免写进程饿死，写进程优先</span><br><span class="line">writer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        &#x2F;&#x2F;P(w);</span><br><span class="line">        P(rw);</span><br><span class="line">        write;</span><br><span class="line">        V(rw);</span><br><span class="line">        &#x2F;&#x2F;V(w);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        &#x2F;&#x2F;P(w);</span><br><span class="line">        P(mutex);</span><br><span class="line">        if(count&#x3D;&#x3D;0)P(rw);</span><br><span class="line">        count++;</span><br><span class="line">        V(mutex);</span><br><span class="line">        &#x2F;&#x2F;V(w);</span><br><span class="line">        read;</span><br><span class="line">        P(mutex);</span><br><span class="line">        count--;</span><br><span class="line">        if(count&#x3D;&#x3D;0)V(rw);</span><br><span class="line">        V(mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写进程可能饿死，这时读进程是优先的，加上注释内容后，写进程一旦进入P(w)，就不会有其他新读者进入</p>
+<p>所谓写优先，其实是公平的先来先服务，保证了写者不会饿死。</p>
+<h1 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h1><ul>
+<li>可以先选择一个人不吃饭，那么剩余的4个人一定能避免死锁并完成吃饭动作；</li>
+<li>可以让奇数编号的哲学家拿左边的筷子，而偶数编号的哲学家拿右边的筷子，那么，只要相邻两个哲学家都想吃饭的时候，一定有一个被阻塞。</li>
+</ul>
+<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><p>在哲学家进餐问题中就可能出现死锁，因为每个哲学家都因在等待资源而被阻塞，即发生死锁。</p>
+<p>在并发环境下，各个进程因为竞争资源造成一种互相等待对方手里资源，从而无法向前推进的现象，发生死锁后如果没有外力干涉，这些进程永远无法推进。</p>
+<p>死锁、饥饿和死循环的区别：<br>它们都是进程遇到某种故障导致无法向前推进的现象，但死锁至少有两个或以上的进程同时死锁，发生死锁的进程一定处于阻塞态；而饥饿是一个进程长期得不到资源或处理机，可以在阻塞，也可以是就绪态；死锁和饥饿是操作系统的问题，死循环是程序写出来的bug或者是程序员有意为之。</p>
+<h2 id="死锁条件"><a href="#死锁条件" class="headerlink" title="死锁条件"></a>死锁条件</h2><ul>
+<li>互斥条件，只有对互斥资源争抢才会导致死锁</li>
+<li>不可剥夺，资源只能由进程主动释放，不能由其他进程强行夺走</li>
+<li>请求和保持，进程请求当前资源被占用，而手里又保持资源，这就是保持并等待</li>
+<li>循环等待，至少2个进程的请求资源占用并形成一个环</li>
+</ul>
+<p>对不可剥夺资源的不合适分配，就会导致死锁。</p>
+<h2 id="处理策略"><a href="#处理策略" class="headerlink" title="处理策略"></a>处理策略</h2><h3 id="预防死锁-破环产生死锁的四个条件"><a href="#预防死锁-破环产生死锁的四个条件" class="headerlink" title="预防死锁//破环产生死锁的四个条件"></a>预防死锁//破环产生死锁的四个条件</h3><ul>
+<li>互斥条件 把互斥使用的设备改造成可以逻辑上共享的设备，应用并不广</li>
+<li>不可剥夺 当进程得不到请求的新资源时，马上释放手里所有资源</li>
+<li>请求和保持 静态分配，如果投入运行就能结束，就全部分配给它</li>
+<li>循环等待 顺序资源编号法，拥有小编号资源，才能申请大编号资源</li>
+</ul>
+<h3 id="避免死锁-银行家算法"><a href="#避免死锁-银行家算法" class="headerlink" title="避免死锁//银行家算法"></a>避免死锁//银行家算法</h3><p>熟，略。</p>
+<h3 id="死锁检测和解除-系统操作"><a href="#死锁检测和解除-系统操作" class="headerlink" title="死锁检测和解除//系统操作"></a>死锁检测和解除//系统操作</h3><p>对资源和进程建有向图</p>
+<p>如果按照分析能够消除所有有向边，则不存在死锁，否则存在死锁（相当于能找到一个安全序列）</p>
+<p>检测出死锁后：<br>1.资源剥夺法，挂起死锁进程，抢占它的资源（要考虑长时间挂起的饥饿）<br>2.撤销进程法，直接强制撤销进程，并剥夺资源，简单粗暴，但功亏一篑<br>3.进程回退法，选择进程进行回退到死锁前的版本，这就要求系统记录历史版本</p>
+<p>那么要考虑：<br>1.进程优先级<br>2.进程执行时间<br>3.还要多久完成<br>4.用了多少资源<br>5.进程是批处理还是交互式的（别干交互式的，会让用户不爽）</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="内存连续分配"><a href="#内存连续分配" class="headerlink" title="内存连续分配"></a>内存连续分配</h2><ul>
+<li><p>单一连续分配<br>分为系统区和用户区，这种分配方式只支持单一程序运行，不支持多道程序运行<br>优点：简单，无外部碎片，不一定需要内存保护<br>缺点：只能用于单用户，单任务；有内部碎片（分配给进程的内存区域有没用到的部分），存储器利用率低</p>
+</li>
+<li><p>固定分区分配<br>为支持多道批处理系统，将用户空间划分成固定大小的区间，每个分区只装入一道作业<br>相等分区：缺乏灵活性，适用于作业对象相同的场合<br>不等分区：提高灵活性，可以满足不同大小进程需求<br>优点：实现简单，无外部碎片<br>缺点：产生内部碎片；如果超大程序进来，可能要使用覆盖技术解决，会降低性能</p>
+</li>
+<li><p>动态分区分配<br>根据进程大小动态地建立分区<br>没有内部碎片，但有外部碎片<br>内部碎片：分配给进程的内存区域有没用到的部分<br>外部碎片：内存中某些空闲分区由于太小，导致难以利用</p>
+</li>
+</ul>
+<h2 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h2><ul>
+<li>时间局部性，最近执行的某条指令或最近访问的某个数据，在接下来可能再次访问</li>
+<li>空间局部性，如果程序访问了某个存储单元，那么接下来可能会访问附近的存储单元</li>
+</ul>
+<h2 id="快表"><a href="#快表" class="headerlink" title="快表"></a>快表</h2><p>页表存放在内存中，快表存放在更加高速的存储器中<br>根据局部性原理，可以将最近使用过的页表项放入快表<br>在接下来先看快表，如果快表命中，就不需要再访问内存了，提高了效率<br>如果快表没命中，再查询内存中的页表</p>
+<h1 id="基本分段存储管理"><a href="#基本分段存储管理" class="headerlink" title="基本分段存储管理"></a>基本分段存储管理</h1><p>进程的地址空间，是按照程序自身逻辑关系划分成若干个段的，每个段都有段名，每个段从0开始编址</p>
+<p>内存分配原则：每个段在内存中占据连续空间，但段与段之间可以不相邻</p>
+<p>比如<br>main函数 0号段 放在 40k-42k<br>X函数    1号段 放在 50k-51k<br>D段      2号段 放在 60k-65k</p>
+<p>由于按照逻辑功能模块划分，会使得用户编程更方便，程序可读性更高</p>
+<p>分段地址结构：段号 + 段内地址（偏移量）<br>段号长度决定程序最多被分成多少段，段内地址长度决定每个段的最大长度</p>
+<p>段表：建立了逻辑段到实际物理内存的一个映射关系</p>
+<h2 id="分段、分页的对比"><a href="#分段、分页的对比" class="headerlink" title="分段、分页的对比"></a>分段、分页的对比</h2><p>页是信息的物理单位，分页的主要目的是为了实现离散分配，提高内存利用率，分页是系统管理的需要，<strong>对用户不可见</strong></p>
+<p>段是信息的逻辑单位，分段能够更好的满足用户需求，<strong>分段对用户是可见的</strong>，用户编程时需要显式给出段名</p>
+<p>页的大小固定，由系统决定；<br>段的大小取决于用户编写的程序；</p>
+<p>分页的用户进程地址空间是一维的，只需要给出一个记忆符就可以表示一个地址；<br>分段的用户进程地址空间是二维的，既要给出段名，也要给出段内地址，才能表示一个地址；</p>
+<p>分段比分页更容易实现信息的共享和保护<br>比如生产者消费者问题中，对于临界资源的判断的代码（纯代码、可重入代码）可以作为一个可共享的段，所有生产者和消费者都可以“不修改”的共用这个段，这个段的信息是允许其他进程访问的；<br>但如果采用分页存储，就会造成难以实现共享。</p>
+<h2 id="段页式管理"><a href="#段页式管理" class="headerlink" title="段页式管理"></a>段页式管理</h2><p>一个进程，先按照逻辑进行分段，然后对于各个段再进行分页，再将内存划分为相同大小的物理块</p>
+<p>逻辑地址结构：段号 + 页号 + 页内偏移量</p>
+<h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><ul>
+<li>传统存储方式（连续分配、非连续分配）的缺点：<br>一次性全部装入内存后才能运行，导致大作业无法运行；<br>大量作业不能同时运行，导致并发度下降；<br>由于局部性原理，实际上装入的很多数据都是不会被访问的，这就导致内存中驻留了大量的暂时用不到的数据，浪费内存资源；</li>
+</ul>
+<p>基于局部性原理，提出虚拟内存的概念</p>
+<p>高速缓冲思想就是对局部性原理的利用，<br>1.将近期会频繁访问到的数据放到高速存储器，近期暂时用不到的数据放在低速存储器中。<br>2.如果要访问的数据不在内存，就要把数据从外存调入内存<br>3.如果内存不够了，要把暂时用不到的信息换出到外存</p>
+<p>虚拟内存：在操作系统管理下，用户看来似乎有一个比实际内存大得多的内存，实际内存大小没有变</p>
+<p>虚拟内存的特征：</p>
+<ul>
+<li>多次性：无需将作业一次性装入内存，可以多次装入内存</li>
+<li>对换性：作业运行时，允许将作业换入换出</li>
+<li>虚拟性：逻辑上扩充了内存容量</li>
+</ul>
+<p>虚拟内存的实现，建立在<strong>离散分配</strong>的内存管理方式基础上：</p>
+<ul>
+<li>请求分页，请求分段，请求段页式（<strong>缺页中断</strong>）</li>
+<li>操作系统负责调入调出：实现请求调页/调段功能，实现页面/段置换功能</li>
+</ul>
+<h2 id="缺页中断机制"><a href="#缺页中断机制" class="headerlink" title="缺页中断机制"></a>缺页中断机制</h2><p>每当要访问的页不在内存时，产生一个缺页中断，进程进入阻塞态，直到调页完成后恢复就绪态</p>
+<p>如果内存中有空闲块，直接把页面放入空闲块便可；<br>否则需要调用页面置换算法选择一个页面进行淘汰，如果这个页面在内存期间被修改过，就要写回外存；</p>
+<h1 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h1><ul>
+<li><p>最佳置换：找到最长时间内不会被访问的页面<br>（理论算法，因为无法提前得知下一次访问页面的时间）</p>
+</li>
+<li><p>先进先出：淘汰最早进入内存的页面</p>
+</li>
+<li><p>最近最久未使用：每次淘汰的是最近最久没使用过的页面</p>
+</li>
+</ul>
+<h2 id="颠簸"><a href="#颠簸" class="headerlink" title="颠簸"></a>颠簸</h2><p>颠簸本质上是指频繁的页调度行为，具体来讲，进程发生缺页中断，这时，必须置换某一页。<br>然而，其他所有的页都在使用，它置换一个页，但又立刻再次需要这个页。<br>因此，会不断产生缺页中断，导致整个系统的效率急剧下降，这种现象称为颠簸（抖动）。</p>
+<p>如果是因为页面替换策略失误，可以修改替换算法来解决这个问题；<br>如果是因为运行的程序太多，造成程序无法同时将所有频繁访问的页面调入内存，则要降低多道程序的数量；<br>否则，还剩下两个办法：终止该进程或增加物理内存容量。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -652,7 +425,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -665,20 +438,112 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/08/09/OS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/08/11/CPP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CPP学习笔记
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/08/04/SudoTest/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数独破解 安卓开发练习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +567,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

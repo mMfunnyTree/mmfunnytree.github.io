@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>计算机网络学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="前言由于大二期间（不懂事）没怎么听过计算机网络，以及后来的TCP&#x2F;IP协议的课，现在网络原理基础非常薄弱。趁着暑假在校打多校联合训练的空隙，重拾计算机网络，并有针对性的对传输层、应用层以及网络层进行深入复习。 该篇博客主要记录复习过程中的一些知识点。侧重于协议原理和算法，对网络安全，以及偏底层的数据链路层等不作深入学习，如果有兴趣有时间再来填这个坑。 传输层TCP 和 UDP 的应用场景TCP是基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络学习笔记">
+<meta property="og:url" content="http://example.com/2019/07/30/ComputerNetwork/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言由于大二期间（不懂事）没怎么听过计算机网络，以及后来的TCP&#x2F;IP协议的课，现在网络原理基础非常薄弱。趁着暑假在校打多校联合训练的空隙，重拾计算机网络，并有针对性的对传输层、应用层以及网络层进行深入复习。 该篇博客主要记录复习过程中的一些知识点。侧重于协议原理和算法，对网络安全，以及偏底层的数据链路层等不作深入学习，如果有兴趣有时间再来填这个坑。 传输层TCP 和 UDP 的应用场景TCP是基">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-30T15:11:48.000Z">
+<meta property="article:modified_time" content="2019-08-09T02:31:52.585Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机网络原理">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,535 +155,359 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ComputerNetwork" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络学习笔记
+    </h1>
+  
+
+        
+        <a href="/2019/07/30/ComputerNetwork/" class="archive-article-date">
+  	<time datetime="2019-07-30T15:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于大二期间（不懂事）没怎么听过计算机网络，以及后来的TCP/IP协议的课，现在网络原理基础非常薄弱。趁着暑假在校打多校联合训练的空隙，重拾计算机网络，并有针对性的对传输层、应用层以及网络层进行深入复习。</p>
+<p>该篇博客主要记录复习过程中的一些知识点。侧重于协议原理和算法，对网络安全，以及偏底层的数据链路层等不作深入学习，如果有兴趣有时间再来填这个坑。</p>
+<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h2 id="TCP-和-UDP-的应用场景"><a href="#TCP-和-UDP-的应用场景" class="headerlink" title="TCP 和 UDP 的应用场景"></a>TCP 和 UDP 的应用场景</h2><p>TCP是基于连接的可靠协议，适用于对数据准确性高、对速度要求相对低的场景，比如文件传输。<br>而UDP是无连接的，相对TCP来说更快，适用于对通讯速度相对更高、对数据准确性相对低的场景，如视频聊天。</p>
+<h2 id="传输层和应用层之间的联系"><a href="#传输层和应用层之间的联系" class="headerlink" title="传输层和应用层之间的联系"></a>传输层和应用层之间的联系</h2><ul>
+<li>端口复用</li>
+<li>http = tcp + 80</li>
+<li>https = tcp + 443</li>
+<li>ftp = tcp + 21</li>
+<li>smtp = tcp + 25  //收邮件</li>
+<li>pop3 = tcp + 110 //发邮件</li>
+<li>rdp = tcp + 3389 //远程桌面</li>
+<li>dns = udp + 53 or tcp + 53</li>
+</ul>
+<h2 id="应用层协议和服务之间的关系"><a href="#应用层协议和服务之间的关系" class="headerlink" title="应用层协议和服务之间的关系"></a>应用层协议和服务之间的关系</h2><ul>
+<li>对外服务运行后，在TCP或UDP的某个端口保持侦听客户端请求。</li>
+<li>用端口来定位服务，（比如80就说明要访问web服务）用IP地址来定位计算机。</li>
+</ul>
+<h2 id="UDP报文"><a href="#UDP报文" class="headerlink" title="UDP报文"></a>UDP报文</h2><ul>
+<li>目标端口、源端口、校验和</li>
+<li>在网络层的时候还会添加伪首部：源地址、目标地址</li>
+<li>数据包</li>
+</ul>
+<h2 id="TCP概述"><a href="#TCP概述" class="headerlink" title="TCP概述"></a>TCP概述</h2><ul>
+<li>可靠传输</li>
+<li>流量控制</li>
+<li>避免网络拥塞</li>
+<li>字节流</li>
+<li>全双工通信</li>
+<li>TCP的点到点连接，端点是套接字，端口号+IP地址就构成了套接字</li>
+</ul>
+<h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h2><ul>
+<li>无差错情况：发（确认）-&gt;发（确认）-&gt;发（直到收到回复才会继续发送，否则停止等待）</li>
+<li>超时重传：发（丢失）…等到超时阈值-&gt;重发（确认）-&gt;发（默认会丢，阈值内没收到回复认为没收到）</li>
+<li>确认丢失：A发给B，B收到了，B发的确认A没收到，所以A认为要超时重传，此时B重复确认</li>
+<li>确认迟到：A发给B，B收到了，B发的确认迟到了很久，A认为超时重传，B收到且回复，若此时迟到的回复也到了，A就忽略迟到的回复。</li>
+</ul>
+<p>只要你没说你收到了，我就认为你没收到。利用这种确认重传的机制，在不可靠的网络传输上，实现了可靠的通信。<br>这种方法虽然简单，但是信道利用率太低。</p>
+<h2 id="流水线传输"><a href="#流水线传输" class="headerlink" title="流水线传输"></a>流水线传输</h2><ul>
+<li>通过连续发送多个分组，不必每次发出一个包都等待确认，提高信道利用率</li>
+<li>接收方采用累计确认的方式，不必对每个包都回复，只需要回复下一个“要谁”。</li>
+</ul>
+<h2 id="TCP首部格式"><a href="#TCP首部格式" class="headerlink" title="TCP首部格式"></a>TCP首部格式</h2><ul>
+<li><p>源端口（2字节），目的端口（2字节）</p>
+</li>
+<li><p>序列号（4字节）//当前段的第一个字节在整个文件里是几个字节</p>
+</li>
+<li><p>确认号（4字节）//已收到结尾为y编号的段，现在请发序列号为y+1的段</p>
+</li>
+<li><p>数据偏移（4bit）//最多偏移40字节</p>
+</li>
+<li><p>固定首部有20字节</p>
+</li>
+<li><p>URG 紧急标识，置为1时不用排队</p>
+</li>
+<li><p>ACK 置为1时，确认号才有效，否则无效</p>
+</li>
+<li><p>SYN 用于连接请求时同步标识</p>
+</li>
+<li><p>RST 异常中断连接</p>
+</li>
+<li><p>FIN 终止连接标识</p>
+</li>
+<li><p>PSH 推送标识，接收方收到后直接推送给上层</p>
+</li>
+<li><p>通过SYN可以攻击服务器，一直请求连接，并使用不存在的源地址。</p>
+</li>
+</ul>
+<h2 id="接收窗口确定发送窗口"><a href="#接收窗口确定发送窗口" class="headerlink" title="接收窗口确定发送窗口"></a>接收窗口确定发送窗口</h2><ul>
+<li>接收缓存决定发送缓存的临界值，不能超，不然会导致接收方存不下（window size）。</li>
+<li>MSS 表示一个数据包最多的数据字节，再多就处理不了。</li>
+</ul>
+<h2 id="滑动窗口技术实现流量控制"><a href="#滑动窗口技术实现流量控制" class="headerlink" title="滑动窗口技术实现流量控制"></a>滑动窗口技术实现流量控制</h2><ul>
+<li>以字节为单位的滑动窗口技术</li>
+<li>不再stop.wait模式，只要窗口内还有字节就继续发送，窗口内的内容在被确认收到前不可删除</li>
+<li>接收方收到数据包后，累计确认，不需要一条一条回复</li>
+<li>接收方收到{1,2,3,4,5,6}和{10,11,12}，只需要 选择确认 就行，让发送方发送{7,8,9}</li>
+<li>超时重传时间的选择：$ newRTTs = (1-a)\times oldRTTs + a\times newRTT $</li>
+</ul>
+<h2 id="避免拥塞"><a href="#避免拥塞" class="headerlink" title="避免拥塞"></a>避免拥塞</h2><ul>
+<li><p>慢启动，初始化时拥塞窗口设为1，窗口单位使用报文段</p>
+</li>
+<li><p>设置慢启动门限，拥塞窗口大小按指数级增长</p>
+</li>
+<li><p>到达门限后，改变增长方式为线性增长</p>
+</li>
+<li><p>出现丢包（判断拥塞），计算新的慢启动门限，为拥塞大小的一半</p>
+</li>
+<li><p>重新慢启动，指数增长到新的门限后线性增长</p>
+</li>
+<li><p>无法完全避免，只能减轻或尽量避免</p>
+</li>
+<li><p>快重传，接收方认为{1,2}到了{4}也到了，说明3可能丢了，这时候避免长时间等待，迅速回复3个确认，表示尽快重传{3}，而不要等到超时重传</p>
+</li>
+<li><p>如果发送方连续收到3个确认，说明网络其实没太拥塞：快恢复</p>
+</li>
+<li><p>直接将拥塞窗口大小设置为门限，然后直接做线性增长（拥塞避免，加法增加）</p>
+</li>
+<li><p>那么重新慢启动就只在网络超时的情况下使用</p>
+</li>
+</ul>
+<h2 id="TCP三次握手的过程"><a href="#TCP三次握手的过程" class="headerlink" title="TCP三次握手的过程"></a>TCP三次握手的过程</h2><ul>
+<li>TCP做到的其实是：数据的尽力传送和故障的可靠通知，并不能保证一定送达。</li>
+<li>第一次握手，（ACK=0 seq=x SYN=1 ），进入SYN_SENT状态；</li>
+<li>第二次握手，（ACK=1 SYN=1 seq=y ack=x+1 ），进入SYN_RCVD状态；</li>
+<li>第三次握手，（ACK=1 ack=y+1）established状态。</li>
+</ul>
+<p>两次握手足以完成信息交换和确认畅通，为什么需要第三次握手呢？</p>
+<ul>
+<li>避免网络延迟带来资源浪费</li>
+</ul>
+<h2 id="TCP四次挥手的过程"><a href="#TCP四次挥手的过程" class="headerlink" title="TCP四次挥手的过程"></a>TCP四次挥手的过程</h2><ul>
+<li>第一次挥手，客户端主动(FIN=1，seq=u)，等待服务器确认；</li>
+<li>第二次挥手，服务器回复(ack=u+1, ACK=1,seq=v)此时服务器可能还有数据没法送完，客户端还要接收；</li>
+<li>第三次挥手，服务器已经发完，(FIN=1,ACK=1,seq=w,ack=u+1) ，释放TCP连接；</li>
+<li>第四次挥手，客户端(ACK=1,seq=u+1,ack=w+1)，断开连接。</li>
+</ul>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h2 id="DNS域名解析系统"><a href="#DNS域名解析系统" class="headerlink" title="DNS域名解析系统"></a>DNS域名解析系统</h2><p>网络通信本质是识别IP地址的，但IP地址很难记，于是有了DNS服务器，对域名解析成IP地址然后返回给主机。</p>
+<h3 id="解析过程"><a href="#解析过程" class="headerlink" title="解析过程"></a>解析过程</h3><ul>
+<li>在浏览器输入域名，操作系统首先会在host文件里查看有没有该域名的地址映射；</li>
+<li>然后查看本地DNS解析缓存里有没有这个域名的地址映射；</li>
+<li>如果都没有，就找到TCP/IP参数设置的首选DNS服务器，向DNS服务器进行查询；</li>
+<li>DNS服务器底下找不到，那么就采取询问根服务器的方式，根服务器就会告诉首选DNS服务器，这个顶级域名是谁来管理的，重复以上过程，直到找到域名；</li>
+<li>转发模式：问上一层，上一层不知道就再问上一层，直到返回结果。</li>
+</ul>
+<h2 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h2><p>动态主机配置，自动分配IP地址。</p>
+<ul>
+<li>发现本机没有任何IP地址设定，发送广播请求DHCP服务器分配个地址；</li>
+<li>DHCP服务器收到广播后回复一个地址；</li>
+<li>客户机对收到的回应选择一个进行请求；</li>
+<li>服务器确定请求以及约定租约；</li>
+</ul>
+<h2 id="HTTP超文本传输协议"><a href="#HTTP超文本传输协议" class="headerlink" title="HTTP超文本传输协议"></a>HTTP超文本传输协议</h2><ul>
+<li><p>万维网提供分布式服务</p>
+</li>
+<li><p>统一资源定位符 URL：协议，域名或IP地址，端口，资源目录等</p>
+</li>
+<li><p>基于TCP/IP</p>
+</li>
+<li><p>无状态的，对于事物处理没有记忆力，遇到需要前置信息时需要重传</p>
+</li>
+<li><p>客户端发送请求，服务器进行响应</p>
+</li>
+<li><p>简单快速，只需传送请求方法和路径，http服务器程序规模小，通信速度快</p>
+</li>
+<li><p>无状态的解决策略：keep-alive方法，设定只要不主动断开，就等到阈值达到才断开。</p>
+</li>
+</ul>
+<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><ul>
+<li><p>请求行，消息报头，请求正文</p>
+</li>
+<li><p>请求行：请求方法 统一资源标识符 HTTP版本 回车换行</p>
+</li>
+<li><p>GET 请求获取统一资源标识符资源（直接放URL里）</p>
+</li>
+<li><p>POST 在标识资源后附加新数据（打包传输）</p>
+</li>
+</ul>
+<h3 id="http响应"><a href="#http响应" class="headerlink" title="http响应"></a>http响应</h3><ul>
+<li><p>状态行，消息报头，响应正文</p>
+</li>
+<li><p>状态行：HTTP版本，响应状态代码，状态代码的文本描述</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1xx 提示信息，请求已接收，继续处理</span><br><span class="line">2xx 成功</span><br><span class="line">3xx 重定向，要完成请求需要更进一步操作</span><br><span class="line">4xx 客户端错误</span><br><span class="line">5xx 服务器错误</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">400 请求有语法错误</span><br><span class="line">401 请求未经授权</span><br><span class="line">403 拒绝提供服务</span><br><span class="line">404 请求资源不存在，URL错误</span><br><span class="line">500 服务器错误</span><br><span class="line">503 服务器异常，不能处理请求</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="http报头"><a href="#http报头" class="headerlink" title="http报头"></a>http报头</h3><p>这个点在<br><a target="_blank" rel="noopener" href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a><br>的网络通信部分有见过，通过对connection的状态进行设置，如no-cache,accept等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestProperty(&quot;content-Type&quot;,&quot;application&#x2F;json&quot;);</span><br><span class="line">&#x2F;&#x2F;设置希望拿到的数据类型</span><br><span class="line">connection.setRequestProperty(&quot;charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">&#x2F;&#x2F;设置希望拿到的数据集</span><br><span class="line">connection.setRequestProperty(&quot;Accept-charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>还有实体报头啥的（请求和响应都可以传送实体，这里申明资源信息）</p>
+<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>http的消息明文传输：<br>窃听风险（eavesdropping）：第三方可以获知通信内容。<br>篡改风险（tampering）：第三方可以修改通信内容。<br>冒充风险（pretending）：第三方可以冒充他人身份参与通信。</p>
+<p>https希望做到：<br>所有信息都是加密传播，第三方无法窃听。<br>具有校验机制，一旦被篡改，通信双方会立刻发现。<br>配备身份证书，防止身份被冒充。</p>
+<h4 id="加密策略"><a href="#加密策略" class="headerlink" title="加密策略"></a>加密策略</h4><p>对称加密就是直接用一组密钥对数据进行加密，如果黑客不知道密钥就没法解密。<br>缺点是：在多组客户端-服务器之间，维护的密钥数量庞大，维护成本大；容易泄露。</p>
+<p>非对称加密就是用公钥加密，用私钥解密，服务器把公钥公布。</p>
+<p>可能被黑客冒充服务器，发送假的公钥。</p>
+<p>使用SSL证书：在握手的时候展示SSL证书，包括发布机构、期限、公钥、签名、所有人等。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2050" class="archive-year">2050</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2050/01/18/AlgorithmTemplate/" class="archive-article-date">
-  	<time datetime="2050-01-18T06:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2050-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2050/01/18/AlgorithmTemplate/">算法竞赛模板整理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法竞赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机网络原理</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法竞赛模板//" class="article-tag-list-link color2">算法竞赛模板</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机网络原理//" class="article-tag-list-link color3">计算机网络原理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/Objective-C_reading/" class="archive-article-date">
-  	<time datetime="2020-03-17T07:02:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/Objective-C_reading/">精通Objective-C阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/iOS//" class="article-tag-list-link color4">iOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/07/30/ComputerNetwork/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/24/qiu-zhao/" class="archive-article-date">
-  	<time datetime="2019-09-24T11:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/qiu-zhao/">秋招面经整理（不定期更新）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/面试经历//" class="article-tag-list-link color5">面试经历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/begin15/" class="archive-article-date">
-  	<time datetime="2019-09-07T10:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/08/04/SudoTest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数独破解 安卓开发练习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/19/2019.07BDInterview/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019.07 头条安卓开发工程师-面试日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/begin15/">2019ICPC徐州 网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/xtu2019exam2/" class="archive-article-date">
-  	<time datetime="2019-09-01T11:30:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/xtu2019exam2/">湘潭大学2019年程序设计实践补考-验题日志</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/程序设计实践//" class="article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/begin14/" class="archive-article-date">
-  	<time datetime="2019-08-23T11:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/begin14/">2019CCPC网络赛 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/STLsource/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/STLsource/">STL源码剖析 阅读笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/begin13/" class="archive-article-date">
-  	<time datetime="2019-08-16T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/begin13/">2019/8/16 day13 解题日志</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">day cnt++系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/day-cnt//" class="article-tag-list-link color5">day cnt++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/11/CPP/" class="archive-article-date">
-  	<time datetime="2019-08-11T07:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/11/CPP/">CPP学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/09/OS/" class="archive-article-date">
-  	<time datetime="2019-08-09T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/09/OS/">操作系统学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/操作系统//" class="article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -702,8 +531,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
