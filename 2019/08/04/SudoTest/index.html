@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>数独破解 安卓开发练习 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言update:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊…… update: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。 https:&#x2F;&#x2F;mmfunnytree.github.io&#x2F;2019&#x2F;07&#x2F;15&#x2F;androidStudy&#x2F;#more （安卓学习笔记）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数独破解 安卓开发练习">
-<meta property="og:url" content="http://example.com/2019/08/04/SudoTest/index.html">
+<meta property="og:url" content="http://mmfunnytree.github.io/2019/08/04/SudoTest/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
 <meta property="og:description" content="前言update:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊…… update: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。 https:&#x2F;&#x2F;mmfunnytree.github.io&#x2F;2019&#x2F;07&#x2F;15&#x2F;androidStudy&#x2F;#more （安卓学习笔记）">
 <meta property="og:locale" content="zh_CN">
@@ -189,7 +189,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>update</strong>:  之前还真没仔细算过数独搜索求解的时间复杂度，总以为要跑很久，谁知道写完algo方法之后发现是瞬间出答案，唉，就当练练安卓了，丝毫没算法难度啊……</p>
 <p><strong>update</strong>: 代码已经贴在文章末尾，仅供参考（界面真的很丑啊，搜索部分的剪枝可以稍微看看）。</p>
-<p><a target="_blank" rel="noopener" href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a> （安卓学习笔记）<br>半个月零零碎碎的整理学习，现在打算通过实战项目来巩固。</p>
+<p><a href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a> （安卓学习笔记）<br>半个月零零碎碎的整理学习，现在打算通过实战项目来巩固。</p>
 <p>关于选题：本来想做博奕类游戏的<strong>最佳策略分析</strong>（如象棋残局、五子棋残局等），但一是对$ \alpha \beta<br>$搜索和博弈树剪枝还不太了解，所以先拿个简单的题目练练手。</p>
 <p>数独的破解其实主要就是常规搜索以及优化了，由于不存在对抗性，难度降低了不少。但对于最坏情况，依旧有非常大的解空间树，因此我将利用搜索算法以及剪枝去尽可能优化。如果性能非常好的话，继续挑战<strong>拓展玩法</strong>。</p>
 <p>做完后会上传至github。</p>
@@ -386,7 +386,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/08/04/SudoTest/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://mmfunnytree.github.io/2019/08/04/SudoTest/" alt="微信分享二维码">
     </div>
 </div>
 

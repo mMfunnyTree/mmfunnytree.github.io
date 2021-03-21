@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>计算机网络学习笔记 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言由于大二期间（不懂事）没怎么听过计算机网络，以及后来的TCP&#x2F;IP协议的课，现在网络原理基础非常薄弱。趁着暑假在校打多校联合训练的空隙，重拾计算机网络，并有针对性的对传输层、应用层以及网络层进行深入复习。 该篇博客主要记录复习过程中的一些知识点。侧重于协议原理和算法，对网络安全，以及偏底层的数据链路层等不作深入学习，如果有兴趣有时间再来填这个坑。 传输层TCP 和 UDP 的应用场景TCP是基">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络学习笔记">
-<meta property="og:url" content="http://example.com/2019/07/30/ComputerNetwork/index.html">
+<meta property="og:url" content="http://mmfunnytree.github.io/2019/07/30/ComputerNetwork/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
 <meta property="og:description" content="前言由于大二期间（不懂事）没怎么听过计算机网络，以及后来的TCP&#x2F;IP协议的课，现在网络原理基础非常薄弱。趁着暑假在校打多校联合训练的空隙，重拾计算机网络，并有针对性的对传输层、应用层以及网络层进行深入复习。 该篇博客主要记录复习过程中的一些知识点。侧重于协议原理和算法，对网络安全，以及偏底层的数据链路层等不作深入学习，如果有兴趣有时间再来填这个坑。 传输层TCP 和 UDP 的应用场景TCP是基">
 <meta property="og:locale" content="zh_CN">
@@ -352,7 +352,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1xx 提示信息，请求已接收，继续处理</span><br><span class="line">2xx 成功</span><br><span class="line">3xx 重定向，要完成请求需要更进一步操作</span><br><span class="line">4xx 客户端错误</span><br><span class="line">5xx 服务器错误</span><br><span class="line"></span><br><span class="line">200 OK</span><br><span class="line">400 请求有语法错误</span><br><span class="line">401 请求未经授权</span><br><span class="line">403 拒绝提供服务</span><br><span class="line">404 请求资源不存在，URL错误</span><br><span class="line">500 服务器错误</span><br><span class="line">503 服务器异常，不能处理请求</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="http报头"><a href="#http报头" class="headerlink" title="http报头"></a>http报头</h3><p>这个点在<br><a target="_blank" rel="noopener" href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a><br>的网络通信部分有见过，通过对connection的状态进行设置，如no-cache,accept等</p>
+<h3 id="http报头"><a href="#http报头" class="headerlink" title="http报头"></a>http报头</h3><p>这个点在<br><a href="https://mmfunnytree.github.io/2019/07/15/androidStudy/#more">https://mmfunnytree.github.io/2019/07/15/androidStudy/#more</a><br>的网络通信部分有见过，通过对connection的状态进行设置，如no-cache,accept等</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.setRequestProperty(&quot;content-Type&quot;,&quot;application&#x2F;json&quot;);</span><br><span class="line">&#x2F;&#x2F;设置希望拿到的数据类型</span><br><span class="line">connection.setRequestProperty(&quot;charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line">&#x2F;&#x2F;设置希望拿到的数据集</span><br><span class="line">connection.setRequestProperty(&quot;Accept-charset&quot;,&quot;UTF-8&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>还有实体报头啥的（请求和响应都可以传送实体，这里申明资源信息）</p>
 <h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>http的消息明文传输：<br>窃听风险（eavesdropping）：第三方可以获知通信内容。<br>篡改风险（tampering）：第三方可以修改通信内容。<br>冒充风险（pretending）：第三方可以冒充他人身份参与通信。</p>
@@ -472,7 +472,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/07/30/ComputerNetwork/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://mmfunnytree.github.io/2019/07/30/ComputerNetwork/" alt="微信分享二维码">
     </div>
 </div>
 
