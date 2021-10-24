@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/12 day1 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day1 题目链接 有长度2000的字符串$A$和$B$；求最短$A$的子串$AA$，使得$AA$不是$B$的子串；求最短$A$的子串$AA$，使得$AA$不是$B$的子序列；求最短$A$的子序列$AA$，使得$AA$不是$B$的子串；求最短$A$的子序列$AA$，使得$AA$不是$B$的子序列； 求最短$A$的子串$AA$，使得$AA$不是$B$的子串hash + 二分首先对$A$和$B$串进行">
+  <meta name="description" content="day1 题目链接 有长度2000的字符串$A$和$B$；求最短$A$的子串$AA$，使得$AA$不是$B$的子串；求最短$A$的子串$AA$，使得$AA$不是$B$的子序列；求最短$A$的子序列$AA$，使得$AA$不是$B$的子串；求最短$A$的子序列$AA$，使得$AA$不是$B$的子序列；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;12 day1 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/12/begin1/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day1 题目链接 有长度2000的字符串$A$和$B$；求最短$A$的子串$AA$，使得$AA$不是$B$的子串；求最短$A$的子串$AA$，使得$AA$不是$B$的子序列；求最短$A$的子序列$AA$，使得$AA$不是$B$的子串；求最短$A$的子序列$AA$，使得$AA$不是$B$的子序列； 求最短$A$的子串$AA$，使得$AA$不是$B$的子串hash + 二分首先对$A$和$B$串进行">
+<meta property="og:description" content="day1 题目链接 有长度2000的字符串$A$和$B$；求最短$A$的子串$AA$，使得$AA$不是$B$的子串；求最短$A$的子串$AA$，使得$AA$不是$B$的子序列；求最短$A$的子序列$AA$，使得$AA$不是$B$的子串；求最短$A$的子序列$AA$，使得$AA$不是$B$的子序列；">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-12T15:11:46.000Z">
-<meta property="article:modified_time" content="2019-05-13T08:01:09.185Z">
+<meta property="article:modified_time" content="2021-10-24T08:10:27.992Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -194,6 +194,10 @@
         <p>day1</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4112">题目链接</a></p>
 <p>有长度2000的字符串$A$和$B$；<br>求最短$A$的子串$AA$，使得$AA$不是$B$的子串；<br>求最短$A$的子串$AA$，使得$AA$不是$B$的子序列；<br>求最短$A$的子序列$AA$，使得$AA$不是$B$的子串；<br>求最短$A$的子序列$AA$，使得$AA$不是$B$的子序列；</p>
+<span id="more"></span>
+
+
+
 <h1 id="求最短-A-的子串-AA-，使得-AA-不是-B-的子串"><a href="#求最短-A-的子串-AA-，使得-AA-不是-B-的子串" class="headerlink" title="求最短$A$的子串$AA$，使得$AA$不是$B$的子串"></a>求最短$A$的子串$AA$，使得$AA$不是$B$的子串</h1><h2 id="hash-二分"><a href="#hash-二分" class="headerlink" title="hash + 二分"></a>hash + 二分</h2><p>首先对$A$和$B$串进行$hash$，然后二分答案$ans$，对长度为$ans$的子串$AA$进行枚举，然后到$B$去查询，复杂度$O(n^2logn)$。<br>由于$hash$用得熟透了，这里就不写了。</p>
 <h2 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h2><p>对字符串$S = AB$进行后缀排序，中间插入一个$dollor$符号。<br>那么，要满足$AA$既是$A$的子串，又不是$B$的子串，不妨对所有$A$的后缀$suf_{i}$进行判断：</p>
 <ul>
