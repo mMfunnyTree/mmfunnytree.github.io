@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>Codeforces Round 532 (Div. 2) E.Andrew and Taxi 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单题意：  n个点m条边，每条边都有边权。 反转边向需要花费边权，整张图可以共用花费。 问至少花费多少使得图为DAG，并输出反转方案。  思路：  二分花费x。 对于所有权值大于x的边，我们无法反转，所以必须建图。 对于建出的图拓扑排序，得到入队顺序。 如果是DAG，遍历所有边，对于入点和出点的拓扑序作比较，如果拓扑序相反，则反转这条边。  123456789101112131415161718">
+  <meta name="description" content="简单题意：  n个点m条边，每条边都有边权。 反转边向需要花费边权，整张图可以共用花费。 问至少花费多少使得图为DAG，并输出反转方案。  思路：  二分花费x。 对于所有权值大于x的边，我们无法反转，所以必须建图。 对于建出的图拓扑排序，得到入队顺序。 如果是DAG，遍历所有边，对于入点和出点的拓扑序作比较，如果拓扑序相反，则反转这条边。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Round 532 (Div. 2) E.Andrew and Taxi 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/01/23/CodeforcesRound532/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="简单题意：  n个点m条边，每条边都有边权。 反转边向需要花费边权，整张图可以共用花费。 问至少花费多少使得图为DAG，并输出反转方案。  思路：  二分花费x。 对于所有权值大于x的边，我们无法反转，所以必须建图。 对于建出的图拓扑排序，得到入队顺序。 如果是DAG，遍历所有边，对于入点和出点的拓扑序作比较，如果拓扑序相反，则反转这条边。  123456789101112131415161718">
+<meta property="og:description" content="简单题意：  n个点m条边，每条边都有边权。 反转边向需要花费边权，整张图可以共用花费。 问至少花费多少使得图为DAG，并输出反转方案。  思路：  二分花费x。 对于所有权值大于x的边，我们无法反转，所以必须建图。 对于建出的图拓扑排序，得到入队顺序。 如果是DAG，遍历所有边，对于入点和出点的拓扑序作比较，如果拓扑序相反，则反转这条边。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-23T06:11:46.000Z">
-<meta property="article:modified_time" content="2019-01-23T06:32:31.000Z">
+<meta property="article:modified_time" content="2021-10-24T07:51:56.630Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="codeforces">
 <meta name="twitter:card" content="summary">
@@ -200,6 +200,9 @@
 <li>对于建出的图拓扑排序，得到入队顺序。</li>
 <li>如果是DAG，遍历所有边，对于入点和出点的拓扑序作比较，如果拓扑序相反，则反转这条边。</li>
 </ul>
+<span id="more"></span>
+
+
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> u[maxn],v[maxn],w[maxn];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> deg[maxn],dfn[maxn];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; g[maxn];</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        g[i].<span class="built_in">clear</span>();</span><br><span class="line">        deg[i]=dfn[i]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(w[i]&gt;x)&#123;</span><br><span class="line">            g[u[i]].<span class="built_in">push_back</span>(v[i]);</span><br><span class="line">            deg[v[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> df=<span class="number">0</span>;</span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!deg[i])&#123;</span><br><span class="line">            q.<span class="built_in">push</span>(i);dfn[i]=++df;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.<span class="built_in">front</span>();q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> to:g[now])&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfn[to])<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            deg[to]--;</span><br><span class="line">            <span class="keyword">if</span>(!deg[to])&#123;</span><br><span class="line">                dfn[to]=++df;</span><br><span class="line">                q.<span class="built_in">push</span>(to);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(df!=n)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    ans.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(dfn[u[i]]&gt;dfn[v[i]])&#123;</span><br><span class="line">            <span class="keyword">if</span>(w[i]&gt;x)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,u+i,v+i,w+i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">-1</span>,r=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">    <span class="keyword">while</span>(r-l&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(mid))r=mid;</span><br><span class="line">        <span class="keyword">else</span> l=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">check</span>(r);</span><br><span class="line">    cout&lt;&lt;r&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;ans.<span class="built_in">size</span>()&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> v:ans)cout&lt;&lt;v&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
 
@@ -325,18 +328,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/01/24/luoguP1455,P1926,P1064,P1757/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/02/01/CodeforcesRound536/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          洛谷P1455,P1926,P1064,P1757题解
+          Codeforces Round 536 (Div. 2) 解题日志
         
       </div>
     </a>
   
   
-    <a href="/2019/01/22/luoguP1091P2782/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">洛谷P1091以及洛谷P2782题解</div>
+    <a href="/2019/01/16/AwardExperience/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">竞赛获奖经历</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -523,39 +526,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/13 day2 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day2 给$n$个点，从中选$4$个点组成四边形，求最小四边形面积，$n \lt 2000$。给$n$个点，从中选$4$个点组成四边形，求最大四边形面积，$n \lt 2000$。 最小四边形思路先考虑三角形。要使得三角形面积最小，这个面积的贡献点一定是以其中一个点为中心，旋转一个很小的弧度得到的。拓展到四边形，可以猜测依旧有如上性质。所以不妨枚举所有点$a$，以$a$为原点进行极角排序，那么得">
+  <meta name="description" content="day2 给$n$个点，从中选$4$个点组成四边形，求最小四边形面积，$n \lt 2000$。给$n$个点，从中选$4$个点组成四边形，求最大四边形面积，$n \lt 2000$。 最小四边形思路先考虑三角形。要使得三角形面积最小，这个面积的贡献点一定是以其中一个点为中心，旋转一个很小的弧度得到的。拓展到四边形，可以猜测依旧有如上性质。所以不妨枚举所有点$a$，以$a$为原点进行极角排序，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;13 day2 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/13/begin2/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day2 给$n$个点，从中选$4$个点组成四边形，求最小四边形面积，$n \lt 2000$。给$n$个点，从中选$4$个点组成四边形，求最大四边形面积，$n \lt 2000$。 最小四边形思路先考虑三角形。要使得三角形面积最小，这个面积的贡献点一定是以其中一个点为中心，旋转一个很小的弧度得到的。拓展到四边形，可以猜测依旧有如上性质。所以不妨枚举所有点$a$，以$a$为原点进行极角排序，那么得">
+<meta property="og:description" content="day2 给$n$个点，从中选$4$个点组成四边形，求最小四边形面积，$n \lt 2000$。给$n$个点，从中选$4$个点组成四边形，求最大四边形面积，$n \lt 2000$。 最小四边形思路先考虑三角形。要使得三角形面积最小，这个面积的贡献点一定是以其中一个点为中心，旋转一个很小的弧度得到的。拓展到四边形，可以猜测依旧有如上性质。所以不妨枚举所有点$a$，以$a$为原点进行极角排序，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-13T15:11:46.000Z">
-<meta property="article:modified_time" content="2019-05-19T14:40:06.234Z">
+<meta property="article:modified_time" content="2021-10-24T07:48:14.319Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>day2</p>
+        <span id="more"></span>
+
+
+<p>day2</p>
 <p>给$n$个点，从中选$4$个点组成四边形，求最小四边形面积，$n \lt 2000$。<br>给$n$个点，从中选$4$个点组成四边形，求最大四边形面积，$n \lt 2000$。</p>
 <h1 id="最小四边形"><a href="#最小四边形" class="headerlink" title="最小四边形"></a>最小四边形</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先考虑三角形。要使得三角形面积最小，这个面积的贡献点一定是以其中一个点为中心，旋转一个很小的弧度得到的。<br>拓展到四边形，可以猜测依旧有如上性质。<br>所以不妨枚举所有点$a$，以$a$为原点进行极角排序，那么得到的$p[]$一定都是有序排列的，且相邻的$b,c,d$和$a$组成的四边形一定是最小面积的可行解。<br>由于这个四边形可以是凹的，所以分类讨论：</p>
 <ul>
@@ -528,39 +531,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

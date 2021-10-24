@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/21 day6 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day6 2019年山东省赛H题，题源ZOJ。 给$n$个线段$[l,r]$，可以在这$n$条线段上放置小球，但限制同一位置$pos$只能在$1$条线段上放球，问最多可以有多少线段被至少$1$个小球覆盖。$n \le 10^5,1\le l \le r \le 10^9$ 思路首先由于$[l,r]$的范围很大，却不能离散化处理，所以不妨想到用动态开点的线段树维护哪些位置被放过小球了。 首先对$n$">
+  <meta name="description" content="2019年山东省赛H题，题源ZOJ。 给$n$个线段$[l,r]$，可以在这$n$条线段上放置小球，但限制同一位置$pos$只能在$1$条线段上放球，问最多可以有多少线段被至少$1$个小球覆盖。$n \le 10^5,1\le l \le r \le 10^9$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;21 day6 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/21/begin6/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day6 2019年山东省赛H题，题源ZOJ。 给$n$个线段$[l,r]$，可以在这$n$条线段上放置小球，但限制同一位置$pos$只能在$1$条线段上放球，问最多可以有多少线段被至少$1$个小球覆盖。$n \le 10^5,1\le l \le r \le 10^9$ 思路首先由于$[l,r]$的范围很大，却不能离散化处理，所以不妨想到用动态开点的线段树维护哪些位置被放过小球了。 首先对$n$">
+<meta property="og:description" content="2019年山东省赛H题，题源ZOJ。 给$n$个线段$[l,r]$，可以在这$n$条线段上放置小球，但限制同一位置$pos$只能在$1$条线段上放球，问最多可以有多少线段被至少$1$个小球覆盖。$n \le 10^5,1\le l \le r \le 10^9$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-21T15:11:46.000Z">
-<meta property="article:modified_time" content="2019-05-21T12:37:29.319Z">
+<meta property="article:modified_time" content="2021-10-24T07:49:56.179Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -187,9 +187,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>day6</p>
-<p>2019年山东省赛H题，题源ZOJ。</p>
+        <p>2019年山东省赛H题，题源ZOJ。</p>
 <p>给$n$个线段$[l,r]$，可以在这$n$条线段上放置小球，但限制同一位置$pos$只能在$1$条线段上放球，问最多可以有多少线段被至少$1$个小球覆盖。<br>$n \le 10^5,1\le l \le r \le 10^9$</p>
+<span id="more"></span>
+
+
+<p>day6</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先由于$[l,r]$的范围很大，却不能离散化处理，所以不妨想到用动态开点的线段树维护哪些位置被放过小球了。</p>
 <p>首先对$n$条线段进行排序，按照”$r$小，$r$相同$l$小”的方式排序，原因是：</p>
 <ul>
@@ -520,39 +523,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

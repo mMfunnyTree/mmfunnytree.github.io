@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/30 day10 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day10 题目链接 给定一个序列A，求区间内最小未出现的自然数。 主席树O(nlogn)思路（话说这个$mex$计算不是在博弈求$sg$的吗……）  不妨用权值线段树维护区间内的数字出现位置的最小值，并且每次插入都维护当前数字出现位置。 那么由于查询的范围是$[l,r]$，可以知道如果左儿子的区间内，有数字最近出现的位置小于$l$，说明查询的区间$[l,r]$内不存在该值。 那么这道题就变成了一">
+  <meta name="description" content="题目链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;30 day10 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/30/begin10/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day10 题目链接 给定一个序列A，求区间内最小未出现的自然数。 主席树O(nlogn)思路（话说这个$mex$计算不是在博弈求$sg$的吗……）  不妨用权值线段树维护区间内的数字出现位置的最小值，并且每次插入都维护当前数字出现位置。 那么由于查询的范围是$[l,r]$，可以知道如果左儿子的区间内，有数字最近出现的位置小于$l$，说明查询的区间$[l,r]$内不存在该值。 那么这道题就变成了一">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-30T05:11:48.000Z">
-<meta property="article:modified_time" content="2019-05-30T05:01:17.101Z">
+<meta property="article:modified_time" content="2021-10-24T07:45:41.522Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -187,8 +187,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>day10</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4137">题目链接</a></p>
+        <p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4137">题目链接</a></p>
+<span id="more"></span>
+
+
+<p>day10</p>
 <p>给定一个序列A，求区间内最小未出现的自然数。</p>
 <h1 id="主席树O-nlogn"><a href="#主席树O-nlogn" class="headerlink" title="主席树O(nlogn)"></a>主席树O(nlogn)</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>（话说这个$mex$计算不是在博弈求$sg$的吗……）</p>
 <ul>
@@ -530,39 +533,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

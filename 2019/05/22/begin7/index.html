@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/22 day7 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day7 题目链接 给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)-2 \times \text{lcp}(T_i,T_j)$。其中，$len(a)$ 表示字符串 $a$ 的长度，$lcp(a,b)$ 表示字符串 $a$ 和字符串">
+  <meta name="description" content="题目链接 给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)-2 \times \text{lcp}(T_i,T_j)$。其中，$len(a)$ 表示字符串 $a$ 的长度，$lcp(a,b)$ 表示字符串 $a$ 和字符串 $b$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;22 day7 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/22/begin7/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day7 题目链接 给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)-2 \times \text{lcp}(T_i,T_j)$。其中，$len(a)$ 表示字符串 $a$ 的长度，$lcp(a,b)$ 表示字符串 $a$ 和字符串">
+<meta property="og:description" content="题目链接 给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)-2 \times \text{lcp}(T_i,T_j)$。其中，$len(a)$ 表示字符串 $a$ 的长度，$lcp(a,b)$ 表示字符串 $a$ 和字符串 $b$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-22T15:11:46.000Z">
-<meta property="article:modified_time" content="2019-05-21T15:49:07.135Z">
+<meta property="article:modified_time" content="2021-10-24T07:50:12.095Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -187,9 +187,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>day7</p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4248">题目链接</a></p>
+        <p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4248">题目链接</a></p>
 <p>给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)-2 \times \text{lcp}(T_i,T_j)$。<br>其中，$len(a)$ 表示字符串 $a$ 的长度，$lcp(a,b)$ 表示字符串 $a$ 和字符串 $b$ 的最长公共前缀。</p>
+<span id="more"></span>
+
+
+<p>day7</p>
 <h1 id="后缀数组-单调栈"><a href="#后缀数组-单调栈" class="headerlink" title="后缀数组 + 单调栈"></a>后缀数组 + 单调栈</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>不妨把式子拆开来看，首先可以直接算出$\sum_{1 \le i \lt j \le n} \text{len}(T_i)+\text{len}(T_j)$。<br>显然这个值等于$len(S)<em>(len(S)+1)</em>(len(S)-1)/2$。<br>那么如何算$\sum_{1 \le i \lt j \le n}\text{lcp}(T_i,T_j)$呢？</p>
 <p>只需要算出对于每个后缀$suf_i$，$\sum_{j\lt i} lcp(suf_i,suf_j)$，这个需要用到后缀数组预处理，然后根据height数组的性质，用单调栈维护便可。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line">pair&lt;<span class="keyword">int</span>,ll&gt; stk[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SA</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> rk[maxn],sa[maxn],height[maxn];</span><br><span class="line">    <span class="keyword">int</span> t1[maxn],t2[maxn],c[maxn];</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> *s,<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> l)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s[a]==s[b]&amp;&amp;s[a+l]==s[b+l];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Sa</span><span class="params">(<span class="keyword">char</span> *s,<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">        n++;</span><br><span class="line">        <span class="keyword">int</span> i,j,p,*x=t1,*y=t2;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[i]=s[i]]++;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[i]]]=i;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n;j&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">            p=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(i=n-j;i&lt;n;i++)y[p++]=i;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(sa[i]&gt;=j)y[p++]=sa[i]-j;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)c[i]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)c[x[y[i]]]++;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)c[i]+=c[i<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)sa[--c[x[y[i]]]]=y[i];</span><br><span class="line">            <span class="built_in">swap</span>(x,y);</span><br><span class="line">            p=<span class="number">1</span>;x[sa[<span class="number">0</span>]]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;n;i++)x[sa[i]]=<span class="built_in">cmp</span>(y,sa[i<span class="number">-1</span>],sa[i],j)?p<span class="number">-1</span>:p++;</span><br><span class="line">            <span class="keyword">if</span>(p&gt;=n)<span class="keyword">break</span>;m=p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;n--;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;=n;i++)rk[sa[i]]=i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(k)k--;</span><br><span class="line">            j=sa[rk[i]<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">while</span>(s[i+k]==s[j+k])k++;</span><br><span class="line">            height[rk[i]]=k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        ll ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> top=<span class="number">0</span>;</span><br><span class="line">        stk[<span class="number">0</span>]=<span class="built_in">make_pair</span>(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(top &amp;&amp;height[stk[top].first]&gt;height[i])top--;++top;</span><br><span class="line">            stk[top]=<span class="built_in">make_pair</span>(i,stk[top<span class="number">-1</span>].second+(i-stk[top<span class="number">-1</span>].first)*height[i]);</span><br><span class="line">            ans+=stk[top].second;</span><br><span class="line">        &#125;cout&lt;&lt;<span class="number">1ll</span>*(n<span class="number">-1</span>)*(<span class="number">1</span>+n)*n/<span class="number">2</span><span class="number">-2</span>*ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;sa;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s);</span><br><span class="line">    len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    sa.<span class="built_in">Sa</span>(s,len,<span class="number">128</span>);</span><br><span class="line">    sa.<span class="built_in">solve</span>(len);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -320,11 +323,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/27/begin8/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/27/begin9/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019/5/27 day8 解题日志
+          2019/5/27 day9 解题日志
         
       </div>
     </a>
@@ -518,39 +521,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

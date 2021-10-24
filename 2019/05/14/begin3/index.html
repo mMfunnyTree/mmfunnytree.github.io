@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>2019/5/14 day3 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="day3 给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] &#x3D; B[lb..rb]$。 题目链接 $O(n^2)$如果能够满足$O(n^2)$的算法，可以用以下方法做。 字符串hash + map先对A和B进行hash预处理。首先枚举相同子串长度len，遍历A的所有长度为len的子串，得到hash值，并且用map进行记录个数。然后再到B串里进行相应统计便可。整">
+  <meta name="description" content="给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] &#x3D; B[lb..rb]$。 题目链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019&#x2F;5&#x2F;14 day3 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/05/14/begin3/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="day3 给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] &#x3D; B[lb..rb]$。 题目链接 $O(n^2)$如果能够满足$O(n^2)$的算法，可以用以下方法做。 字符串hash + map先对A和B进行hash预处理。首先枚举相同子串长度len，遍历A的所有长度为len的子串，得到hash值，并且用map进行记录个数。然后再到B串里进行相应统计便可。整">
+<meta property="og:description" content="给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] &#x3D; B[lb..rb]$。 题目链接">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-14T15:11:46.000Z">
-<meta property="article:modified_time" content="2019-05-14T12:06:38.533Z">
+<meta property="article:modified_time" content="2021-10-24T07:49:12.634Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="day cnt++系列">
 <meta name="twitter:card" content="summary">
@@ -187,9 +187,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>day3</p>
-<p>给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] = B[lb..rb]$。</p>
+        <p>给串$A$和$B$，求有多少组$(la,ra,lb,rb)$，使得$A[la..ra] = B[lb..rb]$。</p>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3181">题目链接</a></p>
+<span id="more"></span>
+
+
+<p>day3</p>
 <h1 id="O-n-2"><a href="#O-n-2" class="headerlink" title="$O(n^2)$"></a>$O(n^2)$</h1><p>如果能够满足$O(n^2)$的算法，可以用以下方法做。</p>
 <h2 id="字符串hash-map"><a href="#字符串hash-map" class="headerlink" title="字符串hash + map"></a>字符串hash + map</h2><p>先对A和B进行hash预处理。<br>首先枚举相同子串长度len，遍历A的所有长度为len的子串，得到hash值，并且用map进行记录个数。<br>然后再到B串里进行相应统计便可。整体复杂度是$O(n^2logn)$的。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">char</span> s[maxn],t[maxn];</span><br><span class="line">unordered_map&lt;ull,<span class="keyword">int</span>&gt;mp;</span><br><span class="line">ull base = <span class="number">131</span>;</span><br><span class="line">ull po[maxn],hs[maxn],ht[maxn];</span><br><span class="line"><span class="function">ull <span class="title">geth</span><span class="params">(ull *hs1,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;<span class="keyword">return</span> (ull)hs1[r]-po[r-l+<span class="number">1</span>]*hs1[l<span class="number">-1</span>];&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    po[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">200000</span>;i++)po[i]=po[i<span class="number">-1</span>]*base;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s%s&quot;</span>,s+<span class="number">1</span>,t+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> n=<span class="built_in">strlen</span>(s+<span class="number">1</span>),m=<span class="built_in">strlen</span>(t+<span class="number">1</span>);</span><br><span class="line">    ull ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)hs[i]=hs[i<span class="number">-1</span>]*base+s[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)ht[i]=ht[i<span class="number">-1</span>]*base+t[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        mp.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> bg=<span class="number">1</span>;bg+i<span class="number">-1</span>&lt;=n;bg++)mp[<span class="built_in">geth</span>(hs,bg,bg+i<span class="number">-1</span>)]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> bg=<span class="number">1</span>;bg+i<span class="number">-1</span>&lt;=m;bg++)&#123;</span><br><span class="line">            ans+=mp[<span class="built_in">geth</span>(ht,bg,bg+i<span class="number">-1</span>)];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -525,39 +528,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">

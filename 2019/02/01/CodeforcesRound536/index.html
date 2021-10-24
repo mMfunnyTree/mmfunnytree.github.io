@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://mmfunnytree.github.io">
   <title>Codeforces Round 536 (Div. 2) 解题日志 | Kukyo&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="比赛的时候写了好久的B发现别人CD都已经过一大片了，赶紧去看C，然后回过头来调B的bug，最后开E发现这场unrated了，溜了溜了。 contest链接 A Lunar New Year and Cross Counting思路：直接n2判断便可。 12345678910111213141516#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;ty">
+  <meta name="description" content="比赛的时候写了好久的B发现别人CD都已经过一大片了，赶紧去看C，然后回过头来调B的bug，最后开E发现这场unrated了，溜了溜了。 contest链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Round 536 (Div. 2) 解题日志">
 <meta property="og:url" content="http://mmfunnytree.github.io/2019/02/01/CodeforcesRound536/index.html">
 <meta property="og:site_name" content="Kukyo&#39;s Blog">
-<meta property="og:description" content="比赛的时候写了好久的B发现别人CD都已经过一大片了，赶紧去看C，然后回过头来调B的bug，最后开E发现这场unrated了，溜了溜了。 contest链接 A Lunar New Year and Cross Counting思路：直接n2判断便可。 12345678910111213141516#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;ty">
+<meta property="og:description" content="比赛的时候写了好久的B发现别人CD都已经过一大片了，赶紧去看C，然后回过头来调B的bug，最后开E发现这场unrated了，溜了溜了。 contest链接">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-02-01T03:41:46.000Z">
-<meta property="article:modified_time" content="2019-02-01T04:48:38.125Z">
+<meta property="article:modified_time" content="2021-10-24T07:52:05.051Z">
 <meta property="article:author" content="Kukyo">
 <meta property="article:tag" content="codeforces">
 <meta name="twitter:card" content="summary">
@@ -189,6 +189,9 @@
       
         <p>比赛的时候写了好久的B发现别人CD都已经过一大片了，赶紧去看C，然后回过头来调B的bug，最后开E发现这场unrated了，溜了溜了。</p>
 <p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1106" title="contest链接">contest链接</a></p>
+<span id="more"></span>
+
+
 <h1 id="A-Lunar-New-Year-and-Cross-Counting"><a href="#A-Lunar-New-Year-and-Cross-Counting" class="headerlink" title="A Lunar New Year and Cross Counting"></a>A Lunar New Year and Cross Counting</h1><p>思路：直接n<sup>2</sup>判断便可。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1000</span>][<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,s[i]);</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i][j]==<span class="string">&#x27;X&#x27;</span>&amp;&amp;s[i][j+<span class="number">2</span>]==<span class="string">&#x27;X&#x27;</span>&amp;&amp;s[i+<span class="number">1</span>][j+<span class="number">1</span>]==<span class="string">&#x27;X&#x27;</span>&amp;&amp;s[i+<span class="number">2</span>][j]==<span class="string">&#x27;X&#x27;</span>&amp;&amp;s[i+<span class="number">2</span>][j+<span class="number">2</span>]==<span class="string">&#x27;X&#x27;</span>)ans++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;cout&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -357,18 +360,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/02/28/2019.02TXInterview/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/09/2019TXpre_exam/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019.02 腾讯移动客户端开发-凉面日志
+          2019年春季腾讯开发岗提前批笔试
         
       </div>
     </a>
   
   
-    <a href="/2019/01/28/AnsForChild28/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">入门班28日作业参考答案</div>
+    <a href="/2019/01/23/CodeforcesRound532/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Codeforces Round 532 (Div. 2) E.Andrew and Taxi 解题日志</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -555,39 +558,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">HDU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Uva</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">day cnt++系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">洛谷</a>
               </li>
              
               <li class="article-tag-list-item">
