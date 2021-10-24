@@ -138,143 +138,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-xtu2017exam3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/20/xtu2017exam3/">湘潭大学2017年下学期程序设计实践-模拟测试3 题解</a>
-    </h1>
-  
-
-        
-        
-<a href="/2017/12/20/xtu2017exam3/" class="archive-article-date">
-  	<time datetime="2017-12-20T04:52:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-20</time>
-</a>
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.5k字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
-      </span>
-    </span>
-</div>
-          
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>XTU 1304  ZUMA!</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/exam_read/id/1304/exam_id/230">http://202.197.224.59/exam/index.php/problem/exam_read/id/1304/exam_id/230</a></p>
-<p>思路：暴力乱搞即可。<br>1.找到2个相邻并且颜色与给你的小球相同的位置，然后我们假设把这个小球放在这里。<br>2.那么一开始，我们就消掉了2个球。<br>3.然后我们更新序列，删掉那两个球。判断序列中是否存在3个或以上的球连在一起。<br>4.若存在，继续删，并且记录下删了多少球。<br>5.不存在就退出，更新答案。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int ans;</span><br><span class="line">string s;</span><br><span class="line">void doit(int id,char c)</span><br><span class="line">&#123;</span><br><span class="line">    string ss &#x3D; s;</span><br><span class="line">    int cnt&#x3D;2;</span><br><span class="line">    string now;</span><br><span class="line">    now &#x3D; ss.substr(0,id-1);</span><br><span class="line">    now +&#x3D; ss.substr(id+1);</span><br><span class="line">    int flag&#x3D;1;</span><br><span class="line">    while(flag)</span><br><span class="line">    &#123;</span><br><span class="line">        flag&#x3D;0;</span><br><span class="line">        for(int i&#x3D;2;i&lt;now.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(now[i-2]&#x3D;&#x3D;now[i]&amp;&amp;now[i-1]&#x3D;&#x3D;now[i])</span><br><span class="line">            &#123;</span><br><span class="line">                int j&#x3D;i;</span><br><span class="line">                while(now[j]&#x3D;&#x3D;now[i]&amp;&amp;j&lt;now.length())</span><br><span class="line">                &#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">                flag&#x3D;1;</span><br><span class="line">                cnt+&#x3D;(j-i+2);</span><br><span class="line">                ss &#x3D; now.substr(0,i-2);</span><br><span class="line">                ss +&#x3D; now.substr(j);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        now&#x3D;ss;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ans &#x3D; max(ans,cnt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    int a[1010];</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        ans&#x3D;0;</span><br><span class="line">        s.clear();</span><br><span class="line">        int n,c;</span><br><span class="line">        cin&gt;&gt;n&gt;&gt;c;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,a+i);</span><br><span class="line">            s+&#x3D;(char)(a[i]+47);</span><br><span class="line">        &#125;</span><br><span class="line">        char cc &#x3D; (char)(c+47);</span><br><span class="line">        for(int i&#x3D;1;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(s[i-1]&#x3D;&#x3D;s[i]&amp;&amp;s[i]&#x3D;&#x3D;cc)</span><br><span class="line">            doit(i,cc);</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;&quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>XTU 1305  斐波那契区间</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/exam_read/id/1305/exam_id/230">http://202.197.224.59/exam/index.php/problem/exam_read/id/1305/exam_id/230</a></p>
-<p>思路：暴力枚举。<br>1.从序列的第三个开始枚举，如果当前值 == 前两个值之和，计数器+1<br>否则计数器置零。<br>2.每次都要更新答案。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    int a[10005];</span><br><span class="line">    int n;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">            scanf(&quot;%d&quot;,a+i);</span><br><span class="line"></span><br><span class="line">        int ans&#x3D;0;</span><br><span class="line">        int cnt&#x3D;0;</span><br><span class="line">        for(int i&#x3D;3;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[i]&#x3D;&#x3D;a[i-1]+a[i-2])</span><br><span class="line">            &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                ans&#x3D;max(ans,cnt);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                ans&#x3D;max(ans,cnt);</span><br><span class="line">                cnt&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;ans+2&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>XTU 1306  Love Number</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/exam_read/id/1306/exam_id/230">http://202.197.224.59/exam/index.php/problem/exam_read/id/1306/exam_id/230</a></p>
-<p>思路：签到题，只需判断（a-x）%d==0即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,d,x;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;d,&amp;x);</span><br><span class="line">        if((a-x)%d&#x3D;&#x3D;0)</span><br><span class="line">            cout&lt;&lt;&quot;Yes\n&quot;;</span><br><span class="line">        else cout&lt;&lt;&quot;No\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>XTU 1307  Beautiful Number</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/exam_read/id/1307/exam_id/230">http://202.197.224.59/exam/index.php/problem/exam_read/id/1307/exam_id/230</a></p>
-<p>思路：看起来很难，其实样例已经告诉我们1e18的范围内只有1700多个这样的数字，那么最佳做法就是离线打表啦。<br>（打表很粗暴，而且离线很麻烦，就不如暴搜，当然推公式也行，前提是会推）<br>其实我们也可以用暴搜来做，每次搜索到一个符合要求的答案就计数器+1，当然，暴搜不经过剪枝，最坏情况可达到2的63次方，因此我们对每次搜索加入一个“已访问过0”的标志<br>对于一个已访问过0的数字num，我们只需要搜num&lt;&lt;1|1；<br>而对于一个没访问过0的数字num,我们需要搜索num&lt;&lt;1和num&lt;&lt;1|1；<br>并且，在访问num&lt;&lt;1时，它的结尾一定是个0，所以我们需要把访问0标志带上。</p>
-<p>下面的代码不是很精简</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line"></span><br><span class="line">int cnta,cntb;</span><br><span class="line">ll a,b;</span><br><span class="line">void dfsa(ll now,int cnt)</span><br><span class="line">&#123;</span><br><span class="line">    if(cnt&gt;1)</span><br><span class="line">        return;</span><br><span class="line">    if(now&gt;&#x3D;a)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    if(cnt&#x3D;&#x3D;1)</span><br><span class="line">        cnta++;</span><br><span class="line"></span><br><span class="line">    if(cnt&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        dfsa(now&lt;&lt;1|1,cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        dfsa(now&lt;&lt;1,cnt+1);</span><br><span class="line">        dfsa(now&lt;&lt;1|1,cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfsb(ll now,int cnt)</span><br><span class="line">&#123;</span><br><span class="line">    if(cnt&gt;1)</span><br><span class="line">        return;</span><br><span class="line">    if(now&gt;b)</span><br><span class="line">        return;</span><br><span class="line">    if(cnt&#x3D;&#x3D;1)</span><br><span class="line">        cntb++;</span><br><span class="line"></span><br><span class="line">    if(cnt&#x3D;&#x3D;1)</span><br><span class="line">    &#123;</span><br><span class="line">        dfsb(now&lt;&lt;1|1,cnt);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        dfsb(now&lt;&lt;1,cnt+1);</span><br><span class="line">        dfsb(now&lt;&lt;1|1,cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        cnta&#x3D;cntb&#x3D;0;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        dfsa(1,0);</span><br><span class="line">        dfsb(1,0);</span><br><span class="line">        cout&lt;&lt;cntb-cnta&lt;&lt;&quot;\n&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>XTU 1308  比赛</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/exam_read/id/1308/exam_id/230">http://202.197.224.59/exam/index.php/problem/exam_read/id/1308/exam_id/230</a></p>
-<p>思路：<br>1.我们需要知道对于当前剩余的人数n，要拿出多少人去打比赛，那么暴力算一下就可以了，假设这个人数是base；<br>2.那么需要增加 base/2 场比赛（两两进行），并且新一轮剩下的人数是：</p>
-<p> （n - base） + base/2  = n - base/2</p>
-<p>就是：没去比赛的 + 参加比赛并且获胜的 = 目前剩余的</p>
-<p>那么每次都这样搞一搞就好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        ll n;cin&gt;&gt;n;</span><br><span class="line">        ll ans&#x3D;0;</span><br><span class="line">        ll cnt&#x3D;0;</span><br><span class="line">        while(n&gt;1)</span><br><span class="line">        &#123;</span><br><span class="line">            ll base&#x3D;2;</span><br><span class="line">            while(base&lt;&#x3D;n)</span><br><span class="line">            &#123;</span><br><span class="line">                base&lt;&lt;&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">            base&gt;&gt;&#x3D;1;</span><br><span class="line">            cnt++;</span><br><span class="line">            ans+&#x3D;base&#x2F;2;</span><br><span class="line">            n -&#x3D; base&#x2F;2;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;cnt&lt;&lt;&quot; &quot;&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>XTU 1309  唯一的子串</p>
-<p><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/exam/problems/exam_id/230">http://202.197.224.59/exam/index.php/exam/problems/exam_id/230</a></p>
-<p>思路：这题就STL乱搞，由于字符串长度较小，是很难超时的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">set&lt;string&gt; st;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        st.clear();</span><br><span class="line">        int m;scanf(&quot;%d&quot;,&amp;m);</span><br><span class="line">        string s;</span><br><span class="line">        cin&gt;&gt;s;</span><br><span class="line">        for(int i&#x3D;0;i&lt;s.length()-m+1;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            st.insert(s.substr(i,m));</span><br><span class="line">        &#125;</span><br><span class="line">        for(set&lt;string&gt;::iterator it &#x3D; st.begin();it!&#x3D;st.end();it++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;*it&lt;&lt;&quot;\n&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/20/xtu2017exam3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-xtu2017exam2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1406,6 +1269,129 @@
 
 
   
+    <article id="post-LostinTransliteration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/21/LostinTransliteration/">2017-2018 ACM-ICPC, NEERC, Southern Subregional Contest F. Lost in Transliteration</a>
+    </h1>
+  
+
+        
+        
+<a href="/2017/10/21/LostinTransliteration/" class="archive-article-date">
+  	<time datetime="2017-10-21T13:20:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">664字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>F. Lost in Transliteration<br>time limit per test3 seconds<br>memory limit per test256 megabytes<br>inputstandard input<br>outputstandard output<br>There are some ambiguities when one writes Berland names with the letters of the Latin alphabet.</p>
+<p>For example, the Berland sound u can be written in the Latin alphabet as “u”, and can be written as “oo”. For this reason, two words “ulyana” and “oolyana” denote the same name.</p>
+<p>The second ambiguity is about the Berland sound h: one can use both “h” and “kh” to write it. For example, the words “mihail” and “mikhail” denote the same name.</p>
+<p>There are n users registered on the Polycarp’s website. Each of them indicated a name represented by the Latin letters. How many distinct names are there among them, if two ambiguities described above are taken into account?</p>
+<p>Formally, we assume that two words denote the same name, if using the replacements “u”  “oo” and “h”  “kh”, you can make the words equal. One can make replacements in both directions, in any of the two words an arbitrary number of times. A letter that resulted from the previous replacement can participate in the next replacements.</p>
+<p>For example, the following pairs of words denote the same name:</p>
+<p>“koouper” and “kuooper”. Making the replacements described above, you can make both words to be equal: “koouper” “kuuper” and “kuooper”  “kuuper”.<br>“khun” and “kkkhoon”. With the replacements described above you can make both words to be equal: “khun”  “khoon” and “kkkhoon”  “kkhoon”  “khoon”.<br>For a given list of words, find the minimal number of groups where the words in each group denote the same name.</p>
+<p>Input<br>The first line contains integer number n (2 ≤ n ≤ 400) — number of the words in the list.</p>
+<p>The following n lines contain words, one word per line. Each word consists of only lowercase Latin letters. The length of each word is between 1 and 20 letters inclusive.</p>
+<p>Output<br>Print the minimal number of groups where the words in each group denote the same name.</p>
+<p>Examples<br>input<br>10<br>mihail<br>oolyana<br>kooooper<br>hoon<br>ulyana<br>koouper<br>mikhail<br>khun<br>kuooper<br>kkkhoon<br>output<br>4<br>input<br>9<br>hariton<br>hkariton<br>buoi<br>kkkhariton<br>boooi<br>bui<br>khariton<br>boui<br>boi<br>output<br>5<br>input<br>2<br>alex<br>alex<br>output<br>1<br>Note<br>There are four groups of words in the first example. Words in each group denote same name:</p>
+<p>“mihail”, “mikhail”<br>“oolyana”, “ulyana”<br>“kooooper”, “koouper”<br>“hoon”, “khun”, “kkkhoon”<br>There are five groups of words in the second example. Words in each group denote same name:</p>
+<p>“hariton”, “kkkhariton”, “khariton”<br>“hkariton”<br>“buoi”, “boooi”, “boui”<br>“bui”<br>“boi”<br>In the third example the words are equal, so they denote the same name.</p>
+<p>链接：<a target="_blank" rel="noopener" href="http://codeforces.com/contest/883/problem/F">http://codeforces.com/contest/883/problem/F</a></p>
+<p>题意：波兰语中的”h”和”kh”可以互换，”u”和”oo”可以呼唤，给若干个名字，问互不相同的名字有多少个</p>
+<p>思路：根据数据范围，暴力将 u 全部转化成 oo ，将 存在的 kh 全部转化成 h</p>
+<p>然后塞进set里面，最后输出set的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string check(string s)</span><br><span class="line">&#123;</span><br><span class="line">    string t;</span><br><span class="line">    for(int i&#x3D;0;i&lt;s.length();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(s[i]&#x3D;&#x3D;&#39;u&#39;)</span><br><span class="line">            t+&#x3D;&quot;oo&quot;;</span><br><span class="line">        else if(s[i]&#x3D;&#x3D;&#39;k&#39;)</span><br><span class="line">        &#123;</span><br><span class="line">            int flag&#x3D;0;</span><br><span class="line">            for(int j&#x3D;i+1;j&lt;s.length();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(s[j]&#x3D;&#x3D;&#39;k&#39;)continue;</span><br><span class="line">                if(s[j]&#x3D;&#x3D;&#39;h&#39;)</span><br><span class="line">                &#123;</span><br><span class="line">                    flag&#x3D;j;break;</span><br><span class="line">                &#125;</span><br><span class="line">                else break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(flag)</span><br><span class="line">            &#123;</span><br><span class="line">                t+&#x3D;&quot;h&quot;;</span><br><span class="line">                i&#x3D;flag;</span><br><span class="line">            &#125;</span><br><span class="line">            else t+&#x3D;&quot;k&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else t+&#x3D;s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ios::sync_with_stdio(0);</span><br><span class="line">    cin.tie(0);</span><br><span class="line">    cout.tie(0);</span><br><span class="line">    int n;cin&gt;&gt;n;</span><br><span class="line">    string s;</span><br><span class="line">    set&lt;string&gt; st;</span><br><span class="line">    while(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;s;</span><br><span class="line">        s &#x3D; check(s);</span><br><span class="line">        st.insert(s);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;st.size()&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转载请注明出处^ ^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">codeforces</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/题解//" class="article-tag-list-link color3">题解</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/21/LostinTransliteration/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
@@ -1600,7 +1586,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iOS/OC/阅读笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">OC/阅读笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>

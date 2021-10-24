@@ -138,125 +138,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-XTU1273set" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/XTU1273set/">XTU 1273 set</a>
-    </h1>
-  
-
-        
-        
-<a href="/2017/10/10/XTU1273set/" class="archive-article-date">
-  	<time datetime="2017-10-09T16:27:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-          <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">477字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
-      </span>
-    </span>
-</div>
-          
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>集合<br><a target="_blank" rel="noopener" href="http://202.197.224.59/exam/index.php/problem/read/id/1273">http://202.197.224.59/exam/index.php/problem/read/id/1273</a><br>题目描述</p>
-<p>对于包含整数多值集合A={a1,a2,⋯,an}，执行以下两步操作<br>1.将某些元素加上整数x<br>2.将某些元素减掉整数y</p>
-<p>请问能否使得A的元素全部相等？</p>
-<p>输入</p>
-<p>第一行是一个整数K(1≤K≤100)，表示样例的个数。<br> 每个样例的第一行是一个整数n(1≤n≤100,000)。<br> 第二行是{ai|i=1,2,⋯n},0≤ai≤1,000,000,000。</p>
-<p>输出</p>
-<p>每行输出一个样例的结果，如果可以使得元素全部相等输出”Yes”,否则输出”No”</p>
-<p>样例输入</p>
-<p>2<br>5<br>2 1 2 1 3<br>5<br>1 2 3 4 5</p>
-<p>样例输出</p>
-<p>Yes<br>No</p>
-<p>思路：分三种情况考虑。</p>
-<p>如果集合里已经有4种以上的元素，那么无论怎么操作，都是No</p>
-<p>如果集合里只有3种及以下的元素，那么一定可满足题意，是Yes</p>
-<p>现在暴力处理4种元素的组合情况，看是否能满足题意即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll __int64</span><br><span class="line">#define r(n) scanf(&quot;%I64d&quot;,&amp;n)</span><br><span class="line">set&lt;ll&gt;::iterator it;</span><br><span class="line">ll a,b,c,d,q,w,e;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    set&lt;ll&gt;x;</span><br><span class="line">    ll t;</span><br><span class="line">    r(t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        x.clear();</span><br><span class="line">        ll n;</span><br><span class="line">        r(n);</span><br><span class="line">        while(n--)</span><br><span class="line">        &#123;</span><br><span class="line">            r(a);</span><br><span class="line">            x.insert(a);</span><br><span class="line">        &#125;</span><br><span class="line">        int ok&#x3D;0;</span><br><span class="line">        ll s &#x3D; x.size();</span><br><span class="line">        if(s&lt;&#x3D;3)cout&lt;&lt;&quot;Yes\n&quot;;</span><br><span class="line">        else if(s&gt;4) cout&lt;&lt;&quot;No\n&quot;;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            it &#x3D; x.begin();</span><br><span class="line">            a &#x3D; *it;it++;</span><br><span class="line">            b &#x3D; *it;it++;</span><br><span class="line">            c &#x3D; *it;it++;</span><br><span class="line">            d &#x3D; *it;</span><br><span class="line"></span><br><span class="line">            q &#x3D; b-a;</span><br><span class="line">            w &#x3D; c-a;</span><br><span class="line">            e &#x3D; d-a;</span><br><span class="line"></span><br><span class="line">            if(q+w&#x3D;&#x3D;e||q-w&#x3D;&#x3D;e||w-q&#x3D;&#x3D;e)</span><br><span class="line">                ok&#x3D;1;</span><br><span class="line">            if(q+e&#x3D;&#x3D;w||q-e&#x3D;&#x3D;w||e-q&#x3D;&#x3D;w)</span><br><span class="line">                ok&#x3D;1;</span><br><span class="line">            if(e+w&#x3D;&#x3D;q||e-w&#x3D;&#x3D;q||w-e&#x3D;&#x3D;q)</span><br><span class="line">                ok&#x3D;1;</span><br><span class="line">            cout&lt;&lt;((ok)?&quot;Yes\n&quot;:&quot;No\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;1396K 2046ms</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">程序设计实践</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/exam//" class="article-tag-list-link color5">exam</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/XTU1273set/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-XTU1274Matrix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -698,7 +579,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iOS/OC/阅读笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">OC/阅读笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>

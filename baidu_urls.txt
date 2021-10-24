@@ -1,6 +1,5 @@
 http://mmfunnytree.github.io/2020/03/17/Objective-C_reading/
 http://mmfunnytree.github.io/2020/01/18/AlgorithmTemplate/
-http://mmfunnytree.github.io/2019/09/24/qiu-zhao/
 http://mmfunnytree.github.io/2019/09/07/begin15/
 http://mmfunnytree.github.io/2019/09/01/xtu2019exam2/
 http://mmfunnytree.github.io/2019/08/23/begin14/

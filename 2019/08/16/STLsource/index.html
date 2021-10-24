@@ -16,9 +16,9 @@
 <meta property="og:description" content="前言大一开始接触STL，一直以来熟于使用却疏于原理。读STL源码有什么用呢？作者侯捷在前言中写到这段话： 123456人们常说，不要从轮子重新造起，要站在巨人的肩膀上。面对扮演轮子角色的这些STL 组件，我们是否有必要深究其设计原理或实作细节呢？答案因人而异。从应用的角度思考，你不需要探索实作细节（然而相当程度地认识底层实作，对实务运用有绝对的帮助）。从技术研究与ᴀ质提升的角度看，深究细节可以让你">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-08-16T03:11:58.000Z">
-<meta property="article:modified_time" content="2020-03-12T06:29:48.114Z">
+<meta property="article:modified_time" content="2021-03-24T15:20:59.442Z">
 <meta property="article:author" content="Kukyo">
-<meta property="article:tag" content="CPP">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Kukyo&#39;s Blog" type="application/atom+xml">
@@ -191,6 +191,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">人们常说，不要从轮子重新造起，要站在巨人的肩膀上。面对扮演轮子角色的这</span><br><span class="line">些STL 组件，我们是否有必要深究其设计原理或实作细节呢？答案因人而异。从</span><br><span class="line">应用的角度思考，你不需要探索实作细节（然而相当程度地认识底层实作，对实</span><br><span class="line">务运用有绝对的帮助）。从技术研究与ᴀ质提升的角度看，深究细节可以让你彻</span><br><span class="line">底掌握一切；不论是为了重温数据结构和算法，或是想要扮演轮子角色，或是</span><br><span class="line">想要进一步扩张别人的轮子，都可因此获得深厚扎实的基础。</span><br></pre></td></tr></table></figure>
 <p>参考资料：<br>《STL源码剖析》– 侯捷</p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">STL 所实现的，是依据泛型思维架设起来的一个概念结构。这个以抽</span><br><span class="line">象概念（abstract concepts）为主体而非以实际类别（classes）为主体的结构，形成</span><br><span class="line">了一个严谨的接口标准。在此接口之下，任何组件有最大的独立性，并以所谓迭</span><br><span class="line">代器（iterator）胶合起来，或以所谓配接器（adapter）互相配接，或以所谓仿函</span><br><span class="line">式（functor）动态选择某种策略（policy 或 strategy）。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
 
 <h2 id="GNU源码开放精神"><a href="#GNU源码开放精神" class="headerlink" title="GNU源码开放精神"></a>GNU源码开放精神</h2><p>全世界所有STL实品，都源于HP公司拥有的原始版本。每个头文件都有开放源码的声明。</p>
 <h2 id="SGI-STL实作版本"><a href="#SGI-STL实作版本" class="headerlink" title="SGI STL实作版本"></a>SGI STL实作版本</h2><p>SGI版本被GCC采用，可读性非常高，对语言特性支持良好。</p>
@@ -533,7 +535,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CPP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -545,7 +547,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CPP//" class="article-tag-list-link color4">CPP</a>
+        			<a href="/categories/C//" class="article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -860,7 +862,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">iOS/OC/阅读笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">OC/阅读笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
             
             <div class="clearfix"></div>
