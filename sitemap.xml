@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mmfunnytree.github.io/2022/01/13/2021Summary/</loc>
+    
+    <lastmod>2022-01-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mmfunnytree.github.io/2019/05/13/begin2/</loc>
     
     <lastmod>2021-10-24</lastmod>
@@ -298,6 +305,13 @@
   </url>
   
   <url>
+    <loc>http://mmfunnytree.github.io/tags/iOS/</loc>
+    <lastmod>2022-01-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://mmfunnytree.github.io/tags/day-cnt-%E7%B3%BB%E5%88%97/</loc>
     <lastmod>2022-01-13</lastmod>
     <changefreq>daily</changefreq>
@@ -327,6 +341,13 @@
   
   <url>
     <loc>http://mmfunnytree.github.io/tags/C/</loc>
+    <lastmod>2022-01-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mmfunnytree.github.io/tags/%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2022-01-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
